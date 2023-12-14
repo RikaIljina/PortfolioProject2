@@ -1,4 +1,5 @@
 const playerData = document.getElementById("player-data-form");
+const cards = document.getElementById('card-area');
 // const playerArea1 = document.getElementById("player-1");
 const player1 = {
   name: "",
@@ -9,7 +10,12 @@ const player2 = {
   score: 0,
 };
 
+// Event listeners
 playerData.elements["submit"].addEventListener("click", initializePlayers);
+for (let child of cards.children) {
+child.addEventListener('click', cardClicked);
+}
+
 
 function initializePlayers(event) {
   event.preventDefault();
@@ -36,4 +42,8 @@ function updatePlayerArea() {
   document.getElementById("p1-score").textContent = player1.score;
   document.getElementById("p2-score").textContent = player2.score;
   return;
+}
+
+function cardClicked() {
+    alert('Card clicked: ' + this.getAttribute('data-id'));
 }

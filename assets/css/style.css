@@ -73,6 +73,11 @@ main {
     font-size: 2rem;
 }
 
+.card:hover {
+    background-color: rgb(90, 44, 52);
+    cursor: pointer;
+}
+
 footer {
     background-color: blanchedalmond;
     width: 100%;

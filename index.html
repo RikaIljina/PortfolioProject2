@@ -11,21 +11,40 @@
       <p>Quiz Game</p>
     </header>
     <main>
-        <div id="game-container">
-            <div id="player-1">Player 1 <br> Score: 0</div>
-            <div id="card-area">
-                <div class="card">Technology</div>
-                <div class="card">Nature</div>
-                <div class="card">Sports</div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-            </div>
-            <div id="player-2">Player 2 <br> Score: 0</div>
+      <div id="game-container">
+        <div id="player-1">
+          Player 1 <br />
+          Score: 0
         </div>
+        <div id="card-area">
+          <div class="card">Technology</div>
+          <div class="card">Nature</div>
+          <div class="card">Sports</div>
+          <div class="card"></div>
+          <div class="card"></div>
+          <div class="card"></div>
+          <div class="card"></div>
+          <div class="card"></div>
+          <div class="card"></div>
+        </div>
+        <div id="player-2">
+          Player 2 <br />
+          Score: 0
+        </div>
+      </div>
+
+      <div id="loading-screen">
+        <p>Please enter your names:</p>
+        <form id="player-data-form" action="">
+          <label for="name-player-1">Player 1:</label>
+          <input name="p1" type="text" id="name-player-1" />
+          <br>
+          <label for="name-player-1">Player 2:</label>
+          <input name="p2" type="text" id="name-player-2" />
+          <br>
+          <button name="submit" type="submit">Start</button>
+        </form>
+      </div>
     </main>
 
     <footer>

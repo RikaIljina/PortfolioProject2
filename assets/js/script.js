@@ -1,24 +1,36 @@
 const playerData = document.getElementById("player-data-form");
-const cards = document.getElementById('card-area');
+const cards = document.getElementById("card-area");
 // const playerArea1 = document.getElementById("player-1");
+
 const player1 = {
   name: "",
   score: 0,
+  id: "p1-name",
 };
 const player2 = {
   name: "",
   score: 0,
+  id: "p2-name",
+};
+
+const gameState = {
+  gameStarted: false,
+  activePlayer: player1,
+  inactivePlayer: player2,
+  currentRound: 1,
 };
 
 // Event listeners
 playerData.elements["submit"].addEventListener("click", initializePlayers);
 for (let child of cards.children) {
-child.addEventListener('click', cardClicked);
+  child.addEventListener("click", cardClicked);
 }
-
 
 function initializePlayers(event) {
   event.preventDefault();
+
+  //TODO: Validate player input
+
   // Initialize player objects with names
   player1.name = playerData.elements["p1"].value;
   player1.score = 1;
@@ -35,15 +47,43 @@ function initializePlayers(event) {
 
   // Hide loading screen
   document.getElementById("loading-screen").style.display = "none";
+  gameState.gameStarted = true;
   return;
 }
 
 function updatePlayerArea() {
   document.getElementById("p1-score").textContent = player1.score;
   document.getElementById("p2-score").textContent = player2.score;
+  // Highlight active player
+  document.getElementById(gameState.activePlayer.id).style.color = "red";
+  document.getElementById(gameState.inactivePlayer.id).style.color = "black";
   return;
 }
 
 function cardClicked() {
-    alert('Card clicked: ' + this.getAttribute('data-id'));
+  if (gameState.gameStarted === true) {
+    alert("Card clicked: " + this.getAttribute("data-id"));
+    alert('current round: ' + gameState.currentRound);
+    // Show question card with relevant data-id and wait for active player input
+
+    // Switch player and update player area
+    nextRound();
+    updatePlayerArea();
+  }
+}
+
+function showQuestion() {
+  // Get preselected question for the data-id and wait for answer
+  // on click: validate, hide question, deactivate card
+}
+
+function nextRound() {
+  // Switch players
+  gameState.activePlayer =
+    gameState.activePlayer === player1 ? player2 : player1;
+  gameState.inactivePlayer =
+    gameState.activePlayer === player2 ? player1 : player2;
+  // Increment current round by 1
+  gameState.currentRound += 1;
+  return;
 }

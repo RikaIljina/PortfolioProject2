@@ -65,11 +65,13 @@ function cardClicked() {
 
     alert('current round: ' + gameState.currentRound);
     // Show question card with relevant data-id and wait for active player input
-//    showQuestion(this.getAttribute("data-id"));
     showQuestion(this);   
     // Switch player and update player area
     nextRound();
     updatePlayerArea();
+    return;
+  } else {
+    return;
   }
 }
 
@@ -77,7 +79,7 @@ function showQuestion(activeCard) {
   // Get preselected question for the data-id and wait for answer
   alert("Card clicked: " + activeCard.getAttribute('data-id'));
   // on click: validate, hide question, deactivate card
-  // https://stackoverflow.com/questions/16492401/javascript-setting-pointer-events
+  // Making an element unclickable: https://stackoverflow.com/questions/16492401/javascript-setting-pointer-events
   activeCard.style.pointerEvents = "none";
   activeCard.style.backgroundColor = 'grey';
   return;
@@ -91,5 +93,14 @@ function nextRound() {
     gameState.activePlayer === player2 ? player1 : player2;
   // Increment current round by 1
   gameState.currentRound += 1;
+  // If currentRound == 10, go to endGame 
+  if (gameState.currentRound === 10) {
+    endGame();
+  }
   return;
+}
+
+function endGame() {
+  gameState.gameStarted = false;
+  document.getElementById('end-game-screen').style.display = 'block';
 }

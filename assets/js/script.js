@@ -62,19 +62,25 @@ function updatePlayerArea() {
 
 function cardClicked() {
   if (gameState.gameStarted === true) {
-    alert("Card clicked: " + this.getAttribute("data-id"));
+
     alert('current round: ' + gameState.currentRound);
     // Show question card with relevant data-id and wait for active player input
-
+//    showQuestion(this.getAttribute("data-id"));
+    showQuestion(this);   
     // Switch player and update player area
     nextRound();
     updatePlayerArea();
   }
 }
 
-function showQuestion() {
+function showQuestion(activeCard) {
   // Get preselected question for the data-id and wait for answer
+  alert("Card clicked: " + activeCard.getAttribute('data-id'));
   // on click: validate, hide question, deactivate card
+  // https://stackoverflow.com/questions/16492401/javascript-setting-pointer-events
+  activeCard.style.pointerEvents = "none";
+  activeCard.style.backgroundColor = 'grey';
+  return;
 }
 
 function nextRound() {

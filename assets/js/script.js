@@ -51,6 +51,12 @@ function initializePlayers(event) {
   return;
 }
 
+function restartGame() {
+  alert('Restarting');
+  gameState.gameStarted = true;
+  document.getElementById('end-game-screen').style.display = 'none';
+}
+
 function updatePlayerArea() {
   document.getElementById("p1-score").textContent = player1.score;
   document.getElementById("p2-score").textContent = player2.score;
@@ -62,10 +68,9 @@ function updatePlayerArea() {
 
 function cardClicked() {
   if (gameState.gameStarted === true) {
-
-    alert('current round: ' + gameState.currentRound);
+ //   alert("current round: " + gameState.currentRound);
     // Show question card with relevant data-id and wait for active player input
-    showQuestion(this);   
+    showQuestion(this);
     // Switch player and update player area
     nextRound();
     updatePlayerArea();
@@ -77,11 +82,11 @@ function cardClicked() {
 
 function showQuestion(activeCard) {
   // Get preselected question for the data-id and wait for answer
-  alert("Card clicked: " + activeCard.getAttribute('data-id'));
+//  alert("Card clicked: " + activeCard.getAttribute("data-id"));
   // on click: validate, hide question, deactivate card
   // Making an element unclickable: https://stackoverflow.com/questions/16492401/javascript-setting-pointer-events
   activeCard.style.pointerEvents = "none";
-  activeCard.style.backgroundColor = 'grey';
+  activeCard.style.backgroundColor = "grey";
   return;
 }
 
@@ -93,7 +98,7 @@ function nextRound() {
     gameState.activePlayer === player2 ? player1 : player2;
   // Increment current round by 1
   gameState.currentRound += 1;
-  // If currentRound == 10, go to endGame 
+  // If currentRound == 10, go to endGame
   if (gameState.currentRound === 10) {
     endGame();
   }
@@ -103,4 +108,10 @@ function nextRound() {
 function endGame() {
   gameState.gameStarted = false;
   document.getElementById('end-game-screen').style.display = 'block';
+  
+document.getElementById('restart-same').addEventListener('click', restartGame);
+document.getElementById('restart-new').addEventListener('click', () => {
+  alert(location);
+  location.reload()});
+
 }

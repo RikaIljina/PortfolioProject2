@@ -53,8 +53,22 @@ function initializePlayers(event) {
 
 function restartGame() {
   alert('Restarting');
-  gameState.gameStarted = true;
   document.getElementById('end-game-screen').style.display = 'none';
+
+  gameState.gameStarted = true;
+  gameState.currentRound = 1;
+  gameState.activePlayer = player1;
+  gameState.inactivePlayer = player2;
+  player1.score = 0;
+  player2.score = 0;
+
+  updatePlayerArea();
+
+  for (let card of cards.children) {
+    card.style.pointerEvents = "auto";
+    card.style.backgroundColor = "brown";
+  }
+
 }
 
 function updatePlayerArea() {

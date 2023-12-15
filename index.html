@@ -28,30 +28,35 @@
           <div class="card" data-id="8"></div>
         </div>
         <div id="player-2">
-            <span id="p2-name">Player 2</span> <br />
+          <span id="p2-name">Player 2</span> <br />
           Score: <span id="p2-score">0</span>
         </div>
       </div>
-        
-      <div id="loading-screen">
-        <p>Please enter your names:</p>
-        <form id="player-data-form" action="" >
-          <label for="name-player-1">Player 1:</label>
-          <input name="p1" type="text" id="name-player-1" />
-          <br>
-          <label for="name-player-1">Player 2:</label>
-          <input name="p2" type="text" id="name-player-2" />
-          <br>
-          <button name="submit" type="submit">Start</button>
-        </form>
-      </div>
+      <div id="modal">
+        <div id="loading-screen">
+          <p>Please enter your names:</p>
+          <form id="player-data-form" action="">
+            <label for="name-player-1">Player 1:</label>
+            <input name="p1" type="text" id="name-player-1" />
+            <br />
+            <label for="name-player-1">Player 2:</label>
+            <input name="p2" type="text" id="name-player-2" />
+            <br />
+            <button name="submit" type="submit">Start</button>
+          </form>
+        </div>
 
-      <div id="end-game-screen">
-        <p>GAME OVER</p>
-        <p>Restart game?</p>
-        <button name="restart-same" id="restart-same">Restart for current players</button> <button name="restart-new" id="restart-new">Restart for new players</button>
+        <div id="end-game-screen">
+          <p>GAME OVER</p>
+          <p>Restart game?</p>
+          <button name="restart-same" id="restart-same">
+            Restart for current players
+          </button>
+          <button name="restart-new" id="restart-new">
+            Restart for new players
+          </button>
+        </div>
       </div>
-
     </main>
 
     <footer>

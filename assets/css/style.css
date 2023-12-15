@@ -86,6 +86,15 @@ footer {
     font-size: 2rem;
 }
 
+#modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(130, 127, 127, 0.8);
+}
+
 #loading-screen {
     position: fixed;
     display: block;

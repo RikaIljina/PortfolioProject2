@@ -45,15 +45,17 @@ function initializePlayers(event) {
 
   updatePlayerArea();
 
-  // Hide loading screen
+  // Hide loading screen and modal
   document.getElementById("loading-screen").style.display = "none";
+  document.getElementById("modal").style.display = "none";
   gameState.gameStarted = true;
   return;
 }
 
 function restartGame() {
-  alert('Restarting');
-  document.getElementById('end-game-screen').style.display = 'none';
+  alert("Restarting");
+  document.getElementById("end-game-screen").style.display = "none";
+  document.getElementById("modal").style.display = "none";
 
   gameState.gameStarted = true;
   gameState.currentRound = 1;
@@ -68,7 +70,6 @@ function restartGame() {
     card.style.pointerEvents = "auto";
     card.style.backgroundColor = "brown";
   }
-
 }
 
 function updatePlayerArea() {
@@ -82,7 +83,7 @@ function updatePlayerArea() {
 
 function cardClicked() {
   if (gameState.gameStarted === true) {
- //   alert("current round: " + gameState.currentRound);
+    //   alert("current round: " + gameState.currentRound);
     // Show question card with relevant data-id and wait for active player input
     showQuestion(this);
     // Switch player and update player area
@@ -96,7 +97,7 @@ function cardClicked() {
 
 function showQuestion(activeCard) {
   // Get preselected question for the data-id and wait for answer
-//  alert("Card clicked: " + activeCard.getAttribute("data-id"));
+  //  alert("Card clicked: " + activeCard.getAttribute("data-id"));
   // on click: validate, hide question, deactivate card
   // Making an element unclickable: https://stackoverflow.com/questions/16492401/javascript-setting-pointer-events
   activeCard.style.pointerEvents = "none";
@@ -109,7 +110,7 @@ function nextRound() {
   gameState.activePlayer =
     gameState.activePlayer === player1 ? player2 : player1;
   gameState.inactivePlayer =
-    gameState.activePlayer === player2 ? player1 : player2;
+    gameState.inactivePlayer === player2 ? player1 : player2;
   // Increment current round by 1
   gameState.currentRound += 1;
   // If currentRound == 10, go to endGame
@@ -121,11 +122,14 @@ function nextRound() {
 
 function endGame() {
   gameState.gameStarted = false;
-  document.getElementById('end-game-screen').style.display = 'block';
-  
-document.getElementById('restart-same').addEventListener('click', restartGame);
-document.getElementById('restart-new').addEventListener('click', () => {
-  alert(location);
-  location.reload()});
+  document.getElementById("end-game-screen").style.display = "block";
+  document.getElementById("modal").style.display = "block";
 
+  document
+    .getElementById("restart-same")
+    .addEventListener("click", restartGame);
+  document.getElementById("restart-new").addEventListener("click", () => {
+    alert(location);
+    location.reload();
+  });
 }

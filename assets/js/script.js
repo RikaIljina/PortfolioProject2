@@ -86,9 +86,7 @@ function cardClicked() {
     //   alert("current round: " + gameState.currentRound);
     // Show question card with relevant data-id and wait for active player input
     showQuestion(this);
-    // Switch player and update player area
-    nextRound();
-    updatePlayerArea();
+
     return;
   } else {
     return;
@@ -97,11 +95,28 @@ function cardClicked() {
 
 function showQuestion(activeCard) {
   // Get preselected question for the data-id and wait for answer
+  document.getElementById("question-card").style.display = "flex";
+  document.getElementById("modal").style.display = "block";
   //  alert("Card clicked: " + activeCard.getAttribute("data-id"));
   // on click: validate, hide question, deactivate card
+  for (answer of document.getElementsByClassName("answer")) {
+    answer.addEventListener("click", processAnswer);
+  }
   // Making an element unclickable: https://stackoverflow.com/questions/16492401/javascript-setting-pointer-events
   activeCard.style.pointerEvents = "none";
   activeCard.style.backgroundColor = "grey";
+  return;
+}
+
+function processAnswer() {
+  alert(this.textContent);
+  setTimeout(() => {
+    document.getElementById("question-card").style.display = "none";
+    document.getElementById("modal").style.display = "none";
+  }, 3000);
+  // Switch player and update player area
+  nextRound();
+  updatePlayerArea();
   return;
 }
 

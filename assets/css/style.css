@@ -109,6 +109,40 @@ footer {
     background-color: rgb(142, 105, 105);
 }
 
+#question-card {
+    position: fixed;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 30%;
+    min-width: 200px;
+    height: 70vh;
+    border: 3px solid green;
+    background-color: rgb(132, 150, 104);
+
+}
+
+.qcard-text {
+    background-color: beige;
+    /* line-height: 3rem; */
+    flex: 1;    
+    padding: 1rem 0 1rem 0;
+}
+
+.question {
+    flex: 3;
+    text-align: center;
+    padding: 2rem 0 1rem 0;
+}
+
+.answer:hover {
+    background-color: brown;
+}
+
 #end-game-screen {
     position: fixed;
     display: none;

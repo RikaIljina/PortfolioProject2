@@ -1,3 +1,13 @@
+const quizQuestions = [
+  {
+    question: "The question",
+    a: "Answer a",
+    b: "Answer b",
+    c: "Answer c",
+    d: "Answer d",
+  },
+];
+
 const playerData = document.getElementById("player-data-form");
 const cards = document.getElementById("card-area");
 // const playerArea1 = document.getElementById("player-1");
@@ -95,11 +105,21 @@ function cardClicked() {
 
 function showQuestion(activeCard) {
   // Get preselected question for the data-id and wait for answer
+
   document.getElementById("question-card").style.display = "flex";
   document.getElementById("modal").style.display = "block";
+ // alert(quizQuestions[0] + ' and ' + quizQuestions[0]['question']);
+
+  document.getElementById("question").textContent = quizQuestions[0].question;
+
   //  alert("Card clicked: " + activeCard.getAttribute("data-id"));
   // on click: validate, hide question, deactivate card
+  let i = ["a", "b", "c", "d"];
+  alert(quizQuestions[0][i[0]], i[Math.floor(Math.random()*i.length)]);
   for (answer of document.getElementsByClassName("answer")) {
+    let randomIndex = Math.floor(Math.random()*i.length);
+    answer.textContent = quizQuestions[0][i[randomIndex]];
+    i.splice(randomIndex, 1);
     answer.addEventListener("click", processAnswer);
   }
   // Making an element unclickable: https://stackoverflow.com/questions/16492401/javascript-setting-pointer-events
@@ -110,10 +130,10 @@ function showQuestion(activeCard) {
 
 function processAnswer() {
   alert(this.textContent);
-  setTimeout(() => {
+ // setTimeout(() => {
     document.getElementById("question-card").style.display = "none";
     document.getElementById("modal").style.display = "none";
-  }, 3000);
+ // }, 3000);
   // Switch player and update player area
   nextRound();
   updatePlayerArea();

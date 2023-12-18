@@ -140,7 +140,9 @@ function showQuestion(activeCard) {
 
 function processAnswer() {
   // Check if player has clicked on the correct answer
-  alert(this.getAttribute("id") === gameState.correctAnswer);
+  if (this.getAttribute("id") === gameState.correctAnswer) {
+    gameState.activePlayer.score += 1;
+  }
   // setTimeout(() => {
   document.getElementById("question-card").style.display = "none";
   document.getElementById("modal").style.display = "none";

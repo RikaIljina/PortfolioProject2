@@ -28,9 +28,9 @@ const quizQuestionsSports = [
   },
 ];
 
-const quizQuestionsA = [
+const quizQuestionsHistory = [
   {
-    question: "A question",
+    question: "History question",
     0: "Correct answer",
     1: "Answer b",
     2: "Answer c",
@@ -38,9 +38,9 @@ const quizQuestionsA = [
   },
 ];
 
-const quizQuestionsB = [
+const quizQuestionsGeography = [
   {
-    question: "B question",
+    question: "Geography question",
     0: "Correct answer",
     1: "Answer b",
     2: "Answer c",
@@ -48,9 +48,9 @@ const quizQuestionsB = [
   },
 ];
 
-const quizQuestionsC = [
+const quizQuestionsBooks = [
   {
-    question: "C question",
+    question: "Book question",
     0: "Correct answer",
     1: "Answer b",
     2: "Answer c",
@@ -58,9 +58,9 @@ const quizQuestionsC = [
   },
 ];
 
-const quizQuestionsD = [
+const quizQuestionsMusic = [
   {
-    question: "D question",
+    question: "Music question",
     0: "Correct answer",
     1: "Answer b",
     2: "Answer c",
@@ -68,9 +68,9 @@ const quizQuestionsD = [
   },
 ];
 
-const quizQuestionsE = [
+const quizQuestionsFood = [
   {
-    question: "E question",
+    question: "Food question",
     0: "Correct answer",
     1: "Answer b",
     2: "Answer c",
@@ -78,9 +78,9 @@ const quizQuestionsE = [
   },
 ];
 
-const quizQuestionsF = [
+const quizQuestionsGeneral = [
   {
-    question: "F question",
+    question: "General question",
     0: "Correct answer",
     1: "Answer b",
     2: "Answer c",
@@ -92,12 +92,12 @@ const quizCategories = [
   quizQuestionsTech,
   quizQuestionsNature,
   quizQuestionsSports,
-  quizQuestionsA,
-  quizQuestionsB,
-  quizQuestionsC,
-  quizQuestionsD,
-  quizQuestionsE,
-  quizQuestionsF,
+  quizQuestionsHistory,
+  quizQuestionsGeography,
+  quizQuestionsBooks,
+  quizQuestionsMusic,
+  quizQuestionsFood,
+  quizQuestionsGeneral,
 ];
 
 const playerData = document.getElementById("player-data-form");

@@ -1,12 +1,98 @@
-const quizQuestions = [
+const quizQuestionsTech = [
   {
-    question: "The question",
-    0: "Answer a",
+    question: "Tech question",
+    0: "Correct answer",
     1: "Answer b",
     2: "Answer c",
     3: "Answer d",
   },
 ];
+
+const quizQuestionsNature = [
+  {
+    question: "Nature question",
+    0: "Correct answer",
+    1: "Answer b",
+    2: "Answer c",
+    3: "Answer d",
+  },
+];
+
+const quizQuestionsSports = [
+  {
+    question: "Sports question",
+    0: "Correct answer",
+    1: "Answer b",
+    2: "Answer c",
+    3: "Answer d",
+  },
+];
+
+const quizQuestionsA = [
+  {
+    question: "A question",
+    0: "Correct answer",
+    1: "Answer b",
+    2: "Answer c",
+    3: "Answer d",
+  },
+];
+
+
+const quizQuestionsB = [
+  {
+    question: "B question",
+    0: "Correct answer",
+    1: "Answer b",
+    2: "Answer c",
+    3: "Answer d",
+  },
+];
+
+
+const quizQuestionsC = [
+  {
+    question: "C question",
+    0: "Correct answer",
+    1: "Answer b",
+    2: "Answer c",
+    3: "Answer d",
+  },
+];
+
+
+const quizQuestionsD = [
+  {
+    question: "D question",
+    0: "Correct answer",
+    1: "Answer b",
+    2: "Answer c",
+    3: "Answer d",
+  },
+];
+
+const quizQuestionsE = [
+  {
+    question: "E question",
+    0: "Correct answer",
+    1: "Answer b",
+    2: "Answer c",
+    3: "Answer d",
+  },
+];
+
+
+const quizQuestionsF = [
+  {
+    question: "F question",
+    0: "Correct answer",
+    1: "Answer b",
+    2: "Answer c",
+    3: "Answer d",
+  },
+];
+
+const quizCategories = [quizQuestionsTech, quizQuestionsNature, quizQuestionsSports, quizQuestionsA, quizQuestionsB, quizQuestionsC, quizQuestionsD, quizQuestionsE, quizQuestionsF];
 
 const playerData = document.getElementById("player-data-form");
 const cards = document.getElementById("card-area");
@@ -106,29 +192,31 @@ function cardClicked() {
 
 function showQuestion(activeCard) {
   // Get preselected question for the data-id and wait for answer
+  let categoryIndex = activeCard.getAttribute("data-id");
+  let category = quizCategories[categoryIndex];
 
   document.getElementById("question-card").style.display = "flex";
   document.getElementById("modal").style.display = "block";
   // alert(quizQuestions[0] + ' and ' + quizQuestions[0]['question']);
 
-  document.getElementById("question").textContent = quizQuestions[0].question;
+  document.getElementById("question").textContent = category[0].question;
 
   //  alert("Card clicked: " + activeCard.getAttribute("data-id"));
   // on click: validate, hide question, deactivate card
-  let i = [0, 1, 2, 3];
+  let answerKeys = [0, 1, 2, 3];
   for (answer of document.getElementsByClassName("answer")) {
     // Select random index to shuffle the display order of the questions
-    let randomIndex = Math.floor(Math.random() * i.length);
+    let randomIndex = Math.floor(Math.random() * answerKeys.length);
     console.log(randomIndex);
     // Fill the quiz card with the answers from the quiz dictionary
-    answer.textContent = quizQuestions[0][i[randomIndex]];
+    answer.textContent = category[0][answerKeys[randomIndex]];
     //    alert(i + randomIndex + "current index: " + i[randomIndex]);
     // Remember the element with the correct answer which is always on index 0
-    if (i[randomIndex] === 0) {
+    if (answerKeys[randomIndex] === 0) {
       gameState.correctAnswer = answer.getAttribute("id");
     }
     // Remove the selected index from the list to make sure no answers are being selected multiple times
-    i.splice(randomIndex, 1);
+    answerKeys.splice(randomIndex, 1);
 
     answer.addEventListener("click", processAnswer);
   }

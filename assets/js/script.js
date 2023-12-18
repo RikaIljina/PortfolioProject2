@@ -1,10 +1,10 @@
 const quizQuestions = [
   {
     question: "The question",
-    a: "Answer a",
-    b: "Answer b",
-    c: "Answer c",
-    d: "Answer d",
+    0: "Answer a",
+    1: "Answer b",
+    2: "Answer c",
+    3: "Answer d",
   },
 ];
 
@@ -28,6 +28,7 @@ const gameState = {
   activePlayer: player1,
   inactivePlayer: player2,
   currentRound: 1,
+  correctAnswer: "",
 };
 
 // Event listeners
@@ -108,18 +109,27 @@ function showQuestion(activeCard) {
 
   document.getElementById("question-card").style.display = "flex";
   document.getElementById("modal").style.display = "block";
- // alert(quizQuestions[0] + ' and ' + quizQuestions[0]['question']);
+  // alert(quizQuestions[0] + ' and ' + quizQuestions[0]['question']);
 
   document.getElementById("question").textContent = quizQuestions[0].question;
 
   //  alert("Card clicked: " + activeCard.getAttribute("data-id"));
   // on click: validate, hide question, deactivate card
-  let i = ["a", "b", "c", "d"];
-  alert(quizQuestions[0][i[0]], i[Math.floor(Math.random()*i.length)]);
+  let i = [0, 1, 2, 3];
   for (answer of document.getElementsByClassName("answer")) {
-    let randomIndex = Math.floor(Math.random()*i.length);
+    // Select random index to shuffle the display order of the questions
+    let randomIndex = Math.floor(Math.random() * i.length);
+    console.log(randomIndex);
+    // Fill the quiz card with the answers from the quiz dictionary
     answer.textContent = quizQuestions[0][i[randomIndex]];
+    //    alert(i + randomIndex + "current index: " + i[randomIndex]);
+    // Remember the element with the correct answer which is always on index 0
+    if (i[randomIndex] === 0) {
+      gameState.correctAnswer = answer.getAttribute("id");
+    }
+    // Remove the selected index from the list to make sure no answers are being selected multiple times
     i.splice(randomIndex, 1);
+
     answer.addEventListener("click", processAnswer);
   }
   // Making an element unclickable: https://stackoverflow.com/questions/16492401/javascript-setting-pointer-events
@@ -129,11 +139,12 @@ function showQuestion(activeCard) {
 }
 
 function processAnswer() {
-  alert(this.textContent);
- // setTimeout(() => {
-    document.getElementById("question-card").style.display = "none";
-    document.getElementById("modal").style.display = "none";
- // }, 3000);
+  // Check if player has clicked on the correct answer
+  alert(this.getAttribute("id") === gameState.correctAnswer);
+  // setTimeout(() => {
+  document.getElementById("question-card").style.display = "none";
+  document.getElementById("modal").style.display = "none";
+  // }, 3000);
   // Switch player and update player area
   nextRound();
   updatePlayerArea();

@@ -143,6 +143,11 @@ footer {
     background-color: brown;
 }
 
+#close-card {
+    flex: 1;
+    padding: 0.5rem 0 0.5rem 0;
+}
+
 #end-game-screen {
     position: fixed;
     display: none;

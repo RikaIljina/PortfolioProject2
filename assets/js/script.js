@@ -38,7 +38,6 @@ const quizQuestionsA = [
   },
 ];
 
-
 const quizQuestionsB = [
   {
     question: "B question",
@@ -49,7 +48,6 @@ const quizQuestionsB = [
   },
 ];
 
-
 const quizQuestionsC = [
   {
     question: "C question",
@@ -59,7 +57,6 @@ const quizQuestionsC = [
     3: "Answer d",
   },
 ];
-
 
 const quizQuestionsD = [
   {
@@ -81,7 +78,6 @@ const quizQuestionsE = [
   },
 ];
 
-
 const quizQuestionsF = [
   {
     question: "F question",
@@ -92,7 +88,17 @@ const quizQuestionsF = [
   },
 ];
 
-const quizCategories = [quizQuestionsTech, quizQuestionsNature, quizQuestionsSports, quizQuestionsA, quizQuestionsB, quizQuestionsC, quizQuestionsD, quizQuestionsE, quizQuestionsF];
+const quizCategories = [
+  quizQuestionsTech,
+  quizQuestionsNature,
+  quizQuestionsSports,
+  quizQuestionsA,
+  quizQuestionsB,
+  quizQuestionsC,
+  quizQuestionsD,
+  quizQuestionsE,
+  quizQuestionsF,
+];
 
 const playerData = document.getElementById("player-data-form");
 const cards = document.getElementById("card-area");
@@ -237,6 +243,7 @@ function processAnswer() {
   // }, 3000);
   // Switch player and update player area
   nextRound();
+  // TODO: move this function to next round, add button logic, button triggers next round
   updatePlayerArea();
   return;
 }

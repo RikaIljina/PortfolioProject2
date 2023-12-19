@@ -204,12 +204,17 @@ function cardClicked() {
     // Show question card with relevant data-id and wait for active player input
     document.getElementById("modal").style.display = "block";
     document.getElementById("question-card").style.display = "flex";
+    for (answer of document.getElementsByClassName("answer")) {
+      answer.style.pointerEvents = "auto";
+    }
+    
+  document.getElementById("close-card").removeEventListener("click", nextRound);
 
     showQuestion(this);
 
-      // Making an element unclickable: https://stackoverflow.com/questions/16492401/javascript-setting-pointer-events
-  this.style.pointerEvents = "none";
-  this.style.backgroundColor = "grey";
+    // Making an element unclickable: https://stackoverflow.com/questions/16492401/javascript-setting-pointer-events
+    this.style.pointerEvents = "none";
+    this.style.backgroundColor = "grey";
 
     return;
   } else {
@@ -221,7 +226,7 @@ function showQuestion(activeCard) {
   // Get preselected question for the data-id and wait for answer
   let categoryIndex = activeCard.getAttribute("data-id");
   let category = quizCategories[categoryIndex];
-  let activeQuestion = category[Math.floor(Math.random()*category.length)];
+  let activeQuestion = category[Math.floor(Math.random() * category.length)];
 
   // alert(quizQuestions[0] + ' and ' + quizQuestions[0]['question']);
 
@@ -255,15 +260,17 @@ function processAnswer() {
   if (this.getAttribute("id") === gameState.correctAnswer) {
     gameState.activePlayer.score += 1;
   }
-
+  for (answer of document.getElementsByClassName("answer")) {
+    answer.style.pointerEvents = "none";
+  }
+  document.getElementById("close-card").addEventListener("click", nextRound);
   // Switch player and update player area
-  nextRound();
+
   // TODO: move this function to next round, add button logic, button triggers next round
   return;
 }
 
 function nextRound() {
-
   document.getElementById("question-card").style.display = "none";
   document.getElementById("modal").style.display = "none";
   // Switch players

@@ -145,20 +145,22 @@ for (let child of cards.children) {
 
 function initializePlayers(event) {
   event.preventDefault();
-
-  //TODO: Validate player input
+  let enteredName1 = playerData.elements["p1"].value;
+  let enteredName2 = playerData.elements["p2"].value;
+  // Validate player input https://stackoverflow.com/questions/44256226/pattern-validation-with-javascript
+  let re = /^[a-zA-Z0-9._-]{1,10}$/;
+  alert(re.test(enteredName1));
+  alert(re.test(enteredName2));
 
   // Initialize player objects with names
-  player1.name = playerData.elements["p1"].value;
-  player1.score = 1;
-  player2.name = playerData.elements["p2"].value;
-  player2.score = 1;
+  player1.name = enteredName1;
+  player2.name = enteredName2;
 
   // Initial update of the player areas to show player names
   document.getElementById("p1-name").textContent =
-    playerData.elements["p1"].value;
+    player1.name;
   document.getElementById("p2-name").textContent =
-    playerData.elements["p2"].value;
+    player2.name;
 
   updatePlayerArea();
 
@@ -200,7 +202,6 @@ function updatePlayerArea() {
 
 function cardClicked() {
   if (gameState.gameStarted === true) {
-    //   alert("current round: " + gameState.currentRound);
     // Show question card with relevant data-id and wait for active player input
     document.getElementById("modal").style.display = "block";
     document.getElementById("question-card").style.display = "flex";
@@ -226,11 +227,8 @@ function showQuestion(activeCard) {
   let category = quizCategories[categoryIndex];
   let activeQuestion = category[Math.floor(Math.random() * category.length)];
 
-  // alert(quizQuestions[0] + ' and ' + quizQuestions[0]['question']);
-
   document.getElementById("question").textContent = activeQuestion.question;
 
-  //  alert("Card clicked: " + activeCard.getAttribute("data-id"));
   // on click: validate, hide question, deactivate card
   let answerKeys = [0, 1, 2, 3];
   for (answer of document.getElementsByClassName("answer")) {
@@ -239,7 +237,6 @@ function showQuestion(activeCard) {
     console.log(randomIndex);
     // Fill the quiz card with the answers from the quiz dictionary
     answer.textContent = activeQuestion[answerKeys[randomIndex]];
-    //    alert(i + randomIndex + "current index: " + i[randomIndex]);
     // Remember the element with the correct answer which is always on index 0
     if (answerKeys[randomIndex] === 0) {
       gameState.correctAnswer = answer.getAttribute("id");
@@ -308,7 +305,6 @@ function endGame() {
     .getElementById("restart-same")
     .addEventListener("click", restartGame);
   document.getElementById("restart-new").addEventListener("click", () => {
-    alert(location);
     location.reload();
   });
 }

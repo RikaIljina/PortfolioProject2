@@ -202,7 +202,14 @@ function cardClicked() {
   if (gameState.gameStarted === true) {
     //   alert("current round: " + gameState.currentRound);
     // Show question card with relevant data-id and wait for active player input
+    document.getElementById("modal").style.display = "block";
+    document.getElementById("question-card").style.display = "flex";
+
     showQuestion(this);
+
+      // Making an element unclickable: https://stackoverflow.com/questions/16492401/javascript-setting-pointer-events
+  this.style.pointerEvents = "none";
+  this.style.backgroundColor = "grey";
 
     return;
   } else {
@@ -215,8 +222,7 @@ function showQuestion(activeCard) {
   let categoryIndex = activeCard.getAttribute("data-id");
   let category = quizCategories[categoryIndex];
   let activeQuestion = category[Math.floor(Math.random()*category.length)];
-  document.getElementById("question-card").style.display = "flex";
-  document.getElementById("modal").style.display = "block";
+
   // alert(quizQuestions[0] + ' and ' + quizQuestions[0]['question']);
 
   document.getElementById("question").textContent = activeQuestion.question;
@@ -240,9 +246,7 @@ function showQuestion(activeCard) {
 
     answer.addEventListener("click", processAnswer);
   }
-  // Making an element unclickable: https://stackoverflow.com/questions/16492401/javascript-setting-pointer-events
-  activeCard.style.pointerEvents = "none";
-  activeCard.style.backgroundColor = "grey";
+
   return;
 }
 
@@ -251,18 +255,17 @@ function processAnswer() {
   if (this.getAttribute("id") === gameState.correctAnswer) {
     gameState.activePlayer.score += 1;
   }
-  // setTimeout(() => {
-  document.getElementById("question-card").style.display = "none";
-  document.getElementById("modal").style.display = "none";
-  // }, 3000);
+
   // Switch player and update player area
   nextRound();
   // TODO: move this function to next round, add button logic, button triggers next round
-  updatePlayerArea();
   return;
 }
 
 function nextRound() {
+
+  document.getElementById("question-card").style.display = "none";
+  document.getElementById("modal").style.display = "none";
   // Switch players
   gameState.activePlayer =
     gameState.activePlayer === player1 ? player2 : player1;
@@ -274,6 +277,8 @@ function nextRound() {
   if (gameState.currentRound === 10) {
     endGame();
   }
+  updatePlayerArea();
+
   return;
 }
 

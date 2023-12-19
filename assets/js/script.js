@@ -176,8 +176,8 @@ function restartGame() {
 
   gameState.gameStarted = true;
   gameState.currentRound = 1;
-  gameState.activePlayer = player1;
-  gameState.inactivePlayer = player2;
+ // gameState.activePlayer = player1;
+//  gameState.inactivePlayer = player2;
   player1.score = 0;
   player2.score = 0;
 
@@ -207,8 +207,6 @@ function cardClicked() {
     for (answer of document.getElementsByClassName("answer")) {
       answer.style.pointerEvents = "auto";
     }
-    
-  document.getElementById("close-card").removeEventListener("click", nextRound);
 
     showQuestion(this);
 
@@ -259,20 +257,31 @@ function processAnswer() {
   // Check if player has clicked on the correct answer
   if (this.getAttribute("id") === gameState.correctAnswer) {
     gameState.activePlayer.score += 1;
+    this.style.backgroundColor = "green";
+  } else {
+    this.style.backgroundColor = "red";
+    document.getElementById(gameState.correctAnswer).style.backgroundColor =
+      "green";
   }
+
   for (answer of document.getElementsByClassName("answer")) {
     answer.style.pointerEvents = "none";
+    answer.removeEventListener("click", processAnswer);
   }
-  document.getElementById("close-card").addEventListener("click", nextRound);
-  // Switch player and update player area
 
-  // TODO: move this function to next round, add button logic, button triggers next round
+  document.getElementById("close-card").addEventListener("click", nextRound);
+
   return;
 }
 
 function nextRound() {
   document.getElementById("question-card").style.display = "none";
   document.getElementById("modal").style.display = "none";
+  document.getElementById("close-card").removeEventListener("click", nextRound);
+  for (answer of document.getElementsByClassName("answer")) {
+    answer.style.backgroundColor = "";
+  }
+
   // Switch players
   gameState.activePlayer =
     gameState.activePlayer === player1 ? player2 : player1;
@@ -280,11 +289,12 @@ function nextRound() {
     gameState.inactivePlayer === player2 ? player1 : player2;
   // Increment current round by 1
   gameState.currentRound += 1;
+  updatePlayerArea();
+
   // If currentRound == 10, go to endGame
   if (gameState.currentRound === 10) {
     endGame();
   }
-  updatePlayerArea();
 
   return;
 }

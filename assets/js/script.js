@@ -117,11 +117,13 @@ const quizCategories = [
 const player1 = {
   name: "",
   score: 0,
+  wins: 0,
   id: "p1-name",
 };
 const player2 = {
   name: "",
   score: 0,
+  wins: 0,
   id: "p2-name",
 };
 
@@ -136,7 +138,6 @@ const gameState = {
 const playerData = document.getElementById("player-data-form");
 const cards = document.getElementById("card-area");
 // Event listeners
-// playerData.elements["submit"].addEventListener("click", initializePlayers);
 playerData.elements["submit"].addEventListener("click", validateNames);
 for (let child of cards.children) {
   child.addEventListener("click", cardClicked);
@@ -149,26 +150,22 @@ function validateNames(event) {
   // Validate player input https://stackoverflow.com/questions/44256226/pattern-validation-with-javascript
   let re = /^[a-zA-Z0-9._-]{1,10}$/;
   if (!re.test(enteredName1) || !re.test(enteredName2)) {
-    document.getElementById("input-error").textContent = "Please only use letters, numbers, and the symbols . (dot), - (hyphen), _ (underscore) in your names. Name length must be between 1 and 10 characters.";
+    document.getElementById("input-error").textContent =
+      "Please only use letters, numbers, and the symbols . (dot), - (hyphen), _ (underscore) in your names. Name length must be between 1 and 10 characters.";
   } else {
     initializePlayers();
   }
 }
 
 function initializePlayers() {
-  // event.preventDefault();
-  let enteredName1 = playerData.elements["p1"].value;
-  let enteredName2 = playerData.elements["p2"].value;
-
   // Initialize player objects with names
-  player1.name = enteredName1;
-  player2.name = enteredName2;
+
+  player1.name = playerData.elements["p1"].value;
+  player2.name = playerData.elements["p2"].value;
 
   // Initial update of the player areas to show player names
-  document.getElementById("p1-name").textContent =
-    player1.name;
-  document.getElementById("p2-name").textContent =
-    player2.name;
+  document.getElementById("p1-name").textContent = player1.name;
+  document.getElementById("p2-name").textContent = player2.name;
 
   updatePlayerArea();
 
@@ -186,8 +183,8 @@ function restartGame() {
 
   gameState.gameStarted = true;
   gameState.currentRound = 1;
- // gameState.activePlayer = player1;
-//  gameState.inactivePlayer = player2;
+  // gameState.activePlayer = player1;
+  //  gameState.inactivePlayer = player2;
   player1.score = 0;
   player2.score = 0;
 
@@ -261,7 +258,7 @@ function showQuestion(activeCard) {
 function processAnswer() {
   // Check if player has clicked on the correct answer
   if (this.getAttribute("id") === gameState.correctAnswer) {
-    gameState.activePlayer.score += 1;
+    gameState.activePlayer.score += 100;
     this.style.backgroundColor = "green";
   } else {
     this.style.backgroundColor = "red";
@@ -308,6 +305,22 @@ function endGame() {
   gameState.gameStarted = false;
   document.getElementById("end-game-screen").style.display = "block";
   document.getElementById("modal").style.display = "block";
+  if (player1.score === player2.score) {
+    document.getElementById(
+      "results"
+    ).innerHTML = `It's a draw! Play again to see who's better!`;
+  } else {
+    let winner = player1.score > player2.score ? player1 : player2;
+    winner.wins += 1;
+    document.getElementById(
+      "results"
+    ).innerHTML = `Congrats to ${winner.name}! You won this round with a score of ${winner.score}! Play on to tip the scales!`;
+  }
+  document.getElementById(
+    "results"
+  ).innerHTML += `<br>Total wins: <br> ${player1.name}: ${player1.wins} <br> ${player2.name}: ${player2.wins}`;
+
+
 
   document
     .getElementById("restart-same")

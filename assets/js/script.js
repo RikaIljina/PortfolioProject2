@@ -3,12 +3,14 @@ const player1 = {
   score: 0,
   wins: 0,
   id: "p1-name",
+  color: "#06A77D",
 };
 const player2 = {
   name: "",
   score: 0,
   wins: 0,
   id: "p2-name",
+  color: "#F1A208",
 };
 
 const gameState = {
@@ -21,6 +23,7 @@ const gameState = {
 
 const playerData = document.getElementById("player-data-form");
 const cards = document.getElementById("card-area");
+let usedCard = "";
 // Event listeners
 playerData.elements["submit"].addEventListener("click", validateNames);
 for (let child of cards.children) {
@@ -51,6 +54,9 @@ function initializePlayers() {
   document.getElementById("p1-name").textContent = player1.name;
   document.getElementById("p2-name").textContent = player2.name;
 
+  document.getElementById("player-1").style.backgroundColor = player1.color;
+  document.getElementById("player-2").style.backgroundColor = player2.color;
+
   updatePlayerArea();
 
   // Hide loading screen and modal
@@ -70,8 +76,8 @@ function restartGame() {
   //  gameState.inactivePlayer = player2;
   player1.score = 0;
   player2.score = 0;
-  document.getElementById('p1-wins').textContent = player1.wins;
-  document.getElementById('p2-wins').textContent = player2.wins;
+  document.getElementById("p1-wins").textContent = player1.wins;
+  document.getElementById("p2-wins").textContent = player2.wins;
 
   updatePlayerArea();
 
@@ -103,7 +109,7 @@ function cardClicked() {
 
     // Making an element unclickable: https://stackoverflow.com/questions/16492401/javascript-setting-pointer-events
     this.style.pointerEvents = "none";
-    this.style.backgroundColor = "grey";
+    usedCard = this;
 
     return;
   } else {
@@ -145,10 +151,12 @@ function processAnswer() {
   if (this.getAttribute("id") === gameState.correctAnswer) {
     gameState.activePlayer.score += 100;
     this.style.backgroundColor = "green";
+    usedCard.style.backgroundColor = gameState.activePlayer.color;
   } else {
     this.style.backgroundColor = "red";
     document.getElementById(gameState.correctAnswer).style.backgroundColor =
       "green";
+      usedCard.style.backgroundColor = "grey";
   }
 
   for (answer of document.getElementsByClassName("answer")) {

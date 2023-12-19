@@ -13,7 +13,7 @@
     <main>
       <div id="game-container">
         <div id="player-1">
-          <p><span id="p1-name">Player 1</span></p> 
+          <p><span id="p1-name">Player 1</span></p>
           <p>Score: <span id="p1-score">0</span></p>
           <p>Wins: <span id="p1-wins">0</span></p>
         </div>
@@ -29,7 +29,7 @@
           <div class="card" data-id="8">General</div>
         </div>
         <div id="player-2">
-          <p><span id="p2-name">Player 2</span></p> 
+          <p><span id="p2-name">Player 2</span></p>
           <p>Score: <span id="p2-score">0</span></p>
           <p>Wins: <span id="p2-wins">0</span></p>
         </div>
@@ -62,12 +62,14 @@
           <p>GAME OVER</p>
           <p id="results"></p>
           <p>Continue?</p>
-          <button name="restart-same" id="restart-same">
-            Continue with current players
-          </button>
-          <button name="restart-new" id="restart-new">
-            Restart for new players
-          </button>
+          <div id="restart-buttons">
+            <button name="restart-same" id="restart-same">
+              Continue with current players
+            </button>
+            <button name="restart-new" id="restart-new">
+              Restart for new players
+            </button>
+          </div>
         </div>
       </div>
     </main>

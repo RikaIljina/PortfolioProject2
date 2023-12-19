@@ -4,6 +4,7 @@ const player1 = {
   wins: 0,
   id: "p1-name",
   color: "#06A77D",
+  colorInactive: "#586b66",
 };
 const player2 = {
   name: "",
@@ -11,6 +12,7 @@ const player2 = {
   wins: 0,
   id: "p2-name",
   color: "#F1A208",
+  colorInactive: "#736751",
 };
 
 const gameState = {
@@ -92,7 +94,11 @@ function updatePlayerArea() {
   document.getElementById("p2-score").textContent = player2.score;
   // Highlight active player
   document.getElementById(gameState.activePlayer.id).style.color = "red";
+  document.getElementById(gameState.activePlayer.id).parentElement.parentElement.style.backgroundColor = gameState.activePlayer.color;
+  document.getElementById(gameState.activePlayer.id).parentElement.parentElement.style.border = "0.5em solid yellow";
   document.getElementById(gameState.inactivePlayer.id).style.color = "black";
+  document.getElementById(gameState.inactivePlayer.id).parentElement.parentElement.style.backgroundColor = gameState.inactivePlayer.colorInactive;
+  document.getElementById(gameState.inactivePlayer.id).parentElement.parentElement.style.border = "0.5em solid grey";
   return;
 }
 

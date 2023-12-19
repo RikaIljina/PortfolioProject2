@@ -92,13 +92,17 @@ function restartGame() {
 function updatePlayerArea() {
   document.getElementById("p1-score").textContent = player1.score;
   document.getElementById("p2-score").textContent = player2.score;
+
+  let activePlayer = document.getElementById(gameState.activePlayer.id);
+  let inactivePlayer = document.getElementById(gameState.inactivePlayer.id);
+  
   // Highlight active player
-  document.getElementById(gameState.activePlayer.id).style.color = "red";
-  document.getElementById(gameState.activePlayer.id).parentElement.parentElement.style.backgroundColor = gameState.activePlayer.color;
-  document.getElementById(gameState.activePlayer.id).parentElement.parentElement.style.border = "0.5em solid yellow";
-  document.getElementById(gameState.inactivePlayer.id).style.color = "black";
-  document.getElementById(gameState.inactivePlayer.id).parentElement.parentElement.style.backgroundColor = gameState.inactivePlayer.colorInactive;
-  document.getElementById(gameState.inactivePlayer.id).parentElement.parentElement.style.border = "0.5em solid grey";
+  activePlayer.style.color = "red";
+  activePlayer.parentElement.parentElement.style.backgroundColor = gameState.activePlayer.color;
+  activePlayer.parentElement.parentElement.style.border = "0.5em solid yellow";
+  inactivePlayer.style.color = "black";
+  inactivePlayer.parentElement.parentElement.style.backgroundColor = gameState.inactivePlayer.colorInactive;
+  inactivePlayer.parentElement.parentElement.style.border = "0.5em solid grey";
   return;
 }
 

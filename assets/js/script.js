@@ -1,6 +1,20 @@
 const quizQuestionsTech = [
   {
-    question: "Tech question",
+    question: "Tech question 1",
+    0: "Correct answer",
+    1: "Answer b",
+    2: "Answer c",
+    3: "Answer d",
+  },
+  {
+    question: "Tech question 2",
+    0: "Correct answer",
+    1: "Answer b",
+    2: "Answer c",
+    3: "Answer d",
+  },
+  {
+    question: "Tech question 3",
     0: "Correct answer",
     1: "Answer b",
     2: "Answer c",
@@ -200,12 +214,12 @@ function showQuestion(activeCard) {
   // Get preselected question for the data-id and wait for answer
   let categoryIndex = activeCard.getAttribute("data-id");
   let category = quizCategories[categoryIndex];
-
+  let activeQuestion = category[Math.floor(Math.random()*category.length)];
   document.getElementById("question-card").style.display = "flex";
   document.getElementById("modal").style.display = "block";
   // alert(quizQuestions[0] + ' and ' + quizQuestions[0]['question']);
 
-  document.getElementById("question").textContent = category[0].question;
+  document.getElementById("question").textContent = activeQuestion.question;
 
   //  alert("Card clicked: " + activeCard.getAttribute("data-id"));
   // on click: validate, hide question, deactivate card
@@ -215,7 +229,7 @@ function showQuestion(activeCard) {
     let randomIndex = Math.floor(Math.random() * answerKeys.length);
     console.log(randomIndex);
     // Fill the quiz card with the answers from the quiz dictionary
-    answer.textContent = category[0][answerKeys[randomIndex]];
+    answer.textContent = activeQuestion[answerKeys[randomIndex]];
     //    alert(i + randomIndex + "current index: " + i[randomIndex]);
     // Remember the element with the correct answer which is always on index 0
     if (answerKeys[randomIndex] === 0) {

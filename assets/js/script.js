@@ -114,10 +114,6 @@ const quizCategories = [
   quizQuestionsGeneral,
 ];
 
-const playerData = document.getElementById("player-data-form");
-const cards = document.getElementById("card-area");
-// const playerArea1 = document.getElementById("player-1");
-
 const player1 = {
   name: "",
   score: 0,
@@ -137,20 +133,32 @@ const gameState = {
   correctAnswer: "",
 };
 
+const playerData = document.getElementById("player-data-form");
+const cards = document.getElementById("card-area");
 // Event listeners
-playerData.elements["submit"].addEventListener("click", initializePlayers);
+// playerData.elements["submit"].addEventListener("click", initializePlayers);
+playerData.elements["submit"].addEventListener("click", validateNames);
 for (let child of cards.children) {
   child.addEventListener("click", cardClicked);
 }
 
-function initializePlayers(event) {
+function validateNames(event) {
   event.preventDefault();
   let enteredName1 = playerData.elements["p1"].value;
   let enteredName2 = playerData.elements["p2"].value;
   // Validate player input https://stackoverflow.com/questions/44256226/pattern-validation-with-javascript
   let re = /^[a-zA-Z0-9._-]{1,10}$/;
-  alert(re.test(enteredName1));
-  alert(re.test(enteredName2));
+  if (!re.test(enteredName1) || !re.test(enteredName2)) {
+    document.getElementById("input-error").textContent = "Please only use letters, numbers, and the symbols . (dot), - (hyphen), _ (underscore) in your names. Name length must be between 1 and 10 characters.";
+  } else {
+    initializePlayers();
+  }
+}
+
+function initializePlayers() {
+  // event.preventDefault();
+  let enteredName1 = playerData.elements["p1"].value;
+  let enteredName2 = playerData.elements["p2"].value;
 
   // Initialize player objects with names
   player1.name = enteredName1;

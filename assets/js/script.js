@@ -61,7 +61,6 @@ function initializePlayers() {
 }
 
 function restartGame() {
-  alert("Restarting");
   document.getElementById("end-game-screen").style.display = "none";
   document.getElementById("modal").style.display = "none";
 
@@ -71,6 +70,8 @@ function restartGame() {
   //  gameState.inactivePlayer = player2;
   player1.score = 0;
   player2.score = 0;
+  document.getElementById('p1-wins').textContent = player1.wins;
+  document.getElementById('p2-wins').textContent = player2.wins;
 
   updatePlayerArea();
 

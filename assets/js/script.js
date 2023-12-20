@@ -1,3 +1,4 @@
+// Player objects with all player-related data
 const player1 = {
   name: "",
   score: 0,
@@ -15,6 +16,7 @@ const player2 = {
   colorInactive: "#736751",
 };
 
+// Object with data about the current state of the game
 const gameState = {
   gameStarted: false,
   activePlayer: player1,
@@ -23,15 +25,24 @@ const gameState = {
   correctAnswer: "",
 };
 
+// Global variables giving access to the player data entry form and the area with category cards
 const playerData = document.getElementById("player-data-form");
 const cards = document.getElementById("card-area");
+
+// Global variable containing the active category card; it is set in cardClicked() and used in processAnswer()
 let usedCard = "";
-// Event listeners
+
+// Global event listeners for player name submission and quiz category selection
 playerData.elements["submit"].addEventListener("click", validateNames);
 for (let child of cards.children) {
   child.addEventListener("click", cardClicked);
 }
 
+/**
+ * Checks whether the entered player names contain invalid characters:
+ *  - If yes, the loading screen remains active until players enter valid names
+ *  - If no, calls function initializePlayers()
+ */
 function validateNames(event) {
   event.preventDefault();
   let enteredName1 = playerData.elements["p1"].value;
@@ -44,8 +55,14 @@ function validateNames(event) {
   } else {
     initializePlayers();
   }
+  return;
 }
 
+/**
+ * Start game by adding player names to player objects, hiding the loading screen
+ * and showing the names and colors of the players in the game area.
+ * Calls updatePlayerArea()
+ */
 function initializePlayers() {
   // Initialize player objects with names
 
@@ -68,6 +85,11 @@ function initializePlayers() {
   return;
 }
 
+/**
+ * Restarts the game while keeping the current players.
+ * Resets colors, scores and round count.
+ * Calls updatePlayerArea()
+ */
 function restartGame() {
   document.getElementById("end-game-screen").style.display = "none";
   document.getElementById("modal").style.display = "none";

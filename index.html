@@ -44,22 +44,24 @@
             <label for="name-player-1">Player 2:</label>
             <input name="p2" type="text" id="name-player-2" />
             <br />
+            <!-- Paragraph displaying an error message in case of invalid name input -->
             <p id="input-error"></p>
             <button name="submit" type="submit">Start</button>
           </form>
         </div>
 
         <div id="question-card">
-          <p id="question" class="qcard-text question">QUESTION</p>
-          <p id="a" class="qcard-text answer">A</p>
-          <p id="b" class="qcard-text answer">B</p>
-          <p id="c" class="qcard-text answer">C</p>
-          <p id="d" class="qcard-text answer">D</p>
+          <p id="question" class="question">QUESTION</p>
+          <p id="a" class="answer">A</p>
+          <p id="b" class="answer">B</p>
+          <p id="c" class="answer">C</p>
+          <p id="d" class="answer">D</p>
           <button id="close-card">Continue</button>
         </div>
 
         <div id="end-game-screen">
           <p>GAME OVER</p>
+          <!-- Paragraph containing the results at the end of each game -->
           <p id="results"></p>
           <p>Continue?</p>
           <div id="restart-buttons">

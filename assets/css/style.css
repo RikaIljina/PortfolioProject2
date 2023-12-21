@@ -49,7 +49,7 @@ main {
 
 #card-area {
     display: flex;
-    flex: 2;
+    flex: 3;
     gap: 5px;
     flex-wrap: wrap;
     /* width: 50%; */

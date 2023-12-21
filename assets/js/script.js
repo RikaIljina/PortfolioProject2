@@ -91,13 +91,12 @@ function initializePlayers() {
  * Calls updatePlayerArea()
  */
 function restartGame() {
+  // Hide end game screen
   document.getElementById("end-game-screen").style.display = "none";
   document.getElementById("modal").style.display = "none";
 
   gameState.gameStarted = true;
   gameState.currentRound = 1;
-  // gameState.activePlayer = player1;
-  //  gameState.inactivePlayer = player2;
   player1.score = 0;
   player2.score = 0;
   document.getElementById("p1-wins").textContent = player1.wins;

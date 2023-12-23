@@ -4,16 +4,16 @@ const player1 = {
   score: 0,
   wins: 0,
   id: "p1-name",
-  color: "#06A77D",
-  colorInactive: "#586b66",
+  color: "#DB6666", // f39c12
+  colorInactive: "#8c7272",
 };
 const player2 = {
   name: "",
   score: 0,
   wins: 0,
   id: "p2-name",
-  color: "#F1A208",
-  colorInactive: "#736751",
+  color: "#e67e22", //e67e22
+  colorInactive: "#697f87",
 };
 
 // Object with data about the current state of the game
@@ -23,6 +23,22 @@ const gameState = {
   inactivePlayer: player2,
   currentRound: 1,
   correctAnswer: "",
+};
+
+// Color palette
+const colors = {
+  categoryCards: "#3498db",
+  categoryCardsInactive: "#bdc3c7",
+  categoryCardsText: "#ecf0f1",
+  categoryCardsTextInactive: "#7f8c8d",
+  questionCard: "#2ecc71",
+  questionCardAnswers: "#e74c3c",
+  questionCardAnswersHover: "#c0392b",
+  questionCardAnswersCorrect: "#27ae60",
+  questionCardAnswersWrong: "#e74c3c",
+  playerOneCards: "",
+  playerTwoCards: "",
+
 };
 
 // Global variables giving access to the player data entry form and the area with category cards
@@ -105,7 +121,8 @@ function continueGame() {
 
   for (let card of cards.children) {
     card.style.pointerEvents = "auto";
-    card.style.backgroundColor = "brown";
+    card.style.backgroundColor = "";
+    card.style.color = "";
   }
 }
 
@@ -174,7 +191,7 @@ function showQuestion(activeCard) {
   let activeQuestion = category[Math.floor(Math.random() * category.length)];
 
   document.getElementById("question").textContent = activeQuestion.question;
-  
+
   // Shuffle the answers
   let answerKeys = [0, 1, 2, 3];
   for (answer of document.getElementsByClassName("answer")) {
@@ -182,7 +199,7 @@ function showQuestion(activeCard) {
     let randomIndex = Math.floor(Math.random() * answerKeys.length);
     // Fill the quiz card with the answers from the quiz dictionary
     answer.textContent = activeQuestion.answers[answerKeys[randomIndex]];
-    // Remember the element with the correct answer which is always on index 0
+    // Remember the element with the correct answer
     if (answerKeys[randomIndex] === activeQuestion.correctAnswer) {
       gameState.correctAnswer = answer.getAttribute("id");
     }
@@ -207,17 +224,18 @@ function processAnswer() {
     gameState.activePlayer.score += 100;
     // If correct:
     // Highlight the chosen answer green
-    this.style.backgroundColor = "green";
+    this.style.backgroundColor = colors.questionCardAnswersCorrect;
     // Display the category card in the player's colors
     usedCard.style.backgroundColor = gameState.activePlayer.color;
   } else {
     // If wrong:
     // Highlight the incorrect answer red and the correct answer green
-    this.style.backgroundColor = "red";
+    this.style.backgroundColor = colors.questionCardAnswersWrong;
     document.getElementById(gameState.correctAnswer).style.backgroundColor =
-      "green";
+    colors.questionCardAnswersCorrect;
     // Display the category card in grey
-    usedCard.style.backgroundColor = "grey";
+    usedCard.style.backgroundColor = colors.categoryCardsInactive;
+    usedCard.style.color = colors.categoryCardsTextInactive;
   }
 
   // Make sure players can't click on other answers once an answer has been selected

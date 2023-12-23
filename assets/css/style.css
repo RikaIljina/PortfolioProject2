@@ -63,22 +63,23 @@ main {
 }
 
 .card {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 25%;
     min-width: 7rem;
-
     flex-basis: 1;
-    height: 6rem;
-    align-self: center;
+    align-self: stretch;
     background-color: #3498db;
     margin: 10px 0;
     line-height: 6rem;
-    text-align: center;
     font-size: 2rem;
     border-radius: 5px;
 }
 
 .card:hover {
-    background-color: #bdc3c7;
+    background-color: #4e5e68;
     cursor: pointer;
 }
 

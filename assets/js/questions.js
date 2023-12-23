@@ -1,104 +1,82 @@
 const quizQuestionsTech = [
   {
     question: "Tech question 1",
-    0: "Correct answer",
-    1: "Answer b",
-    2: "Answer c",
-    3: "Answer d",
+    answers: ["Correct answer", "Answer b", "Answer c", "Answer d"],
+    correctAnswer: 0,
   },
   {
     question: "Tech question 2",
-    0: "Correct answer",
-    1: "Answer b",
-    2: "Answer c",
-    3: "Answer d",
+    answers: ["Correct answer", "Answer b", "Answer c", "Answer d"],
+    correctAnswer: 0,
   },
   {
     question: "Tech question 3",
-    0: "Correct answer",
-    1: "Answer b",
-    2: "Answer c",
-    3: "Answer d",
+    answers: ["Correct answer", "Answer b", "Answer c", "Answer d"],
+    correctAnswer: 0,
   },
 ];
 
 const quizQuestionsNature = [
   {
     question: "Nature question",
-    0: "Correct answer",
-    1: "Answer b",
-    2: "Answer c",
-    3: "Answer d",
+    answers: ["Correct answer", "Answer b", "Answer c", "Answer d"],
+    correctAnswer: 0,
   },
 ];
 
 const quizQuestionsSports = [
   {
     question: "Sports question",
-    0: "Correct answer",
-    1: "Answer b",
-    2: "Answer c",
-    3: "Answer d",
+    answers: ["Correct answer", "Answer b", "Answer c", "Answer d"],
+    correctAnswer: 0,
   },
 ];
 
 const quizQuestionsHistory = [
   {
     question: "History question",
-    0: "Correct answer",
-    1: "Answer b",
-    2: "Answer c",
-    3: "Answer d",
+    answers: ["Correct answer", "Answer b", "Answer c", "Answer d"],
+    correctAnswer: 0,
   },
 ];
 
 const quizQuestionsGeography = [
   {
     question: "Geography question",
-    0: "Correct answer",
-    1: "Answer b",
-    2: "Answer c",
-    3: "Answer d",
+    answers: ["Correct answer", "Answer b", "Answer c", "Answer d"],
+    correctAnswer: 0,
   },
 ];
 
 const quizQuestionsBooks = [
   {
     question: "Book question",
-    0: "Correct answer",
-    1: "Answer b",
-    2: "Answer c",
-    3: "Answer d",
+    answers: ["Correct answer", "Answer b", "Answer c", "Answer d"],
+    correctAnswer: 0,
   },
 ];
 
 const quizQuestionsMusic = [
   {
     question: "Music question",
-    0: "Correct answer",
-    1: "Answer b",
-    2: "Answer c",
-    3: "Answer d",
+    answers: ["Correct answer", "Answer b", "Answer c", "Answer d"],
+    correctAnswer: 0,
   },
 ];
 
 const quizQuestionsFood = [
   {
     question: "Food question",
-    0: "Correct answer",
-    1: "Answer b",
-    2: "Answer c",
-    3: "Answer d",
+    answers: ["Correct answer", "Answer b", "Answer c", "Answer d"],
+    correctAnswer: 0,
   },
 ];
 
 const quizQuestionsGeneral = [
   {
     question: "General question",
-    0: "Correct answer",
-    1: "Answer b",
-    2: "Answer c",
-    3: "Answer d",
+    answers: ["Correct answer", "Answer b", "Answer c", "Answer d"],
+    correctAnswer: 0,
   },
 ];
 

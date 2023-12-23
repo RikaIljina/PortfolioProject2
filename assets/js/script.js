@@ -174,16 +174,16 @@ function showQuestion(activeCard) {
   let activeQuestion = category[Math.floor(Math.random() * category.length)];
 
   document.getElementById("question").textContent = activeQuestion.question;
-
+  
   // Shuffle the answers
   let answerKeys = [0, 1, 2, 3];
   for (answer of document.getElementsByClassName("answer")) {
     // Select random index to shuffle the display order of the answers
     let randomIndex = Math.floor(Math.random() * answerKeys.length);
     // Fill the quiz card with the answers from the quiz dictionary
-    answer.textContent = activeQuestion[answerKeys[randomIndex]];
+    answer.textContent = activeQuestion.answers[answerKeys[randomIndex]];
     // Remember the element with the correct answer which is always on index 0
-    if (answerKeys[randomIndex] === 0) {
+    if (answerKeys[randomIndex] === activeQuestion.correctAnswer) {
       gameState.correctAnswer = answer.getAttribute("id");
     }
     // Remove the selected index from the list to make sure no answers are being selected multiple times

@@ -138,11 +138,11 @@ function updatePlayerArea() {
   let inactivePlayer = document.getElementById(gameState.inactivePlayer.id);
 
   // Highlight active player
-  activePlayer.parentElement.nextSibling.textContent = "It's your turn!";
+  activePlayer.parentElement.nextElementSibling.textContent = "It's your turn!";
   activePlayer.parentElement.parentElement.style.backgroundColor =
     gameState.activePlayer.color;
   activePlayer.parentElement.parentElement.style.border = "0.5em solid yellow";
-  inactivePlayer.parentElement.nextSibling.textContent = "";
+  inactivePlayer.parentElement.nextElementSibling.textContent = "";
   inactivePlayer.parentElement.parentElement.style.backgroundColor =
     gameState.inactivePlayer.colorInactive;
   inactivePlayer.parentElement.parentElement.style.border = "0.5em solid grey";

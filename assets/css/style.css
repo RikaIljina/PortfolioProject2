@@ -37,9 +37,11 @@ main {
 }
 
 #player-1, #player-2 {
-    /* border: 2px solid red; */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
     background-color: grey;
-    /* width: 24%; */
     flex: 1;
     align-self: stretch;
 
@@ -48,6 +50,19 @@ main {
     font-size: 2rem;
     margin: 0 5px;
     border-radius: 15px;
+}
+
+#player-1 p, #player-2 p {
+    flex: 1;
+}
+
+.active-player-note {
+    font-size: 1.4rem;
+    align-self: center;
+}
+
+#player-1 .space, #player-2 .space {
+    flex: 3;
 }
 
 #card-area {
@@ -145,7 +160,7 @@ footer {
 }
 
 .answer:hover {
-    background-color: #c0392b;
+    background-color: #8e7a96;
 }
 
 #close-card {

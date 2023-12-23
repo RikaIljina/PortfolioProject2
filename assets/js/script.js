@@ -121,11 +121,11 @@ function updatePlayerArea() {
   let inactivePlayer = document.getElementById(gameState.inactivePlayer.id);
 
   // Highlight active player
-  activePlayer.style.color = "red";
+  activePlayer.parentElement.nextSibling.textContent = "It's your turn!";
   activePlayer.parentElement.parentElement.style.backgroundColor =
     gameState.activePlayer.color;
   activePlayer.parentElement.parentElement.style.border = "0.5em solid yellow";
-  inactivePlayer.style.color = "black";
+  inactivePlayer.parentElement.nextSibling.textContent = "";
   inactivePlayer.parentElement.parentElement.style.backgroundColor =
     gameState.inactivePlayer.colorInactive;
   inactivePlayer.parentElement.parentElement.style.border = "0.5em solid grey";
@@ -220,7 +220,7 @@ function processAnswer() {
     usedCard.style.backgroundColor = "grey";
   }
 
-  // Make sure palyers can't click on other answers once an answer has been selected
+  // Make sure players can't click on other answers once an answer has been selected
   for (answer of document.getElementsByClassName("answer")) {
     answer.style.pointerEvents = "none";
     answer.removeEventListener("click", processAnswer);

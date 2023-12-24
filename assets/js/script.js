@@ -4,16 +4,16 @@ const player1 = {
   score: 0,
   wins: 0,
   id: "p1-name",
-  color: "#DB6666", // f39c12
-  colorInactive: "#8c7272",
+  color: "#F55757", // f39c12
+  colorInactive: "#EB8686",
 };
 const player2 = {
   name: "",
   score: 0,
   wins: 0,
   id: "p2-name",
-  color: "#e67e22", //e67e22
-  colorInactive: "#697f87",
+  color: "#6CC2FF", //e67e22
+  colorInactive: "#A1D1F4",
 };
 
 // Object with data about the current state of the game
@@ -27,7 +27,7 @@ const gameState = {
 
 // Color palette
 const colors = {
-  categoryCards: "#3498db",
+  categoryCards: "#60992D",
   categoryCardsInactive: "#bdc3c7",
   categoryCardsText: "#ecf0f1",
   categoryCardsTextInactive: "#7f8c8d",
@@ -141,11 +141,11 @@ function updatePlayerArea() {
   activePlayer.parentElement.nextElementSibling.textContent = "It's your turn!";
   activePlayer.parentElement.parentElement.style.backgroundColor =
     gameState.activePlayer.color;
-  activePlayer.parentElement.parentElement.style.border = "0.5em solid yellow";
+  activePlayer.parentElement.parentElement.style.border = "0.1em solid yellow";
   inactivePlayer.parentElement.nextElementSibling.textContent = "";
   inactivePlayer.parentElement.parentElement.style.backgroundColor =
     gameState.inactivePlayer.colorInactive;
-  inactivePlayer.parentElement.parentElement.style.border = "0.5em solid grey";
+  inactivePlayer.parentElement.parentElement.style.border = "none";
   return;
 }
 
@@ -155,7 +155,7 @@ function updatePlayerArea() {
  */
 function cardClicked() {
   // Make sure the game has started to prevent players from accidentally clicking on cards
-  if (gameState.gameStarted === true) {
+  if (gameState.gameStarted) {
     // Show the card that will be filled with the question and answers
     document.getElementById("modal").style.display = "block";
     document.getElementById("question-card").style.display = "flex";
@@ -226,7 +226,8 @@ function processAnswer() {
     // Highlight the chosen answer green
     this.style.backgroundColor = colors.questionCardAnswersCorrect;
     // Display the category card in the player's colors
-    usedCard.style.backgroundColor = gameState.activePlayer.color;
+    usedCard.style.backgroundColor = gameState.activePlayer.colorInactive;
+    usedCard.style.color = colors.categoryCardsTextInactive;
   } else {
     // If wrong:
     // Highlight the incorrect answer red and the correct answer green

@@ -137,7 +137,8 @@ function updatePlayerArea() {
   let activePlayer = document.getElementById(gameState.activePlayer.id);
   let inactivePlayer = document.getElementById(gameState.inactivePlayer.id);
 
-  // Highlight active player
+  // --- Highlight active player
+  // Access html element with class active-player-note
   activePlayer.parentElement.nextElementSibling.textContent = "It's your turn!";
   activePlayer.parentElement.parentElement.style.backgroundColor =
     gameState.activePlayer.color;
@@ -145,7 +146,7 @@ function updatePlayerArea() {
   inactivePlayer.parentElement.nextElementSibling.textContent = "";
   inactivePlayer.parentElement.parentElement.style.backgroundColor =
     gameState.inactivePlayer.colorInactive;
-  inactivePlayer.parentElement.parentElement.style.border = "none";
+  inactivePlayer.parentElement.parentElement.style.border = "0.1em solid transparent";
   return;
 }
 
@@ -154,7 +155,7 @@ function updatePlayerArea() {
  * Shows the question card and calls showQuestion().
  */
 function cardClicked() {
-  // Make sure the game has started to prevent players from accidentally clicking on cards
+  // --- Make sure the game has started to prevent players from accidentally clicking on cards
   if (gameState.gameStarted) {
     // Show the card that will be filled with the question and answers
     document.getElementById("modal").style.display = "block";
@@ -185,14 +186,14 @@ function cardClicked() {
  * Calls processAnswer() once an answer has been clicked.
  */
 function showQuestion(activeCard) {
-  // Get a random question corresponding to the data-id of the clicked category card
+  // --- Get a random question corresponding to the data-id of the clicked category card
   let categoryIndex = activeCard.getAttribute("data-id");
   let category = quizCategories[categoryIndex];
   let activeQuestion = category[Math.floor(Math.random() * category.length)];
 
   document.getElementById("question").textContent = activeQuestion.question;
 
-  // Shuffle the answers
+  // --- Shuffle the answers
   let answerKeys = [0, 1, 2, 3];
   for (answer of document.getElementsByClassName("answer")) {
     // Select random index to shuffle the display order of the answers
@@ -219,7 +220,7 @@ function showQuestion(activeCard) {
  * Calls nextRound() once the player clicks on Continue.
  */
 function processAnswer() {
-  // Check if player has clicked on the correct answer
+  // --- Check if player has clicked on the correct answer
   if (this.getAttribute("id") === gameState.correctAnswer) {
     gameState.activePlayer.score += 100;
     // If correct:

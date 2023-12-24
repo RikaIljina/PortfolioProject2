@@ -12,7 +12,7 @@
 body {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 100%;
 }
 
 header {
@@ -35,7 +35,7 @@ header {
 
 main {
     display: flex;
-    width: 100vw;
+    width: 100%;
     height: fit-content;
     flex: 1;
     
@@ -46,8 +46,9 @@ main {
     display: flex;
     align-self: stretch;
     justify-content: space-between;
-    width: 100vw;
+    width: 100%;
     height: auto;
+    background-color: #c9c7c9;
 }
 
 #player-1, #player-2 {
@@ -74,13 +75,20 @@ main {
 
 #p1-name, #p2-name {
     font-size: 3.5rem;
-    color: rgb(20, 20, 20);
+}
+
+#player-1 {
+    color: #dabcca;
+}
+
+#player-2 {
+    color: #c3d0df;
 }
 
 .active-player-note {
     font-size: 1.8rem;
     align-self: center;
-    color: #543440;
+    color: #dde1a3;
     text-shadow: 0px 0px 10px yellow;
 }
 

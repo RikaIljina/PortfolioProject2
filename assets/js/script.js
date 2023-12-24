@@ -6,6 +6,7 @@ const player1 = {
   id: "p1-name",
   color: "#992D60",//"#EDABAB", //"#F55757", // f39c12
   colorInactive: "#996677", // "#F5D4D4", // "#EB8686",
+  colorText: "#dabcca",
 };
 const player2 = {
   name: "",
@@ -14,6 +15,7 @@ const player2 = {
   id: "p2-name",
   color: "#2D6099", //"#B4D3E9", // "#6CC2FF", //e67e22
   colorInactive: "#667799",//"#E3F0FA", // "#A1D1F4",
+  colorText: "#c3d0df",
 };
 
 // Object with data about the current state of the game
@@ -228,7 +230,7 @@ function processAnswer() {
     this.style.backgroundColor = colors.questionCardAnswersCorrect;
     // Display the category card in the player's colors
     usedCard.style.backgroundColor = gameState.activePlayer.colorInactive;
-    usedCard.style.color = colors.categoryCardsTextInactive;
+    usedCard.style.color = gameState.activePlayer.colorText;
     usedCard.style.textShadow = "none";
   } else {
     // If wrong:

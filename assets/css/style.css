@@ -12,7 +12,8 @@
 body {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: 100vh;
+    font-family: 'Marvel', sans-serif;
 }
 
 header {
@@ -59,8 +60,9 @@ main {
     background-color: grey;
     flex: 1;
     align-self: stretch;
+    min-height: 60vh;
 
-    line-height: 6rem;
+    line-height: 3.5rem;
     text-align: center;
     font-family: 'Marvel', sans-serif;
 

@@ -4,16 +4,16 @@ const player1 = {
   score: 0,
   wins: 0,
   id: "p1-name",
-  color: "#F55757", // f39c12
-  colorInactive: "#EB8686",
+  color: "#992D60",//"#EDABAB", //"#F55757", // f39c12
+  colorInactive: "#996677", // "#F5D4D4", // "#EB8686",
 };
 const player2 = {
   name: "",
   score: 0,
   wins: 0,
   id: "p2-name",
-  color: "#6CC2FF", //e67e22
-  colorInactive: "#A1D1F4",
+  color: "#2D6099", //"#B4D3E9", // "#6CC2FF", //e67e22
+  colorInactive: "#667799",//"#E3F0FA", // "#A1D1F4",
 };
 
 // Object with data about the current state of the game
@@ -228,6 +228,7 @@ function processAnswer() {
     // Display the category card in the player's colors
     usedCard.style.backgroundColor = gameState.activePlayer.colorInactive;
     usedCard.style.color = colors.categoryCardsTextInactive;
+    usedCard.style.textShadow = "none";
   } else {
     // If wrong:
     // Highlight the incorrect answer red and the correct answer green
@@ -237,6 +238,7 @@ function processAnswer() {
     // Display the category card in grey
     usedCard.style.backgroundColor = colors.categoryCardsInactive;
     usedCard.style.color = colors.categoryCardsTextInactive;
+    usedCard.style.textShadow = "none";
   }
 
   // Make sure players can't click on other answers once an answer has been selected

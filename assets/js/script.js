@@ -4,18 +4,18 @@ const player1 = {
   score: 0,
   wins: 0,
   id: "p1-name",
-  color: "#992D60",//"#EDABAB", //"#F55757", // f39c12
-  colorInactive: "#996677", // "#F5D4D4", // "#EB8686",
-  colorText: "#dabcca",
+  color: "#4C672E",//"#EDABAB", //"#F55757", // f39c12
+  colorInactive: "#4C672E", // "#F5D4D4", // "#EB8686",
+  colorText: "#e0ebd1",
 };
 const player2 = {
   name: "",
   score: 0,
   wins: 0,
   id: "p2-name",
-  color: "#2D6099", //"#B4D3E9", // "#6CC2FF", //e67e22
-  colorInactive: "#667799",//"#E3F0FA", // "#A1D1F4",
-  colorText: "#c3d0df",
+  color: "#26334B", //"#B4D3E9", // "#6CC2FF", //e67e22
+  colorInactive: "#26334B",//"#E3F0FA", // "#A1D1F4",
+  colorText: "#c5cddb",
 };
 
 // Object with data about the current state of the game
@@ -30,9 +30,9 @@ const gameState = {
 // Color palette
 const colors = {
   categoryCards: "#60992D",
-  categoryCardsInactive: "#bdc3c7",
+  categoryCardsInactive: "#86898b",
   categoryCardsText: "#ecf0f1",
-  categoryCardsTextInactive: "#7f8c8d",
+  categoryCardsTextInactive: "#525354",
   questionCard: "#2ecc71",
   questionCardAnswers: "#e74c3c",
   questionCardAnswersHover: "#c0392b",
@@ -125,6 +125,7 @@ function continueGame() {
     card.style.pointerEvents = "auto";
     card.style.backgroundColor = "";
     card.style.color = "";
+    card.style.boxShadow = "";
   }
 }
 
@@ -144,11 +145,14 @@ function updatePlayerArea() {
   activePlayer.parentElement.nextElementSibling.textContent = "It's your turn!";
   activePlayer.parentElement.parentElement.style.backgroundColor =
     gameState.activePlayer.color;
-  activePlayer.parentElement.parentElement.style.border = "0.1em solid yellow";
+  // activePlayer.parentElement.parentElement.style.border = "0.2em solid yellow";
+  // activePlayer.parentElement.parentElement.style.boxShadow = "0 0 5px 8px #47224A"; 
+  activePlayer.parentElement.parentElement.style.boxShadow = "0px 15px 25px rgba(71, 34, 74, 0.6), 0px 15px 15px rgba(71, 34, 74, 0.6)";
   inactivePlayer.parentElement.nextElementSibling.textContent = "";
   inactivePlayer.parentElement.parentElement.style.backgroundColor =
     gameState.inactivePlayer.colorInactive;
-  inactivePlayer.parentElement.parentElement.style.border = "0.1em solid transparent";
+  // inactivePlayer.parentElement.parentElement.style.border = "0.2em solid transparent";
+  inactivePlayer.parentElement.parentElement.style.boxShadow = "none";
   return;
 }
 
@@ -231,6 +235,7 @@ function processAnswer() {
     // Display the category card in the player's colors
     usedCard.style.backgroundColor = gameState.activePlayer.colorInactive;
     usedCard.style.color = gameState.activePlayer.colorText;
+    usedCard.style.boxShadow = "none";
     usedCard.style.textShadow = "none";
   } else {
     // If wrong:
@@ -241,6 +246,7 @@ function processAnswer() {
     // Display the category card in grey
     usedCard.style.backgroundColor = colors.categoryCardsInactive;
     usedCard.style.color = colors.categoryCardsTextInactive;
+    usedCard.style.boxShadow = "none";
     usedCard.style.textShadow = "none";
   }
 

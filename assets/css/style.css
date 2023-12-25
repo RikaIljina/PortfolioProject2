@@ -17,15 +17,15 @@ body {
 }
 
 header {
-    background-color: #46224a;
-    color: #ddcdf9;
+    background-color: #47224A;
+    color: #dcc5de;
     width: 100%;
     position: sticky;
     /* line-height: 5rem; */
-    padding-top: 2rem;
+    padding-top: 1rem;
     text-align: center;
     font-size: 2rem;
-    font-family: 'Tillana', sans-serif;
+    font-family: 'Acme', sans-serif;
 }
 
 #subheader {
@@ -49,7 +49,7 @@ main {
     justify-content: space-between;
     width: 100%;
     height: auto;
-    background-color:  #c9c7c9;
+    background-color: #c9c7c9;
 }
 
 #player-1, #player-2 {
@@ -59,6 +59,7 @@ main {
 
     background-color: grey;
     flex: 1;
+    /* max-width: 17%; */
     align-self: stretch;
     min-height: 60vh;
 
@@ -67,7 +68,8 @@ main {
     font-family: 'Marvel', sans-serif;
 
     font-size: 2rem;
-    margin: 10px 10px;
+    margin: 10px;
+    padding: 10px;
     border-radius: 15px;
 }
 
@@ -80,18 +82,19 @@ main {
 }
 
 #player-1 {
-    color: #dabcca;
+    color: #e0ebd1;
 }
 
 #player-2 {
-    color: #c3d0df;
+    color: #c5cddb;
 }
 
 .active-player-note {
     font-size: 1.8rem;
     align-self: center;
-    color: #dde1a3;
-    text-shadow: 0px 0px 10px yellow;
+    font-family: "Acme", sans-serif;
+    color: #ffffff;
+    text-shadow: 0 1px 5px #f8f8f8;
 }
 
 #player-1 .space, #player-2 .space {
@@ -118,30 +121,32 @@ main {
     min-width: 7rem;
     flex-basis: 1;
     align-self: stretch;
-    background-color: #60992D;
+    background-color: #47224a;
     margin: 10px 0;
     line-height: 6rem;
     font-size: 2rem;
     font-family: 'Acme', sans-serif;
     transition: all 0.3s;
     border-radius: 15px;
-    box-shadow: 0px 2px 5px #365152;
+    /* box-shadow: 0px 2px 2px #0f0219; */
     /* https://jsfiddle.net/NeqCC/ */
-    color: rgba(14, 40, 6, 0.8);
-    text-shadow: 1px 4px 6px #60992D, 0 0 0 #000, 1px 4px 6px #60992D;
+    box-shadow: 0px 15px 15px rgba(71, 34, 74, 0.6), 0px 5px 5px rgba(71, 34, 74, 0.6);
+    color: #dcc5de; 
+    /* text-shadow: 1px 4px 5px #46224a, 0 1px 5px #000000, 1px 4px 4px #46224a; */
 }
 
 .card:hover {
-    background-color: #8eb969;
+    background-color: #783c7e;
     cursor: pointer;
     font-size: 2.2rem;
-    text-shadow: 1px 4px 6px #8eb969, 0 0 0 #000, 1px 4px 6px #8eb969;
+    /* color: rgba(67, 57, 83, 0.8); */
+    /* text-shadow: 1px 4px 6px #ddcdf9, 0 0 0 #000, 1px 4px 6px #ddcdf9; */
     transition: all 0.3s;
 }
 
 footer {
-    background-color: #46224a;
-    color: #ddcdf9;
+    background-color: #47224A;
+    color: #dcc5de;
     width: 100%;
     text-align: center;
     line-height: 2rem;

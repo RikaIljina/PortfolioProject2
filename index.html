@@ -43,15 +43,18 @@
         <div id="loading-screen">
           <p>Please enter your names:</p>
           <form id="player-data-form" action="">
-            <label for="name-player-1">Player 1:</label>
-            <input name="p1" type="text" id="name-player-1" />
-            <br />
-            <label for="name-player-2">Player 2:</label>
-            <input name="p2" type="text" id="name-player-2" />
-            <br />
+            <div id="player-name-inputs">
+            <p><label for="name-player-1">Player 1</label><br>
+            <input name="p1" type="text" id="name-player-1" maxlength="10"/>
+          </p>
+          <p>
+            <label for="name-player-2">Player 2</label><br>
+            <input name="p2" type="text" id="name-player-2" maxlength="10" />
+          </p>
+          </div>
             <!-- Paragraph displaying an error message in case of invalid name input -->
             <p id="input-error"></p>
-            <button name="submit" type="submit">Start</button>
+            <button name="submit" type="submit" id="start-button">Start</button>
           </form>
         </div>
 

@@ -196,6 +196,12 @@ footer {
     border-style: none;
     line-height: 2rem;
     width: 9rem;
+    outline: none;
+}
+
+#player-name-inputs > p > input:focus {
+    border-style: none;
+    outline: 2px solid rgba(220, 197, 222, 0.5);
 }
 
 #start-button {

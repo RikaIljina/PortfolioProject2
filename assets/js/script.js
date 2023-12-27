@@ -56,6 +56,9 @@ for (let child of cards.children) {
   child.addEventListener("click", cardClicked);
 }
 
+// Set keyboard focus on input field for player 1 name
+playerData.elements["p1"].focus();
+
 /**
  * Checks whether the entered player names contain invalid characters:
  *  - If yes, the loading screen remains active until players enter valid names

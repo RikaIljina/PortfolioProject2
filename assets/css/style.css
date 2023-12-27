@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Acme&family=Marvel:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Acme&family=Tillana:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=BenchNine&display=swap');
 
 * {
     box-sizing: border-box;
@@ -13,7 +14,7 @@ body {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    font-family: 'Marvel', sans-serif;
+    font-family: 'BenchNine', sans-serif;
 }
 
 header {
@@ -31,7 +32,7 @@ header {
 #subheader {
     line-height: 2rem;
     font-size: 1.3rem;
-    font-family: 'Marvel', sans-serif;
+    font-family: 'BenchNine', sans-serif;
 }
 
 main {
@@ -65,7 +66,7 @@ main {
 
     line-height: 3.5rem;
     text-align: center;
-    font-family: 'Marvel', sans-serif;
+    font-family: 'BenchNine', sans-serif;
 
     font-size: 2rem;
     margin: 10px;
@@ -151,7 +152,7 @@ footer {
     text-align: center;
     line-height: 2rem;
     font-size: 1.3rem;
-    font-family: 'Marvel', sans-serif;
+    font-family: 'BenchNine', sans-serif;
 }
 
 #modal {

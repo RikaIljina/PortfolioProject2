@@ -29,15 +29,15 @@ const gameState = {
 
 // Color palette
 const colors = {
-  categoryCards: "#60992D",
+  // categoryCards: "#60992D",
   categoryCardsInactive: "#86898b",
-  categoryCardsText: "#ecf0f1",
+  // categoryCardsText: "#ecf0f1",
   categoryCardsTextInactive: "#525354",
   questionCard: "#47224A",
   questionCardAnswers: "#47224A",
-  questionCardAnswersHover: "#c0392b",
-  questionCardAnswersCorrect: "#27ae60",
-  questionCardAnswersWrong: "#e74c3c",
+  // questionCardAnswersHover: "#c0392b",
+  questionCardAnswersCorrect: "#1d6b1e",
+  questionCardAnswersWrong: "#7d3028",
   questionCardContinue: "rgb(220, 197, 222)",
   questionCardContinueInactive: "#47224A",
   playerOneCards: "",
@@ -151,7 +151,7 @@ function updatePlayerArea() {
   activePlayer.parentElement.parentElement.style.backgroundColor =
     gameState.activePlayer.color;
   // activePlayer.parentElement.parentElement.style.border = "0.2em solid yellow";
-  // activePlayer.parentElement.parentElement.style.boxShadow = "0 0 5px 8px #47224A"; 
+  // activePlayer.parentElement.parentElement.style.boxShadow = "0 0 5px 8px #47224A";
   activePlayer.parentElement.parentElement.style.boxShadow = "0px 15px 25px rgba(71, 34, 74, 0.6), 0px 15px 15px rgba(71, 34, 74, 0.6)";
   inactivePlayer.parentElement.nextElementSibling.textContent = "";
   inactivePlayer.parentElement.parentElement.style.backgroundColor =
@@ -268,7 +268,7 @@ function processAnswer() {
     answer.removeEventListener("click", processAnswer);
   }
 
-  // Listen for player clicking on Continue 
+  // Listen for player clicking on Continue
   document.getElementById("close-card").addEventListener("click", nextRound);
 
   return;
@@ -317,7 +317,7 @@ function endGame() {
   gameState.gameStarted = false;
   document.getElementById("end-game-screen").style.display = "block";
   document.getElementById("modal").style.display = "block";
-  
+
   // Compare the player scores and update the end game screen accordingly
   if (player1.score === player2.score) {
     document.getElementById(

@@ -4,7 +4,7 @@ const player1 = {
   score: 0,
   wins: 0,
   id: "p1-name",
-  color: "#4C672E",//"#EDABAB", //"#F55757", // f39c12
+  color: "#4C672E", //"#EDABAB", //"#F55757", // f39c12
   colorInactive: "#4C672E", // "#F5D4D4", // "#EB8686",
   colorText: "#e0ebd1",
 };
@@ -14,7 +14,7 @@ const player2 = {
   wins: 0,
   id: "p2-name",
   color: "#26334B", //"#B4D3E9", // "#6CC2FF", //e67e22
-  colorInactive: "#26334B",//"#E3F0FA", // "#A1D1F4",
+  colorInactive: "#26334B", //"#E3F0FA", // "#A1D1F4",
   colorText: "#c5cddb",
 };
 
@@ -42,7 +42,6 @@ const colors = {
   questionCardContinueInactive: "#47224A",
   playerOneCards: "",
   playerTwoCards: "",
-
 };
 
 // Global variables giving access to the player data entry form and the area with category cards
@@ -152,7 +151,8 @@ function updatePlayerArea() {
     gameState.activePlayer.color;
   // activePlayer.parentElement.parentElement.style.border = "0.2em solid yellow";
   // activePlayer.parentElement.parentElement.style.boxShadow = "0 0 5px 8px #47224A";
-  activePlayer.parentElement.parentElement.style.boxShadow = "0px 15px 25px rgba(71, 34, 74, 0.6), 0px 15px 15px rgba(71, 34, 74, 0.6)";
+  activePlayer.parentElement.parentElement.style.boxShadow =
+    "0px 15px 25px rgba(71, 34, 74, 0.6), 0px 15px 15px rgba(71, 34, 74, 0.6)";
   inactivePlayer.parentElement.nextElementSibling.textContent = "";
   inactivePlayer.parentElement.parentElement.style.backgroundColor =
     gameState.inactivePlayer.colorInactive;
@@ -238,7 +238,8 @@ function processAnswer() {
     // Highlight the chosen answer green
     this.style.backgroundColor = colors.questionCardAnswersCorrect;
     // Show continue button
-    document.getElementById("close-card").style.backgroundColor = colors.questionCardContinue;
+    document.getElementById("close-card").style.backgroundColor =
+      colors.questionCardContinue;
     document.getElementById("close-card").style.cursor = "pointer";
     // Display the category card in the player's colors
     usedCard.style.backgroundColor = gameState.activePlayer.colorInactive;
@@ -250,9 +251,10 @@ function processAnswer() {
     // Highlight the incorrect answer red and the correct answer green
     this.style.backgroundColor = colors.questionCardAnswersWrong;
     document.getElementById(gameState.correctAnswer).style.backgroundColor =
-    colors.questionCardAnswersCorrect;
+      colors.questionCardAnswersCorrect;
     // Show continue button
-    document.getElementById("close-card").style.backgroundColor = colors.questionCardContinue;
+    document.getElementById("close-card").style.backgroundColor =
+      colors.questionCardContinue;
     document.getElementById("close-card").style.cursor = "pointer";
     // Display the category card in the player's colors
     // Display the category card in grey
@@ -288,7 +290,8 @@ function nextRound() {
   for (answer of document.getElementsByClassName("answer")) {
     answer.style.backgroundColor = "";
   }
-  document.getElementById("close-card").style.backgroundColor = colors.questionCardContinueInactive;
+  document.getElementById("close-card").style.backgroundColor =
+    colors.questionCardContinueInactive;
   document.getElementById("close-card").style.cursor = "";
 
   // Switch players
@@ -315,7 +318,7 @@ function nextRound() {
  */
 function endGame() {
   gameState.gameStarted = false;
-  document.getElementById("end-game-screen").style.display = "block";
+  document.getElementById("end-game-screen").style.display = "flex";
   document.getElementById("modal").style.display = "block";
 
   // Compare the player scores and update the end game screen accordingly
@@ -328,11 +331,28 @@ function endGame() {
     winner.wins += 1;
     document.getElementById(
       "results"
-    ).innerHTML = `Congrats to ${winner.name}! You won this round with a score of ${winner.score}! Play on to tip the scales!`;
+    ).innerHTML = `Congrats to <span id="winner">${winner.name}</span>!<br>You won this round!`;
+    document.getElementById("winner").style.color = winner.colorText;
   }
-  document.getElementById(
-    "results"
-  ).innerHTML += `<br>Total wins: <br> ${player1.name}: ${player1.wins} <br> ${player2.name}: ${player2.wins}`;
+
+  document.getElementById("results").innerHTML += `<br><br>Stats:<br><br>
+  <table>
+  <tr>
+    <th>Player</th>
+    <th>This round's score</th>
+    <th>Total wins</th>
+  </tr>
+  <tr>
+    <td>${player1.name}</td>
+    <td>${player1.score}</td>
+    <td>${player1.wins}</td>
+  </tr>
+  <tr>
+    <td>${player2.name}</td>
+    <td>${player2.score}</td>
+    <td>${player2.wins}</td>
+  </tr>
+</table>`;
 
   // Listen for players clicking on Continue or Restart
   document

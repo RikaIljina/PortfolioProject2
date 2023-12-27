@@ -17,8 +17,8 @@
           <p><span id="p1-name">Player 1</span></p>
           <p class="active-player-note"></p>
           <p class="space"></p>
-          <p>Score:<br><span id="p1-score">0</span></p>
-          <p>Games won:<br><span id="p1-wins">0</span></p>
+          <p>Score:<br /><span id="p1-score">0</span></p>
+          <p>Games won:<br /><span id="p1-wins">0</span></p>
         </div>
         <div id="card-area">
           <div class="card" data-id="0">Technology</div>
@@ -35,8 +35,8 @@
           <p><span id="p2-name">Player 2</span></p>
           <p class="active-player-note"></p>
           <p class="space"></p>
-          <p>Score:<br><span id="p2-score">0</span></p>
-          <p>Games won:<br><span id="p2-wins">0</span></p>
+          <p>Score:<br /><span id="p2-score">0</span></p>
+          <p>Games won:<br /><span id="p2-wins">0</span></p>
         </div>
       </div>
       <div id="modal">
@@ -44,25 +44,37 @@
           <p>Welcome to "What d'you know", a quiz for two players!</p>
           <p>Take turns choosing a category and answering the question.</p>
           <p>The player with the highest score wins the round!</p>
-          <p>Play as many rounds as you like and see who's the real know-it all!</p>
+          <p>
+            Play as many rounds as you like and see who's the real know-it all!
+          </p>
           <p></p>
           <p>Please enter your names:</p>
 
           <form id="player-data-form" action="">
             <div id="player-name-inputs">
-            <p><label for="name-player-1">Player 1</label><br>
-            <input name="p1" type="text" id="name-player-1" maxlength="10"/>
-          </p>
-          <p>
-            <label for="name-player-2">Player 2</label><br>
-            <input name="p2" type="text" id="name-player-2" maxlength="10" />
-          </p>
-        </div>
+              <p>
+                <label for="name-player-1">Player 1</label><br />
+                <input
+                  name="p1"
+                  type="text"
+                  id="name-player-1"
+                  maxlength="10"
+                />
+              </p>
+              <p>
+                <label for="name-player-2">Player 2</label><br />
+                <input
+                  name="p2"
+                  type="text"
+                  id="name-player-2"
+                  maxlength="10"
+                />
+              </p>
+            </div>
             <!-- Paragraph displaying an error message in case of invalid name input -->
             <p id="input-error"></p>
             <button name="submit" type="submit" id="start-button">Start</button>
           </form>
-        
         </div>
 
         <div id="question-card">
@@ -75,16 +87,15 @@
         </div>
 
         <div id="end-game-screen">
-          <p>GAME OVER</p>
           <!-- Paragraph containing the results at the end of each game -->
           <p id="results"></p>
           <p>Continue?</p>
           <div id="restart-buttons">
-            <button name="restart-same" id="restart-same">
-              Continue with current players
+            <button name="restart-same" class="restart-btn" id="restart-same">
+              Next round
             </button>
-            <button name="restart-new" id="restart-new">
-              Restart for new players
+            <button name="restart-new" class="restart-btn" id="restart-new">
+              New Game
             </button>
           </div>
         </div>

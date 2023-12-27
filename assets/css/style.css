@@ -1,319 +1,362 @@
-@import url('https://fonts.googleapis.com/css2?family=Gasoek+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Acme&family=Marvel:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Acme&family=Tillana:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=BenchNine&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Gasoek+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Acme&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Acme&family=Marvel:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Acme&family=Tillana:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=BenchNine&display=swap");
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    font-family: 'BenchNine', sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  font-family: "BenchNine", sans-serif;
 }
 
 header {
-    background-color: #47224A;
-    color: #dcc5de;
-    width: 100%;
-    position: sticky;
-    /* line-height: 5rem; */
-    padding-top: 1rem;
-    text-align: center;
-    font-size: 2rem;
-    font-family: 'Acme', sans-serif;
+  background-color: #47224a;
+  color: #dcc5de;
+  width: 100%;
+  position: sticky;
+  /* line-height: 5rem; */
+  padding-top: 1rem;
+  text-align: center;
+  font-size: 2rem;
+  font-family: "Acme", sans-serif;
 }
 
 #subheader {
-    line-height: 2rem;
-    font-size: 1.3rem;
-    font-family: 'BenchNine', sans-serif;
+  line-height: 2rem;
+  font-size: 1.3rem;
+  font-family: "BenchNine", sans-serif;
 }
 
 main {
-    display: flex;
-    width: 100%;
-    height: fit-content;
-    flex: 1;
-
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  flex: 1;
 }
 
 #game-container {
-    /* border: 2px solid red; */
-    display: flex;
-    align-self: stretch;
-    justify-content: space-between;
-    width: 100%;
-    height: auto;
-    background-color: #c9c7c9;
+  /* border: 2px solid red; */
+  display: flex;
+  align-self: stretch;
+  justify-content: space-between;
+  width: 100%;
+  height: auto;
+  background-color: #c9c7c9;
 }
 
-#player-1, #player-2 {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
+#player-1,
+#player-2 {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 
-    background-color: grey;
-    flex: 1;
-    /* max-width: 17%; */
-    align-self: stretch;
-    min-height: 60vh;
+  background-color: grey;
+  flex: 1;
+  /* max-width: 17%; */
+  align-self: stretch;
+  min-height: 60vh;
 
-    line-height: 3.5rem;
-    text-align: center;
-    font-family: 'BenchNine', sans-serif;
+  line-height: 3.5rem;
+  text-align: center;
+  font-family: "BenchNine", sans-serif;
 
-    font-size: 2rem;
-    margin: 10px;
-    padding: 10px;
-    border-radius: 15px;
+  font-size: 2rem;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 15px;
 }
 
-#player-1 p, #player-2 p {
-    flex: 1;
+#player-1 p,
+#player-2 p {
+  flex: 1;
 }
 
-#p1-name, #p2-name {
-    font-size: 3.5rem;
+#p1-name,
+#p2-name {
+  font-size: 3.5rem;
 }
 
 #player-1 {
-    color: #e0ebd1;
+  color: #e0ebd1;
 }
 
 #player-2 {
-    color: #c5cddb;
+  color: #c5cddb;
 }
 
 .active-player-note {
-    font-size: 1.8rem;
-    align-self: center;
-    font-family: "Acme", sans-serif;
-    color: #ffffff;
-    text-shadow: 0 1px 5px #f8f8f8;
+  font-size: 1.8rem;
+  align-self: center;
+  font-family: "Acme", sans-serif;
+  color: #ffffff;
+  text-shadow: 0 1px 5px #f8f8f8;
 }
 
-#player-1 .space, #player-2 .space {
-    flex: 3;
+#player-1 .space,
+#player-2 .space {
+  flex: 3;
 }
 
 #card-area {
-    display: flex;
-    flex: 5;
-    gap: 5px;
-    flex-wrap: wrap;
-    /* width: 50%; */
-    min-height: auto;
-    align-self: center stretch;
-    justify-content: space-evenly;
-
+  display: flex;
+  flex: 5;
+  gap: 5px;
+  flex-wrap: wrap;
+  /* width: 50%; */
+  min-height: auto;
+  align-self: center stretch;
+  justify-content: space-evenly;
 }
 
 .card {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 25%;
-    min-width: 7rem;
-    flex-basis: 1;
-    align-self: stretch;
-    background-color: #47224a;
-    margin: 10px 0;
-    line-height: 6rem;
-    font-size: 2rem;
-    font-family: 'Acme', sans-serif;
-    transition: all 0.3s;
-    border-radius: 15px;
-    /* box-shadow: 0px 2px 2px #0f0219; */
-    /* https://jsfiddle.net/NeqCC/ */
-    box-shadow: 0px 15px 15px rgba(71, 34, 74, 0.6), 0px 5px 5px rgba(71, 34, 74, 0.6);
-    color: #dcc5de;
-    /* text-shadow: 1px 4px 5px #46224a, 0 1px 5px #000000, 1px 4px 4px #46224a; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25%;
+  min-width: 7rem;
+  flex-basis: 1;
+  align-self: stretch;
+  background-color: #47224a;
+  margin: 10px 0;
+  line-height: 6rem;
+  font-size: 2rem;
+  font-family: "Acme", sans-serif;
+  transition: all 0.3s;
+  border-radius: 15px;
+  /* box-shadow: 0px 2px 2px #0f0219; */
+  /* https://jsfiddle.net/NeqCC/ */
+  box-shadow: 0px 15px 15px rgba(71, 34, 74, 0.6),
+    0px 5px 5px rgba(71, 34, 74, 0.6);
+  color: #dcc5de;
+  /* text-shadow: 1px 4px 5px #46224a, 0 1px 5px #000000, 1px 4px 4px #46224a; */
 }
 
 .card:hover {
-    background-color: #783c7e;
-    cursor: pointer;
-    font-size: 2.2rem;
-    /* color: rgba(67, 57, 83, 0.8); */
-    /* text-shadow: 1px 4px 6px #ddcdf9, 0 0 0 #000, 1px 4px 6px #ddcdf9; */
-    transition: all 0.3s;
+  background-color: #783c7e;
+  cursor: pointer;
+  font-size: 2.2rem;
+  /* color: rgba(67, 57, 83, 0.8); */
+  /* text-shadow: 1px 4px 6px #ddcdf9, 0 0 0 #000, 1px 4px 6px #ddcdf9; */
+  transition: all 0.3s;
 }
 
 footer {
-    background-color: #47224A;
-    color: #dcc5de;
-    width: 100%;
-    text-align: center;
-    line-height: 2rem;
-    font-size: 1.3rem;
-    font-family: 'BenchNine', sans-serif;
+  background-color: #47224a;
+  color: #dcc5de;
+  width: 100%;
+  text-align: center;
+  line-height: 2rem;
+  font-size: 1.3rem;
+  font-family: "BenchNine", sans-serif;
 }
 
 #modal {
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(140, 138, 141, 0.9);
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(140, 138, 141, 0.9);
 }
 
 #loading-screen {
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-    text-align: center;
-    justify-content: space-between;
-    left: 50%;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    width: 70%;
-    min-width: 500px;
-    height: 85vh;
-    padding: 2rem;
-    border-radius: 15px;
-    border: 3px solid #3c173f;
-    box-shadow: inset 0 0 5px 5px black;
-    background-color: #47224A;
-    font-family: 'Acme', sans-serif;
-    font-size: 1.5rem;
-    color: #dcc5de;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  text-align: center;
+  justify-content: space-between;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 70%;
+  min-width: 500px;
+  height: 85vh;
+  padding: 2rem;
+  border-radius: 15px;
+  border: 3px solid #3c173f;
+  box-shadow: inset 0 0 5px 5px black;
+  background-color: #47224a;
+  font-family: "Acme", sans-serif;
+  font-size: 1.5rem;
+  color: #dcc5de;
 }
 
 #input-error {
-    font-size: 1rem;
-    height: 3rem;
-    width: 100%;
-    margin-bottom: -3rem;
+  font-size: 1rem;
+  height: 3rem;
+  width: 100%;
+  margin-bottom: -3rem;
 }
 
 #player-name-inputs {
-    columns: 2 auto;
+  columns: 2 auto;
 }
 
 #player-name-inputs > p > input {
-    margin-top: 1rem;
-    padding-left: 0.5rem;
-    background-color: rgb(220, 197, 222);
-    box-shadow: inset 0 -2px 2px 2px;
-    border-radius: 5px;
-    border-style: none;
-    line-height: 2.5rem;
-    width: 13rem;
-    outline: none;
-    font-family: 'Acme', sans-serif;
-    font-size: 1.5rem;
+  margin-top: 1rem;
+  padding-left: 0.5rem;
+  background-color: rgb(220, 197, 222);
+  box-shadow: inset 0 -2px 2px 2px;
+  border-radius: 5px;
+  border-style: none;
+  line-height: 2.5rem;
+  width: 13rem;
+  outline: none;
+  font-family: "Acme", sans-serif;
+  font-size: 1.5rem;
 }
 
 #player-name-inputs > p > input:focus {
-    border-style: none;
-    outline: 2px solid rgba(220, 197, 222, 0.5);
+  border-style: none;
+  outline: 2px solid rgba(220, 197, 222, 0.5);
 }
 
-#start-button {
-    margin: 4rem 0 0 0;
-    height: 3rem;
-    width: 7rem;
-    background-color: rgb(220, 197, 222);
-    border-radius: 5px;
-    border: none;
+#start-button,
+.restart-btn {
+  margin: 4rem 0 0 0;
+  height: 3rem;
+  width: 7rem;
+  background-color: rgb(220, 197, 222);
+  border-radius: 5px;
+  border: none;
 
-    font-family: 'Acme', sans-serif;
-    font-size: 1.5rem;
-    color: #47224A;
-    transition: all 0.3s;
-
+  font-family: "Acme", sans-serif;
+  font-size: 1.5rem;
+  color: #47224a;
+  transition: all 0.3s;
 }
 
-#start-button:hover {
-    font-size: 1.7rem;
-    /* outline: 2px solid rgba(220, 197, 222, 0.5); */
-    background-color:  rgb(247, 235, 247);
-    transition: all 0.3s;
+#start-button:hover,
+.restart-btn:hover {
+  font-size: 1.7rem;
+  /* outline: 2px solid rgba(220, 197, 222, 0.5); */
+  background-color: rgb(247, 235, 247);
+  transition: all 0.3s;
 }
-#start-button:focus {
-    outline: 2px solid rgba(220, 197, 222, 0.5);
-
+#start-button:focus,
+.restart-btn:focus {
+  outline: 2px solid rgba(220, 197, 222, 0.5);
 }
 
-#start-button:active {
-    background-color: #47224A;
-    color: rgb(247, 235, 247);
+#start-button:active,
+.restart-btn:active {
+  background-color: #47224a;
+  color: rgb(247, 235, 247);
 }
 
 #question-card {
-    position: fixed;
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    text-align: center;
-    left: 50%;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    width: 30%;
-    min-width: 200px;
-    height: 70vh;
-    /* border-radius: 15px; */
-    /* border-collapse: collapse; */
-    background-color: transparent;
-    color: rgb(220, 197, 222);
-
+  position: fixed;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 30%;
+  min-width: 200px;
+  height: 70vh;
+  /* border-radius: 15px; */
+  /* border-collapse: collapse; */
+  background-color: transparent;
+  color: rgb(220, 197, 222);
 }
 
 .qcard-text {
-    background-color: #47224A;
-    border: 1px solid #783c7e;
-    /* line-height: 3rem; */
-    border-radius: 10px;
-    flex: 1;
-    padding: 1rem 0 1rem 0;
+  background-color: #47224a;
+  border: 1px solid #783c7e;
+  /* line-height: 3rem; */
+  border-radius: 10px;
+  flex: 1;
+  padding: 1rem 0 1rem 0;
 }
 
 .question {
-    flex: 3;
-    text-align: center;
-    padding: 2rem 0 1rem 0;
+  flex: 3;
+  text-align: center;
+  padding: 2rem 0 1rem 0;
 }
 
 .answer:hover {
-    background-color: #783c7e;
-    color: #f2ebf2;
-    cursor: pointer;
+  background-color: #783c7e;
+  color: #f2ebf2;
+  cursor: pointer;
 }
 
 #close-card {
-    flex: 1;
-    padding: 0.5rem 0 0.5rem 0;
-    border-radius: 10px;
-    border: none;
-    background-color: #47224A;
-    color: #47224A;
-    font-family: 'Acme', sans-serif;
+  flex: 1;
+  padding: 0.5rem 0 0.5rem 0;
+  border-radius: 10px;
+  border: none;
+  background-color: #47224a;
+  color: #47224a;
+  font-family: "Acme", sans-serif;
 }
 
 #close-card:hover {
-    background-color: #47224A;
+  background-color: #47224a;
 }
 
 #end-game-screen {
-    position: fixed;
-    display: none;
-    text-align: center;
-    left: 50%;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    width: 50%;
-    min-width: 350px;
-    height: 70vh;
-    border: 3px solid green;
-    background-color: rgb(132, 150, 104);
+  position: fixed;
+  display: none;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  text-align: center;
+  justify-content: space-between;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 70%;
+  min-width: 500px;
+  height: 85vh;
+  padding: 2rem;
+  border-radius: 15px;
+  border: 3px solid #3c173f;
+  box-shadow: inset 0 0 5px 5px black;
+  background-color: #47224a;
+  font-family: "Acme", sans-serif;
+  font-size: 1.5rem;
+  color: #dcc5de;
+}
+
+#winner {
+  font-size: 2.5rem;
+}
+
+#end-game-screen table,
+td,
+th {
+  border-collapse: collapse;
+  border: 1px solid white;
+}
+
+#end-game-screen table {
+  width: 80%;
+  margin: auto;
+}
+
+#restart-buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.restart-btn {
+  /* margin: 4rem 0 0 0; */
+  margin: 0;
+  height: 4rem;
+  width: 10rem;
 }

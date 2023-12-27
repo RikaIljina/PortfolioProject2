@@ -176,19 +176,21 @@ footer {
     left: 50%;
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
-    width: 50%;
-    min-width: 350px;
-    height: 80vh; 
+    width: 70%;
+    min-width: 500px;
+    height: 85vh; 
     padding: 2rem;
     border-radius: 15px;
     border: 3px solid #3c173f;
     box-shadow: inset 0 0 5px 5px black;
     background-color: #47224A;
     font-family: 'Acme', sans-serif;
+    font-size: 1.5rem;
     color: #dcc5de;
 }
 
 #input-error {
+    font-size: 1rem;
     height: 3rem;
     width: 100%;
     margin-bottom: -3rem;
@@ -200,14 +202,16 @@ footer {
 
 #player-name-inputs > p > input {
     margin-top: 1rem;
-    padding-left: 1rem;
+    padding-left: 0.5rem;
     background-color: rgb(220, 197, 222);
     box-shadow: inset 0 -2px 2px 2px;
     border-radius: 5px;
     border-style: none;
-    line-height: 2rem;
-    width: 9rem;
+    line-height: 2.5rem;
+    width: 13rem;
     outline: none;
+    font-family: 'Acme', sans-serif;
+    font-size: 1.5rem;
 }
 
 #player-name-inputs > p > input:focus {

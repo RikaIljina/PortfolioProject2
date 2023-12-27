@@ -33,11 +33,13 @@ const colors = {
   categoryCardsInactive: "#86898b",
   categoryCardsText: "#ecf0f1",
   categoryCardsTextInactive: "#525354",
-  questionCard: "#2ecc71",
-  questionCardAnswers: "#e74c3c",
+  questionCard: "#47224A",
+  questionCardAnswers: "#47224A",
   questionCardAnswersHover: "#c0392b",
   questionCardAnswersCorrect: "#27ae60",
   questionCardAnswersWrong: "#e74c3c",
+  questionCardContinue: "rgb(220, 197, 222)",
+  questionCardContinueInactive: "#47224A",
   playerOneCards: "",
   playerTwoCards: "",
 
@@ -235,6 +237,9 @@ function processAnswer() {
     // If correct:
     // Highlight the chosen answer green
     this.style.backgroundColor = colors.questionCardAnswersCorrect;
+    // Show continue button
+    document.getElementById("close-card").style.backgroundColor = colors.questionCardContinue;
+    document.getElementById("close-card").style.cursor = "pointer";
     // Display the category card in the player's colors
     usedCard.style.backgroundColor = gameState.activePlayer.colorInactive;
     usedCard.style.color = gameState.activePlayer.colorText;
@@ -246,6 +251,10 @@ function processAnswer() {
     this.style.backgroundColor = colors.questionCardAnswersWrong;
     document.getElementById(gameState.correctAnswer).style.backgroundColor =
     colors.questionCardAnswersCorrect;
+    // Show continue button
+    document.getElementById("close-card").style.backgroundColor = colors.questionCardContinue;
+    document.getElementById("close-card").style.cursor = "pointer";
+    // Display the category card in the player's colors
     // Display the category card in grey
     usedCard.style.backgroundColor = colors.categoryCardsInactive;
     usedCard.style.color = colors.categoryCardsTextInactive;
@@ -279,6 +288,8 @@ function nextRound() {
   for (answer of document.getElementsByClassName("answer")) {
     answer.style.backgroundColor = "";
   }
+  document.getElementById("close-card").style.backgroundColor = colors.questionCardContinueInactive;
+  document.getElementById("close-card").style.cursor = "";
 
   // Switch players
   gameState.activePlayer =

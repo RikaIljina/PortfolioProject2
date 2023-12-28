@@ -153,6 +153,14 @@ function updatePlayerArea() {
   // activePlayer.parentElement.parentElement.style.boxShadow = "0 0 5px 8px #47224A";
   activePlayer.parentElement.parentElement.style.boxShadow =
     "0px 15px 25px rgba(71, 34, 74, 0.6), 0px 15px 15px rgba(71, 34, 74, 0.6)";
+   
+    if (window.innerWidth < 769) {
+    activePlayer.parentElement.parentElement.style.display = "";
+    inactivePlayer.parentElement.parentElement.style.display = "none";
+  } else {
+    activePlayer.parentElement.parentElement.style.display = "";
+  }
+
   inactivePlayer.parentElement.nextElementSibling.textContent = "";
   inactivePlayer.parentElement.parentElement.style.backgroundColor =
     gameState.inactivePlayer.colorInactive;

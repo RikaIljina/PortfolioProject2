@@ -176,8 +176,13 @@ function cardClicked() {
     for (answer of document.getElementsByClassName("answer")) {
       answer.style.pointerEvents = "auto";
     }
-
-    showQuestion(this);
+    try {
+      showQuestion(this);
+    } catch {
+      alert("Error");
+    } finally {
+      alert("moving on");
+    }
 
     // Make this category card unclickable (https://stackoverflow.com/questions/16492401/javascript-setting-pointer-events)
     this.style.pointerEvents = "none";
@@ -208,11 +213,18 @@ function showQuestion(activeCard) {
 
   // --- Shuffle the answers
   let answerKeys = [0, 1, 2, 3];
+
+  // Error handling: check if the answer array of the active question contains exactly 4 elements
+  if (activeQuestion.answers.length != answerKeys.length) {
+    alert("wrong length");
+  }
+
   for (answer of document.getElementsByClassName("answer")) {
     // Select random index to shuffle the display order of the answers
     let randomIndex = Math.floor(Math.random() * answerKeys.length);
     // Fill the quiz card with the answers from the quiz dictionary
     answer.textContent = activeQuestion.answers[answerKeys[randomIndex]];
+
     // Remember the element with the correct answer
     if (answerKeys[randomIndex] === activeQuestion.correctAnswer) {
       gameState.correctAnswer = answer.getAttribute("id");

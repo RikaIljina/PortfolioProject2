@@ -69,7 +69,7 @@ function validateNames(event) {
   event.preventDefault();
   let enteredName1 = playerData.elements["p1"].value;
   let enteredName2 = playerData.elements["p2"].value;
-  // Validate player input https://stackoverflow.com/questions/44256226/pattern-validation-with-javascript
+  // Validate player input (https://stackoverflow.com/questions/44256226/pattern-validation-with-javascript)
   let re = /^[a-zA-Z0-9._-]{1,10}$/;
   if (!re.test(enteredName1) || !re.test(enteredName2)) {
     document.getElementById("input-error").textContent =
@@ -176,12 +176,13 @@ function cardClicked() {
     for (answer of document.getElementsByClassName("answer")) {
       answer.style.pointerEvents = "auto";
     }
+
+    // Error handling: if the question cannot be loaded due to issues with the questions database,
+    // redirect user to an error page
     try {
       showQuestion(this);
     } catch {
-      alert("Error");
-    } finally {
-      alert("moving on");
+      self.location = "error.html";
     }
 
     // Make this category card unclickable (https://stackoverflow.com/questions/16492401/javascript-setting-pointer-events)
@@ -214,9 +215,12 @@ function showQuestion(activeCard) {
   // --- Shuffle the answers
   let answerKeys = [0, 1, 2, 3];
 
-  // Error handling: check if the answer array of the active question contains exactly 4 elements
+  // Error handling: check if the answer array of the active question contains exactly 4 elements.
+  // Log error to console.
   if (activeQuestion.answers.length != answerKeys.length) {
-    alert("wrong length");
+    console.log(
+      `The question '${activeQuestion.question}' in category '${activeCard.textContent}' contains more or fewer answers than 4`
+    );
   }
 
   for (answer of document.getElementsByClassName("answer")) {
@@ -270,7 +274,6 @@ function processAnswer() {
     document.getElementById("close-card").style.backgroundColor =
       colors.questionCardContinue;
     document.getElementById("close-card").style.cursor = "pointer";
-    // Display the category card in the player's colors
     // Display the category card in grey
     usedCard.style.backgroundColor = colors.categoryCardsInactive;
     usedCard.style.color = colors.categoryCardsTextInactive;
@@ -349,7 +352,8 @@ function endGame() {
     document.getElementById("winner").style.color = winner.colorText;
   }
 
-  document.getElementById("results").innerHTML += `<br><br>Stats:<br><br>
+  document.getElementById("results").innerHTML += `
+  <br><br>Stats:<br><br>
   <table>
   <tr>
     <th>Player</th>
@@ -366,7 +370,8 @@ function endGame() {
     <td>${player2.score}</td>
     <td>${player2.wins}</td>
   </tr>
-</table>`;
+</table>
+`;
 
   // Listen for players clicking on Continue or Restart
   document

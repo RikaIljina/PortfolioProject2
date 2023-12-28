@@ -362,3 +362,13 @@ th {
   height: 4rem;
   width: 10rem;
 }
+
+#error-page-div {
+  font-size: 2rem;
+  display: block;
+margin: auto;
+}
+
+#error-page-div ul {
+  font-size: 1.5rem;
+}

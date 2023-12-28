@@ -89,7 +89,7 @@ const quizQuestionsMusic = [
 const quizQuestionsFood = [
   {
     question: "When a chef is busy with 'julienne', she is ...",
-    answers: ["Cutting vegetables into long strips", "Cooking a cream sauce", "Boiling spinach"], // "Garnishing the fish dish"],
+    answers: ["Cutting vegetables into long strips", "Cooking a cream sauce", "Boiling spinach", "Garnishing the fish dish"],
     correctAnswer: 0,
   },
 ];

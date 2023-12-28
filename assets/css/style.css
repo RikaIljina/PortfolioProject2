@@ -292,6 +292,7 @@ footer {
   left: 50%;
   top: 50%;
   transform: translateX(-50%) translateY(-50%);
+  overflow-y: auto;
   width: 100%;
   min-width: 200px;
   height: 95vh;
@@ -306,7 +307,7 @@ footer {
   border-radius: 10px;
   flex: 1;
   padding: 1rem 0.5rem 1rem 0.5rem;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .question {
@@ -455,11 +456,11 @@ th {
 
   #question-card {
     width: 45%;
-    height: 75vh;
+    height: 90vh;
   }
 
   .qcard-text {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
   }
   
   .question {
@@ -467,7 +468,7 @@ th {
   }
 
   #close-card {
-    font-size: 2rem;
+    font-size: 1.5rem;
    }
 
   #winner {
@@ -516,11 +517,11 @@ th {
   
   #question-card {
     width: 40%;
-    height: 70vh;
+    height: 85vh;
   }
 
   .qcard-text {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
   
   .question {
@@ -528,7 +529,7 @@ th {
   }
 
   #close-card {
-    font-size: 2.5rem;
+    font-size: 2rem;
    }
 
    .restart-btn {
@@ -567,11 +568,11 @@ th {
   
   #question-card {
     width: 30%;
-    height: 60vh;
+    height: 80vh;
   }
 
   .qcard-text {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
   
   .question {
@@ -579,7 +580,7 @@ th {
   }
 
   #close-card {
-    font-size: 3rem;
+    font-size: 2.5rem;
    }
 
   #loading-screen,

@@ -202,6 +202,8 @@ function showQuestion(activeCard) {
   let category = quizCategories[categoryIndex];
   let activeQuestion = category[Math.floor(Math.random() * category.length)];
 
+  // TODO: try catch finally for reading the questions
+
   document.getElementById("question").textContent = activeQuestion.question;
 
   // --- Shuffle the answers

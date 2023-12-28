@@ -43,8 +43,8 @@ main {
 }
 
 #game-container {
-  /* border: 2px solid red; */
   display: flex;
+  flex-direction: column;
   align-self: stretch;
   justify-content: space-between;
   width: 100%;
@@ -60,18 +60,28 @@ main {
 
   background-color: grey;
   flex: 1;
-  /* max-width: 17%; */
   align-self: stretch;
-  min-height: 60vh;
 
-  line-height: 3.5rem;
+  line-height: 2rem;
   text-align: center;
   font-family: "BenchNine", sans-serif;
 
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin: 10px;
   padding: 10px;
   border-radius: 15px;
+}
+
+#player-1 {
+  order: 1;
+}
+
+#player-2 {
+  order: 2;
+}
+
+.hide-on-mobile {
+  display: none;
 }
 
 #player-1 p,
@@ -81,7 +91,7 @@ main {
 
 #p1-name,
 #p2-name {
-  font-size: 3.5rem;
+  font-size: 2rem;
 }
 
 #player-1 {
@@ -100,6 +110,7 @@ main {
   text-shadow: 0 1px 5px #f8f8f8;
 }
 
+/* Empty space to push score and player name a bit further apart */
 #player-1 .space,
 #player-2 .space {
   flex: 3;
@@ -107,6 +118,7 @@ main {
 
 #card-area {
   display: flex;
+  order: 3;
   flex: 5;
   gap: 5px;
   flex-wrap: wrap;
@@ -167,9 +179,10 @@ footer {
   background-color: rgba(140, 138, 141, 0.9);
 }
 
-#loading-screen {
+#loading-screen,
+#end-game-screen {
   position: fixed;
-  display: flex;
+  display: none;
   flex-direction: column;
   overflow-y: auto;
   overflow-x: hidden;
@@ -179,32 +192,31 @@ footer {
   left: 50%;
   top: 50%;
   transform: translateX(-50%) translateY(-50%);
-  width: 70%;
-  min-width: 500px;
-  height: 85vh;
-  padding: 2rem;
+  width: 100%;
+  height: 95vh;
+  padding: 1rem;
   border-radius: 15px;
   border: 3px solid #3c173f;
   box-shadow: inset 0 0 5px 5px black;
   background-color: #47224a;
   font-family: "Acme", sans-serif;
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: #dcc5de;
 }
 
+#loading-screen {
+  display: flex;
+}
+
 #input-error {
-  font-size: 1rem;
+  font-size: 0.8rem;
   height: 3rem;
   width: 100%;
   margin-bottom: -3rem;
 }
 
-#player-name-inputs {
-  columns: 2 auto;
-}
-
 #player-name-inputs > p > input {
-  margin-top: 1rem;
+  margin: 0.5rem 0;
   padding-left: 0.5rem;
   background-color: rgb(220, 197, 222);
   box-shadow: inset 0 -2px 2px 2px;
@@ -214,7 +226,7 @@ footer {
   width: 13rem;
   outline: none;
   font-family: "Acme", sans-serif;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 #player-name-inputs > p > input:focus {
@@ -235,6 +247,22 @@ footer {
   font-size: 1.5rem;
   color: #47224a;
   transition: all 0.3s;
+}
+
+#restart-buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.restart-btn {
+  margin: 0;
+  font-size: 1.2rem;
+  height: 4rem;
+  width: 7rem;
+}
+
+#start-button {
+  margin-top: 4.4rem;
 }
 
 #start-button:hover,
@@ -264,11 +292,9 @@ footer {
   left: 50%;
   top: 50%;
   transform: translateX(-50%) translateY(-50%);
-  width: 40%;
+  width: 100%;
   min-width: 200px;
-  height: 70vh;
-  /* border-radius: 15px; */
-  /* border-collapse: collapse; */
+  height: 95vh;
   background-color: transparent;
   color: rgb(220, 197, 222);
 }
@@ -304,13 +330,14 @@ footer {
   background-color: #47224a;
   color: #47224a;
   font-family: "Acme", sans-serif;
+  font-size: 1.5rem;
 }
 
 #close-card:hover {
   background-color: #47224a;
 }
 
-#end-game-screen {
+/* #end-game-screen {
   position: fixed;
   display: none;
   flex-direction: column;
@@ -333,10 +360,10 @@ footer {
   font-family: "Acme", sans-serif;
   font-size: 1.5rem;
   color: #dcc5de;
-}
+} */
 
 #winner {
-  font-size: 2.5rem;
+  font-size: 1.8rem;
 }
 
 #end-game-screen table,
@@ -351,24 +378,92 @@ th {
   margin: auto;
 }
 
-#restart-buttons {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.restart-btn {
-  /* margin: 4rem 0 0 0; */
-  margin: 0;
-  height: 4rem;
-  width: 10rem;
-}
-
 #error-page-div {
   font-size: 2rem;
   display: block;
-margin: auto;
+  margin: auto;
 }
 
 #error-page-div ul {
   font-size: 1.5rem;
+}
+
+/* Media query for view on rotated phones and small tablets */
+@media screen and (min-width: 768px) {
+  #show-on-mobile {
+    display: none;
+  }
+  #game-container {
+    flex-direction: row;
+  }
+
+  #player-1,
+  #player-2 {
+    min-height: 60vh;
+    line-height: 3.5rem;
+    font-size: 2rem;
+  }
+
+  #p1-name,
+  #p2-name {
+    font-size: 2rem;
+  }
+
+  #player-1,
+  #player-2,
+  #card-area {
+    order: initial;
+  }
+
+  #loading-screen,
+  #end-game-screen {
+    display: none;
+    width: 70%;
+    min-width: 500px;
+    height: 85vh;
+    padding: 2rem;
+    font-size: 1.5rem;
+  }
+
+  #loading-screen {
+    display: flex;
+  }
+
+  #input-error {
+    font-size: 1rem;
+  }
+
+  #player-name-inputs {
+    columns: 2 auto;
+  }
+
+  #player-name-inputs > p > input {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+  }
+
+  #start-button {
+    margin-top: 4rem;
+  }
+
+  #question-card {
+    width: 40%;
+    height: 70vh;
+  }
+
+  #winner {
+    font-size: 2.5rem;
+  }
+
+  .restart-btn {
+    font-size: 1.5rem;
+    width: 10rem;
+  }
+}
+
+@media screen and (min-width: 862px) {
+  #p1-name,
+  #p2-name {
+    font-size: 2.5rem;
+  }
 }

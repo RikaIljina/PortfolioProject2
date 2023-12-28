@@ -348,7 +348,7 @@ function endGame() {
     winner.wins += 1;
     document.getElementById(
       "results"
-    ).innerHTML = `Congrats to <span id="winner">${winner.name}</span>!<br>You won this round!`;
+    ).innerHTML = `Congrats to <br class="show-on-mobile" /><span id="winner">${winner.name}</span><br>You won this round!`;
     document.getElementById("winner").style.color = winner.colorText;
   }
 

@@ -95,11 +95,11 @@ const quizQuestionsFood = [
 ];
 
 const quizQuestionsGeneral = [
-  // {
-  //   question: "General question",
-  //   answers: ["Correct answer", "Answer b", "Answer c", "Answer d"],
-  //   correctAnswer: 0,
-  // },
+  {
+    question: "General question",
+    answers: ["Correct answer", "Answer b", "Answer c", "Answer d"],
+    correctAnswer: 0,
+  },
 ];
 
 const quizCategories = [

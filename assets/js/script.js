@@ -39,7 +39,7 @@ const colors = {
   questionCardAnswersCorrect: "#1d6b1e",
   questionCardAnswersWrong: "#7d3028",
   questionCardContinue: "rgb(220, 197, 222)",
-  questionCardContinueInactive: "#47224A",
+  questionCardContinueInactive: "#271328",
   playerOneCards: "",
   playerTwoCards: "",
 };
@@ -276,6 +276,7 @@ function processAnswer() {
     // If wrong:
     // Highlight the incorrect answer red and the correct answer green
     this.style.backgroundColor = colors.questionCardAnswersWrong;
+    document.getElementById(gameState.correctAnswer).style.transition = "all 0.7s";
     document.getElementById(gameState.correctAnswer).style.backgroundColor =
       colors.questionCardAnswersCorrect;
     // Show continue button
@@ -293,6 +294,7 @@ function processAnswer() {
   for (answer of document.getElementsByClassName("answer")) {
     answer.style.pointerEvents = "none";
     answer.removeEventListener("click", processAnswer);
+    answer.style.boxShadow = "none";
   }
 
   // Listen for player clicking on Continue
@@ -314,6 +316,8 @@ function nextRound() {
   // Reset the colors of answers on the question card
   for (answer of document.getElementsByClassName("answer")) {
     answer.style.backgroundColor = "";
+    answer.style.boxShadow = "";
+    answer.style.transition = "all 0.3s";
   }
   document.getElementById("close-card").style.backgroundColor =
     colors.questionCardContinueInactive;

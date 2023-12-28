@@ -14,7 +14,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  font-family: "BenchNine", sans-serif;
+  font-family: "Acme", sans-serif;
 }
 
 header {
@@ -32,7 +32,7 @@ header {
 #subheader {
   line-height: 2rem;
   font-size: 1.3rem;
-  font-family: "BenchNine", sans-serif;
+  font-family: "Acme", sans-serif;
 }
 
 main {
@@ -64,7 +64,7 @@ main {
 
   line-height: 2rem;
   text-align: center;
-  font-family: "BenchNine", sans-serif;
+  font-family: "Acme", sans-serif;
 
   font-size: 1.5rem;
   margin: 10px;
@@ -168,7 +168,7 @@ footer {
   text-align: center;
   line-height: 2rem;
   font-size: 1.3rem;
-  font-family: "BenchNine", sans-serif;
+  font-family: "Acme", sans-serif;
 }
 
 #modal {
@@ -316,7 +316,15 @@ footer {
   flex: 3;
   text-align: center;
   /* padding: 2rem 0 1rem 0; */
+  background-color: #271328;
   border: 3px solid #2b0c2e;
+}
+
+.answer {
+  margin: 0 7px 3px 7px;
+  box-shadow: 0px 10px 10px rgba(71, 34, 74, 0.6),
+    0px 3px 3px rgba(71, 34, 74, 0.6);
+    transition: all 0.3s;
 }
 
 .answer:hover {
@@ -330,15 +338,15 @@ footer {
   padding: 0.5rem 0 0.5rem 0;
   border-radius: 10px;
   border: none;
-  background-color: #47224a;
-  color: #47224a;
+  background-color: #271328;
+  color: #271328;
   font-family: "Acme", sans-serif;
   font-size: 1.5rem;
 }
 
-#close-card:hover {
-  background-color: #47224a;
-}
+/* #close-card:hover {
+  background-color: #271328;
+} */
 
 /* #end-game-screen {
   position: fixed;
@@ -457,7 +465,7 @@ th {
   }
 
   #question-card {
-    width: 45%;
+    width: 47%;
     height: 90vh;
   }
 
@@ -518,7 +526,7 @@ th {
   }
   
   #question-card {
-    width: 40%;
+    width: 43%;
     height: 85vh;
   }
 
@@ -537,6 +545,10 @@ th {
    .restart-btn {
     width: 14rem;
     font-size: 2rem;
+  }
+
+  .restart-btn:hover {
+    font-size: 2.2rem;
   }
 
   }
@@ -569,7 +581,7 @@ th {
   }
   
   #question-card {
-    width: 30%;
+    width: 33%;
     height: 80vh;
   }
 

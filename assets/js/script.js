@@ -57,6 +57,16 @@ for (let child of cards.children) {
   child.addEventListener("click", cardClicked);
 }
 
+// Event listener that makes sure the player area is always correctly displayed/hidden
+// when the user decides to resize the window. The function adjustForWindowSize() is also
+// called once in updatePlayerArea().
+window.addEventListener(
+  "resize", () => {  adjustForWindowSize(
+    document.getElementById(gameState.activePlayer.id),
+    document.getElementById(gameState.inactivePlayer.id)
+  )}
+);
+
 // Set keyboard focus on input field for player 1 name
 playerData.elements["p1"].focus();
 
@@ -153,13 +163,9 @@ function updatePlayerArea() {
   // activePlayer.parentElement.parentElement.style.boxShadow = "0 0 5px 8px #47224A";
   // activePlayer.parentElement.parentElement.style.boxShadow =
   //   "0px 15px 25px rgba(71, 34, 74, 0.6), 0px 15px 15px rgba(71, 34, 74, 0.6)";
-   
-    if (window.innerWidth < 769) {
-    activePlayer.parentElement.parentElement.style.display = "";
-    inactivePlayer.parentElement.parentElement.style.display = "none";
-  } else {
-    activePlayer.parentElement.parentElement.style.display = "";
-  }
+
+  // Make sure the inactive player area is hidden on mobiles
+  adjustForWindowSize(activePlayer, inactivePlayer);
 
   inactivePlayer.parentElement.nextElementSibling.textContent = "";
   inactivePlayer.parentElement.parentElement.style.backgroundColor =
@@ -167,6 +173,19 @@ function updatePlayerArea() {
   // inactivePlayer.parentElement.parentElement.style.border = "0.2em solid transparent";
   // inactivePlayer.parentElement.parentElement.style.boxShadow = "none";
   return;
+}
+
+/**
+ * Checks the window size and hides the inactive player area
+ * on mobile devices
+ */
+function adjustForWindowSize(activePlayer, inactivePlayer) {
+  if (window.innerWidth < 769) {
+    activePlayer.parentElement.parentElement.style.display = "";
+    inactivePlayer.parentElement.parentElement.style.display = "none";
+  } else {
+    inactivePlayer.parentElement.parentElement.style.display = "";
+  }
 }
 
 /**
@@ -276,7 +295,8 @@ function processAnswer() {
     // If wrong:
     // Highlight the incorrect answer red and the correct answer green
     this.style.backgroundColor = colors.questionCardAnswersWrong;
-    document.getElementById(gameState.correctAnswer).style.transition = "all 0.7s";
+    document.getElementById(gameState.correctAnswer).style.transition =
+      "all 0.7s";
     document.getElementById(gameState.correctAnswer).style.backgroundColor =
       colors.questionCardAnswersCorrect;
     // Show continue button

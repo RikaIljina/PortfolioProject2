@@ -92,7 +92,6 @@ main {
 #p1-name,
 #p2-name {
   font-size: 2rem;
-
 }
 
 #player-1 {
@@ -268,11 +267,15 @@ footer {
 
 #start-button:hover,
 .restart-btn:hover {
-  font-size: 1.7rem;
-  /* outline: 2px solid rgba(220, 197, 222, 0.5); */
+  font-size: 1.4rem;
   background-color: rgb(247, 235, 247);
   transition: all 0.3s;
 }
+
+#start-button:hover {
+  font-size: 1.7rem;
+}
+
 #start-button:focus,
 .restart-btn:focus {
   outline: 2px solid rgba(220, 197, 222, 0.5);
@@ -325,7 +328,7 @@ footer {
   margin: 0 7px 7px 7px;
   box-shadow: 0px 6px 6px rgba(75, 21, 78, 0.8),
     0px 3px 6px rgba(195, 137, 199, 0.6);
-    transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 .answer:hover {
@@ -434,7 +437,6 @@ th {
     order: initial;
   }
 
-
   #loading-screen,
   #end-game-screen {
     display: none;
@@ -466,6 +468,11 @@ th {
     margin-top: 4rem;
   }
 
+  #start-button:hover,
+  .restart-btn:hover {
+    font-size: 1.7rem;
+  }
+
   #question-card {
     width: 47%;
     height: 90vh;
@@ -474,14 +481,14 @@ th {
   .qcard-text {
     font-size: 1.5rem;
   }
-  
+
   .question {
     padding: 1.5rem;
   }
 
   #close-card {
     font-size: 1.5rem;
-   }
+  }
 
   #winner {
     font-size: 2.5rem;
@@ -523,10 +530,10 @@ th {
     font-size: 2.5rem;
   }
 
-  .card { 
+  .card {
     font-size: 3rem;
   }
-  
+
   #question-card {
     width: 43%;
     height: 85vh;
@@ -535,16 +542,16 @@ th {
   .qcard-text {
     font-size: 2rem;
   }
-  
+
   .question {
     padding: 2rem;
   }
 
   #close-card {
     font-size: 2rem;
-   }
+  }
 
-   .restart-btn {
+  .restart-btn {
     width: 14rem;
     font-size: 2rem;
   }
@@ -552,8 +559,7 @@ th {
   .restart-btn:hover {
     font-size: 2.2rem;
   }
-
-  }
+}
 
 @media screen and (min-width: 2559px) {
   header {
@@ -569,6 +575,7 @@ th {
     font-size: 4rem;
     line-height: 5rem;
   }
+
   #p1-name,
   #p2-name {
     font-size: 3.5rem;
@@ -578,10 +585,10 @@ th {
     font-size: 2.5rem;
   }
 
-  .card { 
+  .card {
     font-size: 3.5rem;
   }
-  
+
   #question-card {
     width: 33%;
     height: 80vh;
@@ -590,14 +597,14 @@ th {
   .qcard-text {
     font-size: 2.5rem;
   }
-  
+
   .question {
     padding: 3rem;
   }
 
   #close-card {
     font-size: 2.5rem;
-   }
+  }
 
   #loading-screen,
   #end-game-screen {
@@ -632,7 +639,6 @@ th {
     width: 17rem;
     font-size: 2.2rem;
   }
-
 
   footer {
     line-height: 2.8rem;

@@ -1,112 +1,129 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <header>
-      <p>What d'you know?</p>
-      <p id="subheader">A quiz for two</p>
-    </header>
-    <main>
-      <div id="game-container">
-        <div id="player-1">
-          <p><span id="p1-name">Player 1</span></p>
-          <p class="active-player-note"></p>
-          <p class="space"></p>
-          <p>Score: <br class="hide-on-mobile"/><span id="p1-score">0</span></p>
-          <p>Rounds won: <br class="hide-on-mobile"/><span id="p1-wins">0</span></p>
-        </div>
-        <div id="card-area">
-          <div class="card" data-id="0">Tech</div>
-          <div class="card" data-id="1">Nature</div>
-          <div class="card" data-id="2">Sports</div>
-          <div class="card" data-id="3">History</div>
-          <div class="card" data-id="4">Geo</div>
-          <div class="card" data-id="5">Books</div>
-          <div class="card" data-id="6">Music</div>
-          <div class="card" data-id="7">Food</div>
-          <div class="card" data-id="8">General</div>
-        </div>
-        <div id="player-2">
-          <p><span id="p2-name">Player 2</span></p>
-          <p class="active-player-note"></p>
-          <p class="space"></p>
-          <p>Score: <br class="hide-on-mobile"/><span id="p2-score">0</span></p>
-          <p>Rounds won: <br class="hide-on-mobile"/><span id="p2-wins">0</span></p>
-        </div>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Open Graph tags -->
+  <meta property="og:url" content="https://rikailjina.github.io/PortfolioProject2/">
+  <meta property="og:title" content="What d'you know, a quiz for two">
+  <meta property="og:description" content="Test your knowledge in this fun trivia quiz for two players!">
+  <!-- Info for search engines -->
+  <meta name="description" content="Test your knowledge in this fun trivia quiz for two players!">
+  <meta name="keywords" content="quiz, trivia, game, multiplayer, knowledge, fun facts">
+  <!-- Links to favicons -->
+  <link rel="icon" sizes="192x192" href="assets/favicons/android-chrome-192x192.png">
+  <link rel="icon" sizes="512x512" href="assets/favicons/android-chrome-512x512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+  <!-- Link to CSS stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <title>What d'you know</title>
+</head>
+
+<body>
+  <header>
+    <p>What d'you know?</p>
+    <p id="subheader">A quiz for two</p>
+  </header>
+  <main>
+    <div id="game-container">
+      <div id="player-1">
+        <p><span id="p1-name">Player 1</span></p>
+        <p class="active-player-note"></p>
+        <p class="space"></p>
+        <p>
+          Score: <br class="hide-on-mobile" /><span id="p1-score">0</span>
+        </p>
+        <p>
+          Rounds won: <br class="hide-on-mobile" /><span id="p1-wins">0</span>
+        </p>
       </div>
-      <div id="modal">
-        <div id="loading-screen">
-          <p>Welcome to "What d'you know", a quiz for two players!</p>
-          <p>Take turns choosing a category and answering the question.</p>
-          <p>The player with the highest score wins the round!</p>
-          <p>
-            Play as many rounds as you like and see who's the real know-it all!
-          </p>
-          <p></p>
-          <p>Please enter your names:</p>
+      <div id="card-area">
+        <div class="card" data-id="0">Tech</div>
+        <div class="card" data-id="1">Nature</div>
+        <div class="card" data-id="2">Sports</div>
+        <div class="card" data-id="3">History</div>
+        <div class="card" data-id="4">Geo</div>
+        <div class="card" data-id="5">Books</div>
+        <div class="card" data-id="6">Music</div>
+        <div class="card" data-id="7">Food</div>
+        <div class="card" data-id="8">General</div>
+      </div>
+      <div id="player-2">
+        <p><span id="p2-name">Player 2</span></p>
+        <p class="active-player-note"></p>
+        <p class="space"></p>
+        <p>
+          Score: <br class="hide-on-mobile" /><span id="p2-score">0</span>
+        </p>
+        <p>
+          Rounds won: <br class="hide-on-mobile" /><span id="p2-wins">0</span>
+        </p>
+      </div>
+    </div>
+    <div id="modal">
+      <div id="loading-screen">
+        <p>Welcome to "What d'you know", a quiz for two players!</p>
+        <p>Take turns choosing a category and answering the question.</p>
+        <p>The player with the highest score wins the round!</p>
+        <p>
+          Play as many rounds as you like and see who's the real know-it all!
+        </p>
+        <p></p>
+        <p>Please enter your names:</p>
 
-          <form id="player-data-form" action="">
-            <div id="player-name-inputs">
-              <p>
-                <label for="name-player-1">Player 1</label><br />
-                <input
-                  name="p1"
-                  type="text"
-                  id="name-player-1"
-                  maxlength="10"
-                />
-              </p>
-              <p>
-                <label for="name-player-2">Player 2</label><br />
-                <input
-                  name="p2"
-                  type="text"
-                  id="name-player-2"
-                  maxlength="10"
-                />
-              </p>
-            </div>
-            <!-- Paragraph displaying an error message in case of invalid name input -->
-            <p id="input-error"></p>
-            <button name="submit" type="submit" id="start-button">Start</button>
-          </form>
-        </div>
-
-        <div id="question-card">
-          <p id="question" class="qcard-text question">QUESTION</p>
-          <p id="a" class="qcard-text answer">A</p>
-          <p id="b" class="qcard-text answer">B</p>
-          <p id="c" class="qcard-text answer">C</p>
-          <p id="d" class="qcard-text answer">D</p>
-          <button id="close-card">Continue</button>
-        </div>
-
-        <div id="end-game-screen">
-          <!-- Paragraph containing the results at the end of each game -->
-          <p id="results"></p>
-          <p>Continue?</p>
-          <div id="restart-buttons">
-            <button name="restart-same" class="restart-btn" id="restart-same">
-              Next round
-            </button>
-            <button name="restart-new" class="restart-btn" id="restart-new">
-              New Game
-            </button>
+        <form id="player-data-form" action="">
+          <div id="player-name-inputs">
+            <p>
+              <label for="name-player-1">Player 1</label><br />
+              <input name="p1" type="text" id="name-player-1" maxlength="10">
+            </p>
+            <p>
+              <label for="name-player-2">Player 2</label><br />
+              <input name="p2" type="text" id="name-player-2" maxlength="10">
+            </p>
           </div>
+          <!-- Paragraph displaying an error message in case of invalid name input -->
+          <p id="input-error"></p>
+          <button name="submit" type="submit" id="start-button">Start</button>
+        </form>
+      </div>
+
+      <div id="question-card">
+        <p id="question" class="qcard-text question">QUESTION</p>
+        <p id="a" class="qcard-text answer">A</p>
+        <p id="b" class="qcard-text answer">B</p>
+        <p id="c" class="qcard-text answer">C</p>
+        <p id="d" class="qcard-text answer">D</p>
+        <button id="close-card">Continue</button>
+      </div>
+
+      <div id="end-game-screen">
+        <!-- Paragraph containing the results at the end of each game -->
+        <p id="results"></p>
+        <p>Continue?</p>
+        <div id="restart-buttons">
+          <button name="restart-same" class="restart-btn" id="restart-same">
+            Next round
+          </button>
+          <button name="restart-new" class="restart-btn" id="restart-new">
+            New Game
+          </button>
         </div>
       </div>
-    </main>
+    </div>
+  </main>
 
-    <footer>
-      <p>© 2023 by <a href="mailto:dev@whatdyouknow.com">Vasilika Schnitzer</a></p>
-    </footer>
+  <footer>
+    <p>
+      © 2023 by <a href="mailto:dev@whatdyouknow.com">Vasilika Schnitzer</a>
+    </p>
+  </footer>
 
-    <script type="text/javascript" src="assets/js/questions.js"></script>
-    <script type="text/javascript" src="assets/js/script.js"></script>
-  </body>
+  <script type="text/javascript" src="assets/js/questions.js"></script>
+  <script type="text/javascript" src="assets/js/script.js"></script>
+</body>
+
 </html>

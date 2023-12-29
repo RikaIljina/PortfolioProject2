@@ -61,10 +61,12 @@ for (let child of cards.children) {
 // when the user decides to resize the window. The function adjustForWindowSize() is also
 // called once in updatePlayerArea().
 window.addEventListener(
-  "resize", () => {  adjustForWindowSize(
-    document.getElementById(gameState.activePlayer.id),
-    document.getElementById(gameState.inactivePlayer.id)
-  )}
+  "resize", () => {
+    adjustForWindowSize(
+      document.getElementById(gameState.activePlayer.id),
+      document.getElementById(gameState.inactivePlayer.id)
+    )
+  }
 );
 
 // Set keyboard focus on input field for player 1 name

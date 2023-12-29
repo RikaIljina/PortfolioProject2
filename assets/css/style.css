@@ -170,6 +170,10 @@ footer {
   font-family: "Acme", sans-serif;
 }
 
+footer a {
+  color: #dcc5de;
+}
+
 #modal {
   position: fixed;
   left: 0;
@@ -399,9 +403,11 @@ th {
   font-size: 2rem;
   display: block;
   margin: auto;
+  padding: 2rem;
 }
 
 #error-page-div ul {
+  padding: 1rem;
   font-size: 1.5rem;
 }
 

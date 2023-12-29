@@ -4,8 +4,7 @@ const player1 = {
   score: 0,
   wins: 0,
   id: "p1-name",
-  color: "#4C672E", //"#EDABAB", //"#F55757", // f39c12
-  colorInactive: "#4C672E", // "#F5D4D4", // "#EB8686",
+  color: "#4C672E",
   colorText: "#e0ebd1",
 };
 const player2 = {
@@ -13,8 +12,7 @@ const player2 = {
   score: 0,
   wins: 0,
   id: "p2-name",
-  color: "#26334B", //"#B4D3E9", // "#6CC2FF", //e67e22
-  colorInactive: "#26334B", //"#E3F0FA", // "#A1D1F4",
+  color: "#26334B",
   colorText: "#c5cddb",
 };
 
@@ -29,26 +27,20 @@ const gameState = {
 
 // Color palette
 const colors = {
-  // categoryCards: "#60992D",
-  categoryCardsInactive: "#86898b",
-  // categoryCardsText: "#ecf0f1",
-  categoryCardsTextInactive: "#525354",
-  questionCard: "#47224A",
-  questionCardAnswers: "#47224A",
-  // questionCardAnswersHover: "#c0392b",
-  questionCardAnswersCorrect: "#1d6b1e",
-  questionCardAnswersWrong: "#7d3028",
-  questionCardContinue: "rgb(220, 197, 222)",
-  questionCardContinueInactive: "#271328",
-  playerOneCards: "",
-  playerTwoCards: "",
+  categoryCardsInactive: "#86898b",             // Grey for used cards
+  categoryCardsTextInactive: "#525354",         // Dark grey for text on used cards
+  questionCardAnswersCorrect: "#1d6b1e",        // Green for correct answers
+  questionCardAnswersWrong: "#7d3028",          // Red for wrong answers
+  questionCardContinue: "#C5DEDC",              // Light blue for button to close question card 
 };
 
-// Global variables giving access to the player data entry form and the area with category cards
+// Global variables giving access to the player data entry form on the laoding screen
+// and the area with category cards
 const playerData = document.getElementById("player-data-form");
 const cards = document.getElementById("card-area");
 
-// Global variable containing the active category card; it is set in cardClicked() and used in processAnswer()
+// Global variable containing the active category card;
+// it is set in cardClicked() and used in processAnswer()
 let usedCard = "";
 
 // Global event listeners for player name submission and quiz category selection
@@ -93,7 +85,7 @@ function validateNames(event) {
 }
 
 /**
- * Start game by adding player names to player objects, hiding the loading screen
+ * Starts game by saving player names to player objects, hiding the loading screen
  * and showing the names and colors of the players in the game area.
  * Calls updatePlayerArea()
  */
@@ -109,18 +101,22 @@ function initializePlayers() {
   document.getElementById("player-1").style.backgroundColor = player1.color;
   document.getElementById("player-2").style.backgroundColor = player2.color;
 
+  // Highlight active player
   updatePlayerArea();
 
   // Hide loading screen and modal
   document.getElementById("loading-screen").style.display = "none";
   document.getElementById("modal").style.display = "none";
+  
+  // Declare game as started
   gameState.gameStarted = true;
+  
   return;
 }
 
 /**
  * Restarts the game while keeping the current players.
- * Resets colors, scores and round count.
+ * Resets styles, scores and round count.
  * Calls updatePlayerArea()
  */
 function continueGame() {
@@ -128,6 +124,7 @@ function continueGame() {
   document.getElementById("end-game-screen").style.display = "none";
   document.getElementById("modal").style.display = "none";
 
+  // Declare game as started
   gameState.gameStarted = true;
   gameState.currentRound = 1;
   player1.score = 0;
@@ -135,8 +132,10 @@ function continueGame() {
   document.getElementById("p1-wins").textContent = player1.wins;
   document.getElementById("p2-wins").textContent = player2.wins;
 
+  // Highlight active player
   updatePlayerArea();
 
+  // Reset category card styles
   for (let card of cards.children) {
     card.style.pointerEvents = "auto";
     card.style.backgroundColor = "";
@@ -156,24 +155,13 @@ function updatePlayerArea() {
   let activePlayer = document.getElementById(gameState.activePlayer.id);
   let inactivePlayer = document.getElementById(gameState.inactivePlayer.id);
 
-  // --- Highlight active player
-  // Access html element with class active-player-note
+  // Update html element with class 'active-player-note' below the players' names 
   activePlayer.parentElement.nextElementSibling.textContent = "It's your turn!";
-  activePlayer.parentElement.parentElement.style.backgroundColor =
-    gameState.activePlayer.color;
-  // activePlayer.parentElement.parentElement.style.border = "0.2em solid yellow";
-  // activePlayer.parentElement.parentElement.style.boxShadow = "0 0 5px 8px #47224A";
-  // activePlayer.parentElement.parentElement.style.boxShadow =
-  //   "0px 15px 25px rgba(71, 34, 74, 0.6), 0px 15px 15px rgba(71, 34, 74, 0.6)";
+  inactivePlayer.parentElement.nextElementSibling.textContent = "";
 
   // Make sure the inactive player area is hidden on mobiles
   adjustForWindowSize(activePlayer, inactivePlayer);
 
-  inactivePlayer.parentElement.nextElementSibling.textContent = "";
-  inactivePlayer.parentElement.parentElement.style.backgroundColor =
-    gameState.inactivePlayer.colorInactive;
-  // inactivePlayer.parentElement.parentElement.style.border = "0.2em solid transparent";
-  // inactivePlayer.parentElement.parentElement.style.boxShadow = "none";
   return;
 }
 
@@ -192,10 +180,10 @@ function adjustForWindowSize(activePlayer, inactivePlayer) {
 
 /**
  * Called whenever a player clicks on a category card.
- * Shows the question card and calls showQuestion().
+ * Displays the question card and calls showQuestion().
  */
 function cardClicked() {
-  // --- Make sure the game has started to prevent players from accidentally clicking on cards
+  // Make sure the game has started to prevent players from accidentally clicking on cards
   if (gameState.gameStarted) {
     // Show the card that will be filled with the question and answers
     document.getElementById("modal").style.display = "block";
@@ -227,24 +215,23 @@ function cardClicked() {
 }
 
 /**
- * Selects a question to show to the player and fills the question card with
- * possible answers.
+ * Selects a question to show to the player and fills the question card 
+ * with possible answers.
  * Calls processAnswer() once an answer has been clicked.
  */
 function showQuestion(activeCard) {
-  // --- Get a random question corresponding to the data-id of the clicked category card
+  // Get a random question corresponding to the data-id of the clicked category card
   let categoryIndex = activeCard.getAttribute("data-id");
   let category = quizCategories[categoryIndex];
   let activeQuestion = category[Math.floor(Math.random() * category.length)];
 
-  // TODO: try catch finally for reading the questions
-
+  // Display question on card
   document.getElementById("question").textContent = activeQuestion.question;
 
-  // --- Shuffle the answers
+  // Shuffle the answers
   let answerKeys = [0, 1, 2, 3];
 
-  // Error handling: check if the answer array of the active question contains exactly 4 elements.
+  // Error handling: make sure the answer array of the active question contains exactly 4 elements.
   // Log error to console.
   if (activeQuestion.answers.length != answerKeys.length) {
     console.log(
@@ -278,10 +265,11 @@ function showQuestion(activeCard) {
  * Calls nextRound() once the player clicks on Continue.
  */
 function processAnswer() {
-  // --- Check if player has clicked on the correct answer
+  // Check if player has clicked on the correct answer
   if (this.getAttribute("id") === gameState.correctAnswer) {
-    gameState.activePlayer.score += 100;
     // If correct:
+    // Increment player score
+    gameState.activePlayer.score += 100;
     // Highlight the chosen answer green
     this.style.backgroundColor = colors.questionCardAnswersCorrect;
     // Show continue button
@@ -289,10 +277,9 @@ function processAnswer() {
       colors.questionCardContinue;
     document.getElementById("close-card").style.cursor = "pointer";
     // Display the category card in the player's colors
-    usedCard.style.backgroundColor = gameState.activePlayer.colorInactive;
+    usedCard.style.backgroundColor = gameState.activePlayer.color;
     usedCard.style.color = gameState.activePlayer.colorText;
     usedCard.style.boxShadow = "none";
-    usedCard.style.textShadow = "none";
   } else {
     // If wrong:
     // Highlight the incorrect answer red and the correct answer green
@@ -310,7 +297,6 @@ function processAnswer() {
     usedCard.style.backgroundColor = colors.categoryCardsInactive;
     usedCard.style.color = colors.categoryCardsTextInactive;
     usedCard.style.boxShadow = "none";
-    usedCard.style.textShadow = "none";
   }
 
   // Make sure players can't click on other answers once an answer has been selected
@@ -320,7 +306,7 @@ function processAnswer() {
     answer.style.boxShadow = "none";
   }
 
-  // Listen for player clicking on Continue
+  // Listen for player clicking on Continue before starting next round
   document.getElementById("close-card").addEventListener("click", nextRound);
 
   return;
@@ -335,26 +321,27 @@ function nextRound() {
   document.getElementById("question-card").style.display = "none";
   document.getElementById("modal").style.display = "none";
   document.getElementById("close-card").removeEventListener("click", nextRound);
+  document.getElementById("close-card").style.backgroundColor = "";
+  document.getElementById("close-card").style.cursor = "";
 
-  // Reset the colors of answers on the question card
+  // Reset the styles of answers on the question card
   for (answer of document.getElementsByClassName("answer")) {
     answer.style.backgroundColor = "";
     answer.style.boxShadow = "";
     answer.style.transition = "all 0.3s";
     answer.style.textDecoration = "none";
   }
-  document.getElementById("close-card").style.backgroundColor =
-    colors.questionCardContinueInactive;
-  document.getElementById("close-card").style.cursor = "";
-
+ 
   // Switch players
   gameState.activePlayer =
     gameState.activePlayer === player1 ? player2 : player1;
   gameState.inactivePlayer =
     gameState.inactivePlayer === player2 ? player1 : player2;
+
   // Increment current round by 1
   gameState.currentRound += 1;
 
+  // Highlight active player
   updatePlayerArea();
 
   // Check if current round is last round and call endGame()
@@ -367,10 +354,13 @@ function nextRound() {
 
 /**
  * Processes the end of the game by displaying the results.
- * Allows players to continue playing by calling continueGame() or to reset the game for new players by reloading the page.
+ * Allows players to continue playing by calling continueGame() 
+ * or to reset the game for new players by reloading the page.
  */
 function endGame() {
+  // Declare game as finished
   gameState.gameStarted = false;
+  // Show end game screen
   document.getElementById("end-game-screen").style.display = "flex";
   document.getElementById("modal").style.display = "block";
 

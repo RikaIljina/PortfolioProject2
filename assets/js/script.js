@@ -226,7 +226,7 @@ function showQuestion(activeCard) {
   let activeQuestion = category[Math.floor(Math.random() * category.length)];
 
   // Display question on card
-  document.getElementById("question").textContent = activeQuestion.question;
+  document.getElementById("question").innerHTML = `<div>${activeQuestion.question}</div>`;
 
   // Shuffle the answers
   let answerKeys = [0, 1, 2, 3];
@@ -243,7 +243,7 @@ function showQuestion(activeCard) {
     // Select random index to shuffle the display order of the answers
     let randomIndex = Math.floor(Math.random() * answerKeys.length);
     // Fill the quiz card with the answers from the quiz dictionary
-    answer.textContent = activeQuestion.answers[answerKeys[randomIndex]];
+    answer.innerHTML = `<div>${activeQuestion.answers[answerKeys[randomIndex]]}</div>`;
 
     // Remember the element with the correct answer
     if (answerKeys[randomIndex] === activeQuestion.correctAnswer) {

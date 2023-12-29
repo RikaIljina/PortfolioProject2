@@ -295,6 +295,7 @@ function processAnswer() {
     // If wrong:
     // Highlight the incorrect answer red and the correct answer green
     this.style.backgroundColor = colors.questionCardAnswersWrong;
+    this.style.textDecoration = "line-through";
     document.getElementById(gameState.correctAnswer).style.transition =
       "all 0.7s";
     document.getElementById(gameState.correctAnswer).style.backgroundColor =
@@ -338,6 +339,7 @@ function nextRound() {
     answer.style.backgroundColor = "";
     answer.style.boxShadow = "";
     answer.style.transition = "all 0.3s";
+    answer.style.textDecoration = "none";
   }
   document.getElementById("close-card").style.backgroundColor =
     colors.questionCardContinueInactive;

@@ -4,8 +4,8 @@ const player1 = {
   score: 0,
   wins: 0,
   id: "p1-name",
-  color: "#4C672E",
-  colorText: "#e0ebd1",
+  color: "#3B5124",
+  colorText: "#ECFFD8",
 };
 const player2 = {
   name: "",
@@ -32,6 +32,7 @@ const colors = {
   categoryCardsTextInactive: "#525354",         // Dark grey for text on used cards
   questionCardAnswersCorrect: "#1d6b1e",        // Green for correct answers
   questionCardAnswersWrong: "#7d3028",          // Red for wrong answers
+  questionCardAnswersText: "#f2ebf2",           // Light magenta for better text contrast on highlighted answers
   questionCardContinue: "#f2ebf2",              // Light blue for button to close quiz card 
 };
 
@@ -292,6 +293,7 @@ function processAnswer() {
     gameState.activePlayer.score += 100;
     // Highlight the chosen answer green
     this.style.backgroundColor = colors.questionCardAnswersCorrect;
+    this.style.color = colors.questionCardAnswersText;
     // Show continue button
     document.getElementById("close-card").style.color =
       colors.questionCardContinue;
@@ -306,10 +308,13 @@ function processAnswer() {
     // Highlight the incorrect answer red and the correct answer green
     this.style.backgroundColor = colors.questionCardAnswersWrong;
     this.style.textDecoration = "line-through";
+    this.style.color = colors.questionCardAnswersText;
     document.getElementById(gameState.correctAnswer).style.transition =
       "all 0.7s";
     document.getElementById(gameState.correctAnswer).style.backgroundColor =
       colors.questionCardAnswersCorrect;
+    document.getElementById(gameState.correctAnswer).style.color =
+      colors.questionCardAnswersText; 
     // Show continue button
     document.getElementById("close-card").style.color =
       colors.questionCardContinue;
@@ -350,6 +355,7 @@ function nextRound() {
   // Reset the styles of answers on the quiz card
   for (let answer of document.getElementsByClassName("answer")) {
     answer.style.backgroundColor = "";
+    answer.style.color = "";
     answer.style.boxShadow = "";
     answer.style.transition = "all 0.3s";
     answer.style.textDecoration = "none";

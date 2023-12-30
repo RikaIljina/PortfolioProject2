@@ -36,12 +36,18 @@ const colors = {
   questionCardContinue: "#f2ebf2",              // Light blue for button to close quiz card 
 };
 
-// Global object containing editable copies of the question key arrays from file 'questions.js'.
-// Needed to choose random questions that do not repeat within a game unless every question
-// has been used once.
+// Global object containing editable arrays with question indexes corresponding to 
+// quiz categories from file 'questions.js'. Needed to choose random questions 
+// that do not repeat within a game unless every question has been used once.
+// quizCategories[i][1] denotes the length of the array. The generated question keys
+// are consecutive integers ranging from 0 to n, where n is the length of the 
+// corresponding question array minus one. 
+// My reference for the usage of spread syntax:
+// https://stackoverflow.com/questions/3895478/does-javascript-have-a-method-like-range-to-generate-a-range-within-the-supp
+
 const questionKeys = {};
 for (let i = 0; i < quizCategories.length; i++) {
-  questionKeys[i] = [...quizCategories[i][1]];
+  questionKeys[i] = [...Array(quizCategories[i][1]).keys()];
 }
 
 // Global variables giving access to the player data entry form on the loading screen
@@ -237,9 +243,10 @@ function showQuestion(activeCard) {
   let activeQuestion = category[questionKeys[categoryIndex][randomIndexQ]];
 
   // If a category is running out of new questions, reset the questionKeys array
-  // for this category to include all initial questions and start reusing them
+  // for this category to include all initial indexes for the question objects
+  // and start re-using the questions
   if (questionKeys[categoryIndex].length === 1) {
-    questionKeys[categoryIndex] = [...quizCategories[categoryIndex][1]];
+    questionKeys[categoryIndex] = [...Array(quizCategories[categoryIndex][1]).keys()];
   } else {
     // Remove the generated index from the questionKeys array to make sure
     // no questions are being selected repeatedly within a game

@@ -704,18 +704,15 @@ const quizQuestionsGeneral = [
 // The array 'quizCategories' consists of 9 subarrays.
 // Each of those subarrays contains the following values at its indexes:
 // Index 0: name of the array with the actual question objects for the corersponding category
-// Index 1: array with question keys which are consecutive integers ranging from 0 to n,
-// where n is the length of the corresponding question array minus one. 
-// My reference for the usage of spread syntax:
-// https://stackoverflow.com/questions/3895478/does-javascript-have-a-method-like-range-to-generate-a-range-within-the-supp
+// Index 1: integer denoting the length of the corresponding question array
 const quizCategories = [
-  [quizQuestionsTech, [...Array(quizQuestionsTech.length).keys()]],
-  [quizQuestionsNature, [...Array(quizQuestionsNature.length).keys()]],
-  [quizQuestionsSports, [...Array(quizQuestionsSports.length).keys()]],
-  [quizQuestionsHistory, [...Array(quizQuestionsHistory.length).keys()]],
-  [quizQuestionsGeography, [...Array(quizQuestionsGeography.length).keys()]],
-  [quizQuestionsBooks, [...Array(quizQuestionsBooks.length).keys()]],
-  [quizQuestionsMusic, [...Array(quizQuestionsMusic.length).keys()]],
-  [quizQuestionsFood, [...Array(quizQuestionsFood.length).keys()]],
-  [quizQuestionsGeneral, [...Array(quizQuestionsGeneral.length).keys()]],
+  [quizQuestionsTech, quizQuestionsTech.length],
+  [quizQuestionsNature, quizQuestionsNature.length],
+  [quizQuestionsSports, quizQuestionsSports.length],
+  [quizQuestionsHistory, quizQuestionsHistory.length],
+  [quizQuestionsGeography, quizQuestionsGeography.length],
+  [quizQuestionsBooks, quizQuestionsBooks.length],
+  [quizQuestionsMusic, quizQuestionsMusic.length],
+  [quizQuestionsFood, quizQuestionsFood.length],
+  [quizQuestionsGeneral, quizQuestionsGeneral.length],
 ];

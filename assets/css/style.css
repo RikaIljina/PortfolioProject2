@@ -175,6 +175,7 @@ footer a {
   overflow-x: hidden;
   scroll-behavior: smooth;
   justify-content: space-between;
+  /* Center the screens in the viewport */
   left: 50%;
   top: 50%;
   transform: translateX(-50%) translateY(-50%);
@@ -337,44 +338,21 @@ footer a {
   background-color: #271328;
   color: #271328;
   font-family: "Acme", sans-serif;
+  line-height: 2.7rem;
   font-size: 1.5rem;
   transition: all 0.3s;
   pointer-events: none;
 }
 
- #close-card:hover {
+#close-card:hover {
   background-color: #783c7e;
   font-size: 1.7rem;
   transition: all 0.3s;
 } 
 
-/* #end-game-screen {
-  position: fixed;
-  display: none;
-  flex-direction: column;
-  overflow-y: auto;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-  text-align: center;
-  justify-content: space-between;
-  left: 50%;
-  top: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  width: 70%;
-  min-width: 500px;
-  height: 85vh;
-  padding: 2rem;
-  border-radius: 15px;
-  border: 3px solid #3c173f;
-  box-shadow: inset 0 0 5px 5px black;
-  background-color: #47224a;
-  font-family: "Acme", sans-serif;
-  font-size: 1.5rem;
-  color: #dcc5de;
-} */
-
+/* Name of the winner on the end game screen */
 #winner {
-  font-size: 1.8rem;
+  font-size: 1.7rem;
 }
 
 #end-game-screen table,
@@ -390,6 +368,7 @@ th {
   margin-bottom: 2rem;
 }
 
+/* Styles for the error page error.html */
 #error-page-div {
   font-size: 2rem;
   display: block;
@@ -484,7 +463,11 @@ th {
   }
 
   #close-card {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+  }
+
+  #close-card:hover {
+    font-size: 1.7rem;
   }
 
   #winner {
@@ -492,8 +475,8 @@ th {
   }
 
   .restart-btn {
-    font-size: 1.5rem;
     width: 10rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -546,6 +529,10 @@ th {
 
   #close-card {
     font-size: 2rem;
+  }
+
+  #close-card:hover {
+    font-size: 2.2rem;
   }
 
   .restart-btn {
@@ -602,6 +589,10 @@ th {
   #close-card {
     font-size: 2.5rem;
   }
+  
+  #close-card:hover {
+    font-size: 2.7rem;
+  }
 
   #loading-screen,
   #end-game-screen {
@@ -612,9 +603,9 @@ th {
   }
 
   #player-name-inputs > p > input {
-    font-size: 2rem;
     width: 20rem;
     height: 5rem;
+    font-size: 2rem;
   }
 
   #input-error {
@@ -624,8 +615,8 @@ th {
   #start-btn {
     height: 5rem;
     width: 15rem;
-    font-size: 3rem;
     margin-top: 6rem;
+    font-size: 3rem;
   }
 
   #start-btn:hover {

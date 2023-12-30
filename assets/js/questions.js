@@ -149,26 +149,26 @@ const quizQuestionsSports = [
     answers: ["Brazil", "Germany", "Italy", "Spain"],
     correctAnswer: 0,
   },
-  {
-    question: "What is the national sport of Japan?",
-    answers: ["Sumo Wrestling", "Judo", "Karate", "Kendo"],
-    correctAnswer: 0,
-  },
-  {
-    question: "In which year did the first modern Olympic Games take place?",
-    answers: ["1896", "1904", "1920", "1936"],
-    correctAnswer: 0,
-  },
-  {
-    question: "What is the distance of a marathon in kilometers?",
-    answers: ["42.195 km", "26.2 km", "21 km", "10 km"],
-    correctAnswer: 0,
-  },
-  {
-    question: "Which sport is played at Wimbledon?",
-    answers: ["Tennis", "Golf", "Cricket", "Badminton"],
-    correctAnswer: 0,
-  },
+  // {
+  //   question: "What is the national sport of Japan?",
+  //   answers: ["Sumo Wrestling", "Judo", "Karate", "Kendo"],
+  //   correctAnswer: 0,
+  //  },
+  // {
+  //   question: "In which year did the first modern Olympic Games take place?",
+  //   answers: ["1896", "1904", "1920", "1936"],
+  //   correctAnswer: 0,
+  // },
+  // {
+  //   question: "What is the distance of a marathon in kilometers?",
+  //   answers: ["42.195 km", "26.2 km", "21 km", "10 km"],
+  //   correctAnswer: 0,
+  // },
+  // {
+  //   question: "Which sport is played at Wimbledon?",
+  //   answers: ["Tennis", "Golf", "Cricket", "Badminton"],
+  //   correctAnswer: 0,
+  // },
 ];
 
 const quizQuestionsHistory = [
@@ -701,14 +701,21 @@ const quizQuestionsGeneral = [
   },
 ];
 
+// The array 'quizCategories' consists of 9 subarrays.
+// Each of those subarrays contains the following values at its indexes:
+// Index 0: name of the array with the actual question objects for the corersponding category
+// Index 1: array with question keys which are consecutive integers ranging from 0 to n,
+// where n is the length of the corresponding question array. 
+// My reference for the usage of spread syntax:
+// https://stackoverflow.com/questions/3895478/does-javascript-have-a-method-like-range-to-generate-a-range-within-the-supp
 const quizCategories = [
-  quizQuestionsTech,
-  quizQuestionsNature,
-  quizQuestionsSports,
-  quizQuestionsHistory,
-  quizQuestionsGeography,
-  quizQuestionsBooks,
-  quizQuestionsMusic,
-  quizQuestionsFood,
-  quizQuestionsGeneral,
+  [quizQuestionsTech, [...Array(quizQuestionsTech.length).keys()]],
+  [quizQuestionsNature, [...Array(quizQuestionsNature.length).keys()]],
+  [quizQuestionsSports, [...Array(quizQuestionsSports.length).keys()]],
+  [quizQuestionsHistory, [...Array(quizQuestionsHistory.length).keys()]],
+  [quizQuestionsGeography, [...Array(quizQuestionsGeography.length).keys()]],
+  [quizQuestionsBooks, [...Array(quizQuestionsBooks.length).keys()]],
+  [quizQuestionsMusic, [...Array(quizQuestionsMusic.length).keys()]],
+  [quizQuestionsFood, [...Array(quizQuestionsFood.length).keys()]],
+  [quizQuestionsGeneral, [...Array(quizQuestionsGeneral.length).keys()]],
 ];

@@ -35,7 +35,15 @@ const colors = {
   questionCardContinue: "#f2ebf2",              // Light blue for button to close quiz card 
 };
 
-// Global variables giving access to the player data entry form on the laoding screen
+// Global object containing editable copies of the question key arrays from file 'questions.js'.
+// Needed to choose random questions that do not repeat within a game unless every question
+// has been used once.
+const questionKeys = {};
+for (let i = 0; i < quizCategories.length; i++) {
+  questionKeys[i] = [...quizCategories[i][1]];
+}
+
+// Global variables giving access to the player data entry form on the loading screen
 // and the area with category cards
 const playerData = document.getElementById("player-data-form");
 const cards = document.getElementById("card-area");
@@ -46,7 +54,7 @@ for (let child of cards.children) {
   child.addEventListener("click", cardClicked);
 }
 
-// Event listener that makes sure the player area is always correctly displayed/hidden
+// Global event listener that makes sure the player area is always correctly displayed/hidden
 // when the user decides to resize the window. The function adjustForWindowSize() is also
 // called once in updatePlayerArea().
 window.addEventListener(
@@ -217,10 +225,25 @@ function cardClicked() {
  * Calls processAnswer() once an answer has been clicked.
  */
 function showQuestion(activeCard) {
-  // Get a random question corresponding to the data-id of the clicked category card
+  // The attribute 'data-id' of the card elements is an integer in range 0-9 and corresponds
+  // to the category indexes of the 'quizCategories' array.
+  // See 'questions.js' for info on the format of 'quizCategories'
   let categoryIndex = activeCard.getAttribute("data-id");
-  let category = quizCategories[categoryIndex];
-  let activeQuestion = category[Math.floor(Math.random() * category.length)];
+  let category = quizCategories[categoryIndex][0];
+  // Generate random index based on the amount of questions in the corrseponding category 
+  let randomIndexQ = Math.floor(Math.random() * questionKeys[categoryIndex].length);
+  // Select the question with the generated index
+  let activeQuestion = category[questionKeys[categoryIndex][randomIndexQ]];
+
+  // If a category is running out of new questions, reset the questionKeys array
+  // for this category to include all initial questions and start reusing them
+  if (questionKeys[categoryIndex].length === 1) {
+    questionKeys[categoryIndex] = [...quizCategories[categoryIndex][1]];
+  } else {
+    // Remove the generated index from the questionKeys array to make sure
+    // no questions are being selected repeatedly within a game
+    questionKeys[categoryIndex].splice(randomIndexQ, 1);
+  }
 
   // Display question on card
   document.getElementById("question").textContent = activeQuestion.question;
@@ -237,16 +260,16 @@ function showQuestion(activeCard) {
   }
 
   for (let answer of document.getElementsByClassName("answer")) {
-    // Select random index to shuffle the display order of the answers
+    // Generate random index to shuffle the display order of the answers
     let randomIndex = Math.floor(Math.random() * answerKeys.length);
-    // Fill the quiz card with the answers from the quiz dictionary
-    answer.innerHTML = activeQuestion.answers[answerKeys[randomIndex]];
+    // Fill the quiz card with the answers from the quiz object
+    answer.textContent = activeQuestion.answers[answerKeys[randomIndex]];
 
     // Remember the element with the correct answer
     if (answerKeys[randomIndex] === activeQuestion.correctAnswer) {
       gameState.correctAnswer = answer.getAttribute("id");
     }
-    // Remove the selected index from the list to make sure no answers are being selected multiple times
+    // Remove the generated index from the list to make sure no answers are being selected multiple times
     answerKeys.splice(randomIndex, 1);
 
     // Listen for player clicking on an answer

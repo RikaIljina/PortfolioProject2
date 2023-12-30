@@ -31,7 +31,7 @@ const colors = {
   categoryCardsTextInactive: "#525354",         // Dark grey for text on used cards
   questionCardAnswersCorrect: "#1d6b1e",        // Green for correct answers
   questionCardAnswersWrong: "#7d3028",          // Red for wrong answers
-  questionCardContinue: "#C5DEDC",              // Light blue for button to close question card 
+  questionCardContinue: "#f2ebf2",              // Light blue for button to close quiz card 
 };
 
 // Global variables giving access to the player data entry form on the laoding screen
@@ -180,14 +180,14 @@ function adjustForWindowSize(activePlayer, inactivePlayer) {
 
 /**
  * Called whenever a player clicks on a category card.
- * Displays the question card and calls showQuestion().
+ * Displays the quiz card and calls showQuestion().
  */
 function cardClicked() {
   // Make sure the game has started to prevent players from accidentally clicking on cards
   if (gameState.gameStarted) {
     // Show the card that will be filled with the question and answers
     document.getElementById("modal").style.display = "block";
-    document.getElementById("question-card").style.display = "flex";
+    document.getElementById("quiz-card").style.display = "flex";
 
     // Make sure the answers are clickable
     for (answer of document.getElementsByClassName("answer")) {
@@ -215,7 +215,7 @@ function cardClicked() {
 }
 
 /**
- * Selects a question to show to the player and fills the question card 
+ * Selects a question to show to the player and fills the quiz card 
  * with possible answers.
  * Calls processAnswer() once an answer has been clicked.
  */
@@ -226,7 +226,7 @@ function showQuestion(activeCard) {
   let activeQuestion = category[Math.floor(Math.random() * category.length)];
 
   // Display question on card
-  document.getElementById("question").innerHTML = `<div>${activeQuestion.question}</div>`;
+  document.getElementById("question").textContent = activeQuestion.question;
 
   // Shuffle the answers
   let answerKeys = [0, 1, 2, 3];
@@ -273,8 +273,9 @@ function processAnswer() {
     // Highlight the chosen answer green
     this.style.backgroundColor = colors.questionCardAnswersCorrect;
     // Show continue button
-    document.getElementById("close-card").style.backgroundColor =
+    document.getElementById("close-card").style.color =
       colors.questionCardContinue;
+      document.getElementById("close-card").style.pointerEvents = "auto";
     document.getElementById("close-card").style.cursor = "pointer";
     // Display the category card in the player's colors
     usedCard.style.backgroundColor = gameState.activePlayer.color;
@@ -290,8 +291,9 @@ function processAnswer() {
     document.getElementById(gameState.correctAnswer).style.backgroundColor =
       colors.questionCardAnswersCorrect;
     // Show continue button
-    document.getElementById("close-card").style.backgroundColor =
+    document.getElementById("close-card").style.color =
       colors.questionCardContinue;
+      document.getElementById("close-card").style.pointerEvents = "auto";
     document.getElementById("close-card").style.cursor = "pointer";
     // Display the category card in grey
     usedCard.style.backgroundColor = colors.categoryCardsInactive;
@@ -317,14 +319,15 @@ function processAnswer() {
  * Calls endGame() once last round is reached.
  */
 function nextRound() {
-  // Hide question card and deactivate its button
-  document.getElementById("question-card").style.display = "none";
+  // Hide quiz card and deactivate its button
+  document.getElementById("quiz-card").style.display = "none";
   document.getElementById("modal").style.display = "none";
   document.getElementById("close-card").removeEventListener("click", nextRound);
-  document.getElementById("close-card").style.backgroundColor = "";
+  document.getElementById("close-card").style.color = "";
   document.getElementById("close-card").style.cursor = "";
+  document.getElementById("close-card").style.pointerEvents = "none";
 
-  // Reset the styles of answers on the question card
+  // Reset the styles of answers on the quiz card
   for (answer of document.getElementsByClassName("answer")) {
     answer.style.backgroundColor = "";
     answer.style.boxShadow = "";

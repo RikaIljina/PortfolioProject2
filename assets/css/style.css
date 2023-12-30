@@ -17,7 +17,6 @@ header {
   background-color: #47224a;
   color: #dcc5de;
   width: 100%;
-  position: sticky;
   padding-top: 1rem;
   text-align: center;
   font-size: 2rem;
@@ -36,6 +35,7 @@ main {
   flex: 1;
 }
 
+/* Contains the player areas and the card area */
 #game-container {
   display: flex;
   flex-direction: column;
@@ -46,6 +46,7 @@ main {
   background-color: #c9c7c9;
 }
 
+/* Player areas with player names, current turn indicator and scores */
 #player-1,
 #player-2 {
   display: flex;
@@ -54,25 +55,18 @@ main {
   background-color: grey;
   flex: 1;
   align-self: stretch;
-
-  line-height: 2rem;
-  text-align: center;
-  font-family: "Acme", sans-serif;
-
-  font-size: 1.5rem;
+  /* Make sure the player area is always the topmost element in mobile view */
+  order: 0;
   margin: 10px;
   padding: 10px;
   border-radius: 15px;
+  line-height: 2rem;
+  text-align: center;
+  font-family: "Acme", sans-serif;
+  font-size: 1.5rem;
 }
 
-#player-1 {
-  order: 1;
-}
-
-#player-2 {
-  order: 2;
-}
-
+/* Certain line breaks with this class will be hidden in mobile view */
 .hide-on-mobile {
   display: none;
 }
@@ -95,6 +89,7 @@ main {
   color: #c5cddb;
 }
 
+/* This text marks the currently active player */
 .active-player-note {
   font-size: 1.8rem;
   align-self: center;
@@ -109,9 +104,10 @@ main {
   flex: 3;
 }
 
+/* The card area contains the 9 cards */
 #card-area {
   display: flex;
-  order: 3;
+  order: 1;
   flex: 5;
   gap: 5px;
   flex-wrap: wrap;
@@ -124,20 +120,19 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  align-self: stretch;
   width: 25%;
   min-width: 7rem;
-  flex-basis: 1;
-  align-self: stretch;
-  background-color: #47224a;
   margin: 10px 0;
+  border-radius: 15px;
+  background-color: #47224a;
+  color: #dcc5de;
+  box-shadow: 0px 15px 15px rgba(71, 34, 74, 0.6),
+    0px 5px 5px rgba(71, 34, 74, 0.6);
   line-height: 6rem;
   font-size: 2rem;
   font-family: "Acme", sans-serif;
   transition: all 0.3s;
-  border-radius: 15px;
-  box-shadow: 0px 15px 15px rgba(71, 34, 74, 0.6),
-    0px 5px 5px rgba(71, 34, 74, 0.6);
-  color: #dcc5de;
 }
 
 .card:hover {
@@ -148,9 +143,9 @@ main {
 }
 
 footer {
+  width: 100%;
   background-color: #47224a;
   color: #dcc5de;
-  width: 100%;
   text-align: center;
   line-height: 2rem;
   font-size: 1.3rem;
@@ -161,13 +156,14 @@ footer a {
   color: #dcc5de;
 }
 
+/* Overlays the whole viewport */
 #modal {
   position: fixed;
   left: 0;
   top: 0;
   height: 100%;
   width: 100%;
-  background-color: rgba(140, 138, 141, 0.9);
+  background-color: rgba(201, 199, 201, 0.8);
 }
 
 #loading-screen,
@@ -178,44 +174,45 @@ footer a {
   overflow-y: auto;
   overflow-x: hidden;
   scroll-behavior: smooth;
-  text-align: center;
   justify-content: space-between;
   left: 50%;
   top: 50%;
   transform: translateX(-50%) translateY(-50%);
   width: 95%;
   height: 90vh;
-  padding: 1rem;
   border-radius: 15px;
   border: 3px solid #3c173f;
   box-shadow: inset 0 0 5px 5px black;
   background-color: #47224a;
+  color: #dcc5de;
+  padding: 1rem;
+  text-align: center;
   font-family: "Acme", sans-serif;
   font-size: 1.3rem;
-  color: #dcc5de;
 }
 
 #loading-screen {
   display: flex;
 }
 
+/* Element below the player name input fields that is only shown on input error */
 #input-error {
-  font-size: 0.8rem;
   height: 3rem;
   width: 100%;
   margin-bottom: -3rem;
+  font-size: 0.8rem;
 }
 
+/* Player name input fields */
 #player-name-inputs > p > input {
-  margin: 0.5rem 0;
-  padding-left: 0.5rem;
+  width: 13rem;
   background-color: rgb(220, 197, 222);
   box-shadow: inset 0 -2px 2px 2px;
   border-radius: 5px;
   border-style: none;
+  margin: 0.5rem 0;
+  padding-left: 0.5rem;
   line-height: 2.5rem;
-  width: 13rem;
-  outline: none;
   font-family: "Acme", sans-serif;
   font-size: 1rem;
 }
@@ -225,89 +222,91 @@ footer a {
   outline: 2px solid rgba(220, 197, 222, 0.5);
 }
 
-#start-button,
+/* Buttons on the loading screen and end game screen */
+#start-btn,
 .restart-btn {
-  margin: 4rem 0 0 0;
-  height: 3rem;
   width: 7rem;
+  height: 3rem;
   background-color: rgb(220, 197, 222);
+  color: #47224a;
   border-radius: 5px;
   border: none;
-
+  margin: 4rem 0 0 0;
   font-family: "Acme", sans-serif;
   font-size: 1.5rem;
-  color: #47224a;
   transition: all 0.3s;
 }
 
-#restart-buttons {
-  display: flex;
-  justify-content: space-evenly;
-}
-
 .restart-btn {
-  margin: 2rem 0 0 0;
-  font-size: 1.2rem;
   height: 4rem;
   width: 7rem;
+  margin: 2rem 0 0 0;
+  font-size: 1.2rem;
 }
 
-#start-button {
+#start-btn {
   margin-top: 4.4rem;
 }
 
-#start-button:hover,
+#start-btn:hover,
 .restart-btn:hover {
-  font-size: 1.4rem;
   background-color: rgb(247, 235, 247);
+  font-size: 1.4rem;
   transition: all 0.3s;
 }
 
-#start-button:hover {
+#start-btn:hover {
   font-size: 1.7rem;
 }
 
-#start-button:focus,
+#start-btn:focus,
 .restart-btn:focus {
   outline: 2px solid rgba(220, 197, 222, 0.5);
 }
 
-#start-button:active,
+#start-btn:active,
 .restart-btn:active {
   background-color: #47224a;
   color: rgb(247, 235, 247);
 }
 
-#question-card {
+/* Restart button placement */
+#restart-btn-div {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+/* Div containing the paragraphs with the question and the answers */
+#quiz-card {
   position: fixed;
   display: none;
   flex-direction: column;
   justify-content: space-between;
+  /* Centered in the middle of the viewport */
   left: 50%;
   top: 50%;
   transform: translateX(-50%) translateY(-50%);
-  overflow-y: auto;
   width: 100%;
   min-width: 200px;
   height: 95vh;
-  background-color: transparent;
-  color: rgb(220, 197, 222);
+  /* Become scrollable in case it doesn't fully fit */
+  overflow-y: auto;
 }
 
+/* Shared styles for all paragraphs on the quiz card */
 .qcard-text {
   display: flex;
-  background-color: #47224a;
+  /* Make sure the text is centered vertically and horizontally */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   border-radius: 10px;
-  flex: 1;
-  padding: 1rem 0.5rem 1rem 0.5rem;
+  background-color: #47224a;
+  color: rgb(220, 197, 222);
   margin: 0 7px 3px 7px;
+  padding: 1rem 0.5rem 1rem 0.5rem;
   font-family: "Acme", sans-serif;
   font-size: 1.5rem;
-}
-
-.qcard-text > div {
-  margin: auto;
-  text-align: center;
 }
 
 .question {
@@ -316,6 +315,7 @@ footer a {
 }
 
 .answer {
+  flex: 1;
   margin: 0 7px 7px 7px;
   box-shadow: 0px 6px 6px rgba(75, 21, 78, 0.8),
     0px 3px 6px rgba(195, 137, 199, 0.6);
@@ -338,11 +338,15 @@ footer a {
   color: #271328;
   font-family: "Acme", sans-serif;
   font-size: 1.5rem;
+  transition: all 0.3s;
+  pointer-events: none;
 }
 
-/* #close-card:hover {
-  background-color: #271328;
-} */
+ #close-card:hover {
+  background-color: #783c7e;
+  font-size: 1.7rem;
+  transition: all 0.3s;
+} 
 
 /* #end-game-screen {
   position: fixed;
@@ -457,16 +461,16 @@ th {
     font-size: 1.5rem;
   }
 
-  #start-button {
+  #start-btn {
     margin-top: 4rem;
   }
 
-  #start-button:hover,
+  #start-btn:hover,
   .restart-btn:hover {
     font-size: 1.7rem;
   }
 
-  #question-card {
+  #quiz-card {
     width: 47%;
     height: 90vh;
   }
@@ -527,7 +531,7 @@ th {
     font-size: 3rem;
   }
 
-  #question-card {
+  #quiz-card {
     width: 43%;
     height: 85vh;
   }
@@ -582,7 +586,7 @@ th {
     font-size: 3.5rem;
   }
 
-  #question-card {
+  #quiz-card {
     width: 33%;
     height: 80vh;
   }
@@ -617,14 +621,14 @@ th {
     font-size: 2rem;
   }
 
-  #start-button {
+  #start-btn {
     height: 5rem;
     width: 15rem;
     font-size: 3rem;
     margin-top: 6rem;
   }
 
-  #start-button:hover {
+  #start-btn:hover {
     font-size: 3.3rem;
   }
 

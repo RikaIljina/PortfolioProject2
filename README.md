@@ -4,6 +4,7 @@ This project is a website with one page that allows the users to play a trivia q
 
 
 The website is fully responsive across multiple devices.
+![Website view on different devices](assets/images/readme_mockup_responsive.png)
 
 
 ## Table of Contents

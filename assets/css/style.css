@@ -112,7 +112,7 @@ main {
   gap: 5px;
   flex-wrap: wrap;
   min-height: auto;
-  align-self: center stretch;
+  align-self: stretch;
   justify-content: space-evenly;
 }
 

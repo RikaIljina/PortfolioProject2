@@ -23,6 +23,7 @@ const gameState = {
   inactivePlayer: player2,
   currentRound: 1,
   correctAnswer: "",
+  usedCard: "",
 };
 
 // Color palette
@@ -38,10 +39,6 @@ const colors = {
 // and the area with category cards
 const playerData = document.getElementById("player-data-form");
 const cards = document.getElementById("card-area");
-
-// Global variable containing the active category card;
-// it is set in cardClicked() and used in processAnswer()
-let usedCard = "";
 
 // Global event listeners for player name submission and quiz category selection
 playerData.elements["submit"].addEventListener("click", validateNames);
@@ -107,10 +104,10 @@ function initializePlayers() {
   // Hide loading screen and modal
   document.getElementById("loading-screen").style.display = "none";
   document.getElementById("modal").style.display = "none";
-  
+
   // Declare game as started
   gameState.gameStarted = true;
-  
+
   return;
 }
 
@@ -190,7 +187,7 @@ function cardClicked() {
     document.getElementById("quiz-card").style.display = "flex";
 
     // Make sure the answers are clickable
-    for (answer of document.getElementsByClassName("answer")) {
+    for (let answer of document.getElementsByClassName("answer")) {
       answer.style.pointerEvents = "auto";
     }
 
@@ -206,7 +203,7 @@ function cardClicked() {
     this.style.pointerEvents = "none";
 
     // Save this category card in a global variable for later use in processAnswer()
-    usedCard = this;
+    gameState.usedCard = this;
 
     return;
   } else {
@@ -239,11 +236,11 @@ function showQuestion(activeCard) {
     );
   }
 
-  for (answer of document.getElementsByClassName("answer")) {
+  for (let answer of document.getElementsByClassName("answer")) {
     // Select random index to shuffle the display order of the answers
     let randomIndex = Math.floor(Math.random() * answerKeys.length);
     // Fill the quiz card with the answers from the quiz dictionary
-    answer.innerHTML = `<div>${activeQuestion.answers[answerKeys[randomIndex]]}</div>`;
+    answer.innerHTML = activeQuestion.answers[answerKeys[randomIndex]];
 
     // Remember the element with the correct answer
     if (answerKeys[randomIndex] === activeQuestion.correctAnswer) {
@@ -275,12 +272,12 @@ function processAnswer() {
     // Show continue button
     document.getElementById("close-card").style.color =
       colors.questionCardContinue;
-      document.getElementById("close-card").style.pointerEvents = "auto";
+    document.getElementById("close-card").style.pointerEvents = "auto";
     document.getElementById("close-card").style.cursor = "pointer";
     // Display the category card in the player's colors
-    usedCard.style.backgroundColor = gameState.activePlayer.color;
-    usedCard.style.color = gameState.activePlayer.colorText;
-    usedCard.style.boxShadow = "none";
+    gameState.usedCard.style.backgroundColor = gameState.activePlayer.color;
+    gameState.usedCard.style.color = gameState.activePlayer.colorText;
+    gameState.usedCard.style.boxShadow = "none";
   } else {
     // If wrong:
     // Highlight the incorrect answer red and the correct answer green
@@ -293,16 +290,16 @@ function processAnswer() {
     // Show continue button
     document.getElementById("close-card").style.color =
       colors.questionCardContinue;
-      document.getElementById("close-card").style.pointerEvents = "auto";
+    document.getElementById("close-card").style.pointerEvents = "auto";
     document.getElementById("close-card").style.cursor = "pointer";
     // Display the category card in grey
-    usedCard.style.backgroundColor = colors.categoryCardsInactive;
-    usedCard.style.color = colors.categoryCardsTextInactive;
-    usedCard.style.boxShadow = "none";
+    gameState.usedCard.style.backgroundColor = colors.categoryCardsInactive;
+    gameState.usedCard.style.color = colors.categoryCardsTextInactive;
+    gameState.usedCard.style.boxShadow = "none";
   }
 
   // Make sure players can't click on other answers once an answer has been selected
-  for (answer of document.getElementsByClassName("answer")) {
+  for (let answer of document.getElementsByClassName("answer")) {
     answer.style.pointerEvents = "none";
     answer.removeEventListener("click", processAnswer);
     answer.style.boxShadow = "none";
@@ -328,13 +325,13 @@ function nextRound() {
   document.getElementById("close-card").style.pointerEvents = "none";
 
   // Reset the styles of answers on the quiz card
-  for (answer of document.getElementsByClassName("answer")) {
+  for (let answer of document.getElementsByClassName("answer")) {
     answer.style.backgroundColor = "";
     answer.style.boxShadow = "";
     answer.style.transition = "all 0.3s";
     answer.style.textDecoration = "none";
   }
- 
+
   // Switch players
   gameState.activePlayer =
     gameState.activePlayer === player1 ? player2 : player1;

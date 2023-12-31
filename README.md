@@ -54,6 +54,10 @@ The site goal is to engage two people in a fun quiz game for an unspecified amou
 
 ## Design
 
+When choosing a design for my game, I prioritized clearness and readability to make sure all important information was visible and easily readable to the players at all times and on different screen sizes. At the same time, I chose to implement different colors to give the game a fun and colorful feeling.
+The header with the game title and the footer with copyright info are designed to be unobtrusive as to not draw attention away from the main game area.
+Since it is a two-player game, each player has their own color that is used in that player's area  
+
 ### Color scheme
 
 ![Game palette](assets/images/readme_palette.png)

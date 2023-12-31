@@ -418,7 +418,7 @@ th {
     display: none;
     width: 70%;
     min-width: 500px;
-    height: 85vh;
+    height: 60vh;
     padding: 2rem;
     font-size: 1.3rem;
   }
@@ -480,13 +480,24 @@ th {
   }
 }
 
+/* Media query for view on screens > 862px */
 @media screen and (min-width: 862px) {
   #p1-name,
   #p2-name {
     font-size: 2.5rem;
   }
+
+  #loading-screen,
+  #end-game-screen {
+    width: 70%;
+    height: 65vh;
+    padding: 3rem;
+    font-size: 1.4rem;
+  }
+
 }
 
+/* Media query for view on laptops and screens > 1440px */
 @media screen and (min-width: 1440px) {
   header {
     font-size: 3rem;
@@ -535,6 +546,33 @@ th {
     font-size: 2.2rem;
   }
 
+    #loading-screen,
+  #end-game-screen {
+    width: 60%;
+    height: 65vh;
+    padding: 3rem;
+    font-size: 1.8rem;
+  }
+
+  #end-game-screen {
+    height: 75vh;
+  }
+
+  #input-error {
+    font-size: 1.2rem;
+  }
+
+  #start-btn {
+    height: 4rem;
+    width: 10rem;
+    margin-top: 4rem;
+    font-size: 2.2rem;
+  }
+
+  #start-btn:hover {
+    font-size: 2.5rem;
+  }
+
   .restart-btn {
     width: 14rem;
     font-size: 2rem;
@@ -545,6 +583,7 @@ th {
   }
 }
 
+/* Media query for view on larger screens > 2559px */
 @media screen and (min-width: 2559px) {
   header {
     font-size: 3rem;
@@ -597,14 +636,22 @@ th {
   #loading-screen,
   #end-game-screen {
     width: 50%;
-    height: 80vh;
+    height: 70vh;
     padding: 3rem;
-    font-size: 2.2rem;
+    font-size: 2rem;
+  }
+  
+  #end-game-screen {
+    height: 75vh;
+  }
+
+  #input-error {
+    font-size: 1.4rem;
   }
 
   #player-name-inputs > p > input {
     width: 20rem;
-    height: 5rem;
+    height: 4rem;
     font-size: 2rem;
   }
 

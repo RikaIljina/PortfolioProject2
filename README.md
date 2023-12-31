@@ -129,8 +129,12 @@ After the webpage has loaded, the user is presented with a loading screen provid
 - assets/js/script.js - script file containing the game code
 
 #### Flowchart
+<details>
+<summary>Flowchart depicting the progression of actions and processes</summary>
 
-[Flowchart depicting the progression of actions and processes](assets/images/readme_flowchart.png)
+![Flowchart depicting the progression of actions and processes](assets/images/readme_flowchart.png)
+
+</details>
 
 #### Mechanics
 

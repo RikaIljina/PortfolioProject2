@@ -116,3 +116,34 @@ After the webpage has loaded, the user is presented with a loading screen provid
     - "Next round" - allows the players to continue at step 4 with new questions and all category cards reset. Their progress will be saved.
     - "New game" - allows the players to restart the game for new players. All progress is lost.
 
+### Codebase
+
+#### File structure
+
+- index.html - main HTML file with the game elements
+- error.html - an error page to be shown in case there is an issue with the database and questions cannot be retrieved
+- assets/css/style.css - styles for the entire site
+- assets/favicons - folder containing the site icons
+- assets/images - folder containing the image files (for now only readme images)
+- assets/js/questions.js - database file containing nine arrays with question objects for the nine categories as well as an array containing the quiz category names and their respective array lengths 
+- assets/js/script.js - script file containing the game code
+
+#### Flowchart
+
+[Flowchart depicting the progression of actions and processes](assets/images/readme_flowchart.png)
+
+#### Mechanics
+
+**Scope:**
+
+Considering that it is seen as bad practice in JavaScript to have global variables that can accidentally be overwritten, but also having the need for variables that can be accessed by different functions, I decided to declare global objects with the `const` keyword to make sure they cannot be reassigned. Among those objects are `player1` and `player2` that contain all data pertaining to the relevant player as well as the `gameState` object containing all data on the game progress and the current round.
+
+I use the `let` keyword for all variables within functions to keep them in their respective scopes.
+
+**Event handling:**
+
+Event listeners set globally only persist througout the entire game loop if they are constantly needed, as is the case for the event listeners on the 9 category cards. Other event listeners that are required only once or are confined to certain functions are removed as soon as they are no longer needed to prevent unexpected behavior from the game.
+
+**Questions database:**
+
+**Non-repetitive randomness:**

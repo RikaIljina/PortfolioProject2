@@ -102,6 +102,7 @@ function validateNames(event) {
  * Calls updatePlayerArea()
  */
 function initializePlayers() {
+  playerData.elements["submit"].removeEventListener("click", validateNames);
   // Initialize player objects with names
   player1.name = playerData.elements["p1"].value;
   player2.name = playerData.elements["p2"].value;

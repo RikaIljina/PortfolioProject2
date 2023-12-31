@@ -120,13 +120,13 @@ After the webpage has loaded, the user is presented with a loading screen provid
 
 #### File structure
 
-- index.html - main HTML file with the game elements
-- error.html - an error page to be shown in case there is an issue with the database and questions cannot be retrieved
-- assets/css/style.css - styles for the entire site
-- assets/favicons - folder containing the site icons
-- assets/images - folder containing the image files (for now only readme images)
-- assets/js/questions.js - database file containing nine arrays with question objects for the nine categories as well as an array containing the quiz category names and their respective array lengths 
-- assets/js/script.js - script file containing the game code
+- `index.html` - main HTML file with the game elements
+- `error.html` - an error page to be shown in case there is an issue with the database and questions cannot be retrieved
+- `assets/css/style.css` - styles for the entire site
+- `assets/favicons` - folder containing the site icons
+- `assets/images` - folder containing the image files (for now only readme images)
+- `assets/js/questions.js` - database file containing nine arrays with question objects for the nine categories as well as an array containing the quiz category names and their respective array lengths 
+- `assets/js/script.js` - script file containing the game code
 
 #### Flowchart
 <details>
@@ -146,8 +146,96 @@ I use the `let` keyword for all variables within functions to keep them in their
 
 **Event handling:**
 
-Event listeners set globally only persist througout the entire game loop if they are constantly needed, as is the case for the event listeners on the 9 category cards. Other event listeners that are required only once or are confined to certain functions are removed as soon as they are no longer needed to prevent unexpected behavior from the game.
+Event listeners set globally only persist througout the entire game loop if they are constantly needed, as is the case for the event listeners on the 9 category cards. Other event listeners that are required only once or are confined to certain functions are removed as soon as they are no longer needed to prevent unexpected behavior in the game.
 
 **Questions database:**
 
+The file `questions.js` contains the database from which the quiz questions and answers are retrieved. For each of the 9 categories, there is one array contianing multiple objects. The format of the array is as follows:
+
+```
+const quizQuestionsCategoryName = [
+  {
+    question: "Question shown to the player",
+    answers: [
+      "Correct Answer",
+      "Answer b",
+      "Answer c",
+      "Answer d",
+    ],
+    correctAnswer: 0,
+  },
+  ...
+  ]
+  ```
+Additional quiz questions must be added in the exact same format.
+
+The file also contains the array `quizCategories` which is needed to access the correct category array whenever the player clicks on a category card. The format of this array is as folows:
+```
+const quizCategories = [
+  [quizQuestionsCategoryName, quizQuestionsCategoryName.length],
+  ...
+]
+```
+
+The array contains exactly 9 subarrays and their indexes must correspond to the values of the attribute `data-id` of the `div` elements inside the div container `card-area` in `index.html`. For example, since the `div` of the category card "Tech" has the attribute `data-id="0"`, the array `[quizQuestionsTech, quizQuestionsTech.length]` must be found at index 0 of the array `quizCategories` to ensure correct data retrieval.
+
 **Non-repetitive randomness:**
+
+I wanted to make sure that players who play multiple consecutive rounds do not encounter the same question several times (unless, of course, they play more times than there are questions). To that end, I implemented the following process:
+
+Instead of randomly selecting one question from the array and then risking its repeated selection next round, I wanted to select a random index to retrieve the question with and then remove that index from an individual list of indexes pertaining to each category. For that, I needed editable arrays with exactly as many index numbers from 0 to n as there are question objects in the corresponding category array.
+
+The following code takes care of that:
+
+```
+const questionKeys = {};
+for (let i = 0; i < quizCategories.length; i++) {
+  questionKeys[i] = [...Array(quizCategories[i][1]).keys()];
+}
+```
+`quizCategories.length` is 9, since there are 9 categories. `quizCategories[i][1]` is the length of each category array. Using spread syntax, I create 9 subarrays with indexes ranging from 0 to n, where n is the length of each category array minus 1.
+
+Then, in the function `showQuestion()`, I use `Math.random()` to generate a random index for the `questionKeys` array:
+
+```
+let randomIndexQ = Math.floor(Math.random() * questionKeys[categoryIndex].length);
+```
+The question to be shown to the player is chosen based on that index. 
+
+Finally, I have to make sure that the used index number is either removed from the `questionKeys` array, or that the array is reset before there are no more indexes to retrieve:
+
+```
+  if (questionKeys[categoryIndex].length === 1) {
+    questionKeys[categoryIndex] = [...Array(quizCategories[categoryIndex][1]).keys()];
+  } else {
+    questionKeys[categoryIndex].splice(randomIndexQ, 1);
+  }
+```
+
+I use the same method to shuffle the answers on the quiz cards, thus making sure that the correct question is not always shown on top.
+
+**Error handling:**
+
+Since I allow direct user input of a string on my website, I need to make sure that the user doesn't input anything malicious or anything that could break the readability of the page text. Therefore, I implemented two types of checks for the input fields `p1` and `p2`:
+ - the attribute `maxlength="10"` in the HTML of the input fields to spare the users the trouble of putting in too many characters before being notified of a limit
+ - the function `validateNames()` that tests the input against the `regex` string `/^[a-zA-Z0-9._-]{1,10}$/`, allowing only latin letters, numbers and the characters `._-`
+
+ The game displays the loading screen for as long as the input is invalid and only proceeds to `initializePlayers()` once it has received valid player names. The players are notified of the requirements on the loading screen.
+
+Another grave error that would make the game unplayable is a corrupted database. Whenever the script tries to access data from the database file `questions.js`, it runs through a `try ... catch` process:
+
+```
+try {
+  ...
+} catch {
+  self.location = "error.html";
+}
+```
+If
+- the script file `questions.js` is inaccessible,
+- the array `quizCategories` in that file contains incorrect values,
+- or the arrays containing questions and answers for one or more quiz category are missing or empty,
+
+then the page `error.html` is loaded, notifying the user of the issue and suggesting to contact the dev or to try and reload the index page.
+
+In case there are fewer or more answers in the answer array of the active question object or if the key `question` is missing,  

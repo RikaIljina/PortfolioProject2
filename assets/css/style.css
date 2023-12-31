@@ -525,6 +525,10 @@ th {
     font-size: 3rem;
   }
 
+  .card:hover {
+    font-size: 3.2rem;
+  }
+
   #quiz-card {
     width: 43%;
     height: 85vh;
@@ -610,6 +614,10 @@ th {
 
   .card {
     font-size: 3.5rem;
+  }
+
+  .card:hover {
+    font-size: 3.7rem;
   }
 
   #quiz-card {

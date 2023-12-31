@@ -46,8 +46,12 @@ const colors = {
 // https://stackoverflow.com/questions/3895478/does-javascript-have-a-method-like-range-to-generate-a-range-within-the-supp
 
 const questionKeys = {};
-for (let i = 0; i < quizCategories.length; i++) {
-  questionKeys[i] = [...Array(quizCategories[i][1]).keys()];
+try {
+  for (let i = 0; i < quizCategories.length; i++) {
+    questionKeys[i] = [...Array(quizCategories[i][1]).keys()];
+  }
+} catch {
+  self.location = "error.html";
 }
 
 // Global variables giving access to the player data entry form on the loading screen
@@ -89,7 +93,7 @@ function validateNames(event) {
   let re = /^[a-zA-Z0-9._-]{1,10}$/;
   if (!re.test(enteredName1) || !re.test(enteredName2)) {
     document.getElementById("input-error").textContent =
-      "Please only use letters, numbers, and the symbols . (dot), - (hyphen), _ (underscore) in your names. Name length must be between 1 and 10 characters.";
+      "Please only use latin letters, numbers, and the symbols . (dot), - (hyphen), _ (underscore) in your names. Name length must be between 1 and 10 characters.";
   } else {
     initializePlayers();
   }
@@ -207,6 +211,12 @@ function cardClicked() {
       answer.style.pointerEvents = "auto";
     }
 
+    // Make this category card unclickable (https://stackoverflow.com/questions/16492401/javascript-setting-pointer-events)
+    this.style.pointerEvents = "none";
+
+    // Save this category card in a global variable for later use in processAnswer()
+    gameState.usedCard = this;
+
     // Error handling: if the question cannot be loaded due to issues with the questions database,
     // redirect user to an error page
     try {
@@ -214,12 +224,6 @@ function cardClicked() {
     } catch {
       self.location = "error.html";
     }
-
-    // Make this category card unclickable (https://stackoverflow.com/questions/16492401/javascript-setting-pointer-events)
-    this.style.pointerEvents = "none";
-
-    // Save this category card in a global variable for later use in processAnswer()
-    gameState.usedCard = this;
 
     return;
   } else {
@@ -243,6 +247,28 @@ function showQuestion(activeCard) {
   // Select the question with the generated index
   let activeQuestion = category[questionKeys[categoryIndex][randomIndexQ]];
 
+  // Array with indexes for shuffling the answers
+  let answerKeys = [0, 1, 2, 3];
+
+  // Error handling: make sure the answer array of the active question contains exactly 4 elements
+  // and that the active question has a 'question' key.
+  // Log error to console.
+  if (!activeQuestion.answers) {
+    errorHandling(`The question '${activeQuestion.question}' at index '${randomIndexQ}' in category '${activeCard.textContent}' does not contain an 'answers' array.`, 'Sorry, this question seems to be broken... Details can be found in the console. Please contact the dev and report the bug.');
+    return;
+  } else if (activeQuestion.answers.length != answerKeys.length) {
+    errorHandling(`The question '${activeQuestion.question}' at index '${randomIndexQ}' in category '${activeCard.textContent}' contains more or fewer answers than 4`, 'Sorry, this question seems to be broken... Details can be found in the console. Please contact the dev and report the bug.');
+    return;
+  }
+  if (!activeQuestion.question) {
+    errorHandling(`The question at index '${randomIndexQ}' in category '${activeCard.textContent}' does not have a 'question' key`, 'Sorry, this question seems to be broken... Details can be found in the console. Please contact the dev and report the bug.');
+    return;
+  }
+  if (isNaN(activeQuestion.correctAnswer) || !(0 <= activeQuestion.correctAnswer <= 3)) {
+    errorHandling(`The question '${activeQuestion.question}' in category '${activeCard.textContent}' does not have a 'correctAnswer' key`, 'Sorry, this question seems to be broken... Details can be found in the console. Please contact the dev and report the bug.');
+    return;
+  }
+
   // If a category is running out of new questions, reset the questionKeys array
   // for this category to include all initial indexes for the question objects
   // and start re-using the questions
@@ -256,17 +282,6 @@ function showQuestion(activeCard) {
 
   // Display question on card
   document.getElementById("question").textContent = activeQuestion.question;
-
-  // Shuffle the answers
-  let answerKeys = [0, 1, 2, 3];
-
-  // Error handling: make sure the answer array of the active question contains exactly 4 elements.
-  // Log error to console.
-  if (activeQuestion.answers.length != answerKeys.length) {
-    console.log(
-      `The question '${activeQuestion.question}' in category '${activeCard.textContent}' contains more or fewer answers than 4`
-    );
-  }
 
   for (let answer of document.getElementsByClassName("answer")) {
     // Generate random index to shuffle the display order of the answers
@@ -285,6 +300,21 @@ function showQuestion(activeCard) {
     answer.addEventListener("click", processAnswer);
   }
 
+  return;
+}
+
+/**
+ * Handles database errors that do not break the game by notifying the user,
+ * deactivating the category card with the offending question and
+ * moving on to the next player.
+ */
+function errorHandling(consoleMsg, alertMsg) {
+  console.log(consoleMsg);
+  alert(alertMsg);
+  gameState.usedCard.style.backgroundColor = colors.categoryCardsInactive;
+  gameState.usedCard.style.color = colors.categoryCardsTextInactive;
+  gameState.usedCard.style.boxShadow = "none";
+  nextRound();
   return;
 }
 
@@ -322,7 +352,7 @@ function processAnswer() {
     document.getElementById(gameState.correctAnswer).style.backgroundColor =
       colors.questionCardAnswersCorrect;
     document.getElementById(gameState.correctAnswer).style.color =
-      colors.questionCardAnswersText; 
+      colors.questionCardAnswersText;
     // Show continue button
     document.getElementById("close-card").style.color =
       colors.questionCardContinue;

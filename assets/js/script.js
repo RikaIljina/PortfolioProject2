@@ -214,7 +214,7 @@ function cardClicked() {
       answer.style.pointerEvents = "auto";
     }
 
-    // Make this category card unclickable (https://stackoverflow.com/questions/16492401/javascript-setting-pointer-events)
+    // Make this category card unclickable
     this.style.pointerEvents = "none";
 
     // Save this category card in a global variable for later use in processAnswer()

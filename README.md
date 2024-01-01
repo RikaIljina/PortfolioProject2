@@ -1,5 +1,7 @@
 # What d'you know - A Quiz for Two
 
+[Live link to the game](https://rikailjina.github.io/PortfolioProject2/)
+
 This project is a website with one page that allows the users to play a trivia quiz game in local multiplayer on one device, thereby testing their general knowledge and learning new facts about the world.
 
 The website is fully responsive across multiple devices.
@@ -29,7 +31,7 @@ The website is fully responsive across multiple devices.
   - [Frameworks, Libraries, Applications](#frameworks-libraries-applications "Frameworks, Libraries, Applications")
 - [Testing](#testing "Testing")
 - [Deployment](#deployment "Deployment")
-- [Acknowledgments](#acknowledgments "Acknowledgments")
+- [Credits](#credits "Credits")
 
 ## UX
 
@@ -287,38 +289,66 @@ As of january 1 2024, no unsolved bugs remain in the code or have been discovere
 
 ### Frameworks, Libraries, Applications
 
-- [GitHub](https://github.com/): source control and project submission
+- [Git](https://git-scm.com/): version control via VS Code terminal
+- [GitHub](https://github.com/): project storage and submission
 - Chrome DevTools: debugging and responsiveness checks
 - [Google Fonts](https://fonts.google.com/): all site fonts
-- [Coolors](https://coolors.co): palette
+- [Coolors](https://coolors.co): choice of palette
 - [WebAIM](https://webaim.org/resources/contrastchecker/): contrast check
-- [ui.dev](https://ui.dev/amiresponsive?url=https%3A%2F%2Fbytes.dev): responsiveness mock-up
+- [amiresponsive](https://ui.dev/amiresponsive): responsiveness mock-up
 - VS Code: IDE
 - [OpenAI ChatGPT](https://openai.com/): help with creating quiz questions
 
 ## Testing
 
+Tests are described in [TESTING.md](TESTING.md).
+
 ## Deployment
+
+### Pushing to GitHub
+
+1. Login to GitHub.com and create a new empty project repository
+2. Create the local project in VS Code
+3. Initialize the repository by opening a terminal in VS Code and entering the command  `git init --initial-branch=main`
+4. Add all project files to the repository with the command `git add .`
+5. Commit all added files with the command `git commit -m "Initial commit"`
+6. Create new remote with the command `git remote add origin https://github.com/[UserName]/[RepoName].git`
+7. Push the files to the remote repository on GitHub with the command `git push -u origin main` 
+
+### GitHub Pages
 
 The website was deployed to GitHub Pages. Deployment process:
 
-- Login to GitHub.com and create a new empty project repository
-- Create the local project in VS Code
-- Initialize the repository by opening a terminal in VS Code and entering the command  `git init --initial-branch=main`
-- Add all project files to the repository with the command `git add .`
-- Commit all added files with the command `git commit -m "Initial commit"`
-- Create new remote with the command `git remote add origin https://github.com/[UserName]/[RepoName].git`
-- Push the files to the remote repository on GitHub with the command `git push origin main` 
-- Login to GitHub.com and open project repository
-- Click on "Settings"
-- In the left panel, select "Pages"
-- Under "Build and Deployment" - "Source", select "Deploy from a branch" and select the main branch
-- Once the deployment is finished, the link to the page is shown at the top of the GitHub Pages section
-- The live link can be found [here](https://rikailjina.github.io/PortfolioProject2/)
+1. Login to GitHub.com and open project repository
+2. Click on "Settings"
+3. In the left panel, select "Pages"
+4. Under "Build and Deployment" - "Source", select "Deploy from a branch" and select the main branch
+5. Once the deployment is finished, the link to the page is shown at the top of the GitHub Pages section
+6. The live link can be found [here](https://rikailjina.github.io/PortfolioProject2/)
 
-## Acknowledgments
+### Forking the GitHub Repository
 
-All code was written by me unless clearly stated otherwise in a comment.
+By forking the GitHub Repository, you can make a copy of the original repository in your GitHub account. There, you can view and/or make changes to the repo without affecting the original.
+
+1. Log in to GitHub and locate the GitHub Repository.
+2. At the top of the Repository (not top of page) just above the "Settings" Button on the menu, locate the "Fork" Button.
+3. You should now have a copy of the original repository in your GitHub account.
+
+### Making a Local Clone
+
+1. Log in to GitHub and locate the GitHub Repository.
+2. At the top of the Repository, click on the "<> Code" button.
+3. To clone the repository using HTTPS, copy the link under "HTTPS".
+4. Open Git Bash or the VS Code terminal.
+5. Change the current working directory to the location where you want the cloned directory to be made.
+6. Type `git clone`, and then paste the URL you copied in Step 3.
+7. Press Enter. Your local clone will be created.
+
+## Credits
+
+### Code used
+
+All code was written by me unless clearly stated otherwise.
 
 Beside the Code Institute learning materials and sample files, I also used the following reference materials:
 
@@ -326,6 +356,22 @@ Beside the Code Institute learning materials and sample files, I also used the f
 - [W3 Schools](https://www.w3schools.com/js/default.asp)
 - [Stackoverflow](https://stackoverflow.com/)
 
-Many thanks to my mentor for constructive feedback.
+The following sources provided me with important information that helped me greatly with implementing certain functionality:
+- [How to set and remove pointer events](https://stackoverflow.com/questions/16492401/javascript-setting-pointer-events)
+- [How to create a consecutive array of numbers from a range](https://stackoverflow.com/questions/3895478/does-javascript-have-a-method-like-range-to-generate-a-range-within-the-supp)
+- [How to test a string against regex in JavaScript](https://stackoverflow.com/questions/44256226/pattern-validation-with-javascript)
+- [How to write a good README](https://github.com/kera-cudmore/readme-examples/tree/main)
 
-Many thanks to the Code Institute slack community for constant and general support.
+### Content
+
+Most of the quiz questions have been generated by [OpenAI ChatGPT](https://openai.com/). Some of them are my own.
+
+### Media
+
+No images have been used in this project.
+
+### Acknowledgments
+
+- Many thanks to my mentor for constructive feedback.
+- Many thanks to friends and family who did some of the testing.
+- Many thanks to the Code Institute slack community for constant and general support.

@@ -1,38 +1,35 @@
 # What d'you know - A Quiz for Two
 
-This project is a website with one page that allows the users to play a trivia quiz game in local multiplayer on one device, thereby testing their general knowledge and learning new facts about the world. 
-
+This project is a website with one page that allows the users to play a trivia quiz game in local multiplayer on one device, thereby testing their general knowledge and learning new facts about the world.
 
 The website is fully responsive across multiple devices.
 ![Website view on different devices](assets/images/readme_mockup_responsive.png)
 
-
 ## Table of Contents
-- [UX](#ux "UX")
-    - [Target audience](#target-audience "Target audience")
-        - [First-time visitors](#first-time-visitors "First-time visitors")
-        - [Returning visitors](#returning-visitors "Returning visitors")
-    - [Site goal](#site-goal "Site goal")
-- [Design](#design "Design")
-    - [Color scheme](#color-scheme "Color scheme")
-    - [Typography](#typography "Typography")
-    - [Images](#images "Images")
-- [Features](#features "Features")
-    - [Game loop](#game-loop "Game loop")
-    - [Codebase](#codebase "Codebase")
-        - [File structure](#file-structure "File structure")
-        - [Flowchart](#flowchart "Flowchart")
-        - [Mechanics](#mechanics "Mechanics")
 
-    - [Future features](#future-features "Future features")
-    - [Known bugs](#known-bugs "Known bugs")
+- [UX](#ux "UX")
+  - [Target audience](#target-audience "Target audience")
+    - [First-time visitors](#first-time-visitors "First-time visitors")
+    - [Returning visitors](#returning-visitors "Returning visitors")
+  - [Site goal](#site-goal "Site goal")
+- [Design](#design "Design")
+  - [Color scheme](#color-scheme "Color scheme")
+  - [Typography](#typography "Typography")
+  - [Images](#images "Images")
+- [Features](#features "Features")
+  - [Game loop](#game-loop "Game loop")
+  - [Codebase](#codebase "Codebase")
+    - [File structure](#file-structure "File structure")
+    - [Flowchart](#flowchart "Flowchart")
+    - [Mechanics](#mechanics "Mechanics")
+  - [Future features](#future-features "Future features")
+  - [Known bugs](#known-bugs "Known bugs")
 - [Technologies](#technologies "Technologies")
-    - [Main Languages](#main-languages "Main Languages")
-    - [Frameworks, Libraries, Applications](#frameworks-libraries-applications "Frameworks, Libraries, Applications")
+  - [Main Languages](#main-languages "Main Languages")
+  - [Frameworks, Libraries, Applications](#frameworks-libraries-applications "Frameworks, Libraries, Applications")
 - [Testing](#testing "Testing")
 - [Deployment](#deployment "Deployment")
-- [Acknowledgments](#acknowledgments "Acknowledgments") 
-
+- [Acknowledgments](#acknowledgments "Acknowledgments")
 
 ## UX
 
@@ -59,8 +56,9 @@ When choosing a design for my game, I prioritized clearness and readability to m
 The header with the game title and the footer with copyright info are designed to be unobtrusive as to not draw attention away from the main game area.
 
 The layout of the game area is slightly different on mobiles and on larger screens:
- - On mobiles, the area containing the active player name, their score and the note "It's your turn" is displayed at the top. The area of the inactive player is hidden. Below the player area is the card area with two or three columns, depending on the phone size. The dialog with the quiz question that appears after clicking on a card fills the entire phone screen.
- - On larger screens, the card area takes up most space in the middle of the screen and the two player areas are to the left and right of the card area. The dialog with the quiz question only fills a small percentage of the screen. A light, translucent modal fills the space behind it, preventing the user from interacting with the background.
+
+- On mobiles, the area containing the active player name, their score and the note "It's your turn" is displayed at the top. The area of the inactive player is hidden. Below the player area is the card area with two or three columns, depending on the phone size. The dialog with the quiz question that appears after clicking on a card fills the entire phone screen.
+- On larger screens, the card area takes up most space in the middle of the screen and the two player areas are to the left and right of the card area. The dialog with the quiz question only fills a small percentage of the screen. A light, translucent modal fills the space behind it, preventing the user from interacting with the background.
 
 All game elements that are clickable (category cards, answers) have a box shadow that slightly lifts them up from the background. Once they become unclickable, the shadow disappears to convey to the players that they are no longer interactive.
 
@@ -72,12 +70,14 @@ On the quiz cards, correct answers are highlighted green and wrong answers are h
 
 ![Game palette](assets/images/readme_palette.png)
 
-I chose three main colors for the game area: 
+I chose three main colors for the game area:
+
 - Violet - header, footer, 9 category cards, quiz card, loading screen, end game screen
 - Dark moss green - player 1 background
 - Delft blue - player 2 background
 
 Each of those colors has a much lighter equivalent that I use for the text:
+
 - Thistle - for text on Violet
 - Nyanza - for text on Dark moss green
 - French gray - for text on Delft blue
@@ -85,6 +85,7 @@ Each of those colors has a much lighter equivalent that I use for the text:
 These color combinations have been checked with the [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker) to make sure the contrast ratio is sufficient.
 
 The remaining colors are:
+
 - Battleship gray and Davy's gray - for neutral, inactive category cards that cannot be clicked on anymore
 - Dark spring green - to highlight correct answers
 - Burnt umber - to highlight wrong answers
@@ -98,6 +99,7 @@ I chose to have a single font for all game elements to make it less confusing. T
 I did not use any images in the game due to time restrictions, though I do believe that a few well-placed graphics would improve the overall look-and-feel of the game. This is a consideration for a future update.
 
 ## Features
+
 ### Game loop
 
 After the webpage has loaded, the user is presented with a loading screen providing a short description of the game and two input fields for the player names. This is where the user starts interacting with the game.
@@ -125,10 +127,11 @@ After the webpage has loaded, the user is presented with a loading screen provid
 - `assets/css/style.css` - styles for the entire site
 - `assets/favicons` - folder containing the site icons
 - `assets/images` - folder containing the image files (for now only readme images)
-- `assets/js/questions.js` - database file containing nine arrays with question objects for the nine categories as well as an array containing the quiz category names and their respective array lengths 
+- `assets/js/questions.js` - database file containing nine arrays with question objects for the nine categories as well as an array containing the quiz category names and their respective array lengths
 - `assets/js/script.js` - script file containing the game code
 
 #### Flowchart
+
 <details>
 <summary>Flowchart depicting the progression of actions and processes</summary>
 
@@ -166,10 +169,12 @@ const quizQuestionsCategoryName = [
   },
   ...
   ]
-  ```
+```
+
 Additional quiz questions must be added in the exact same format.
 
 The file also contains the array `quizCategories` which is needed to access the correct category array whenever the player clicks on a category card. The format of this array is as folows:
+
 ```
 const quizCategories = [
   [quizQuestionsCategoryName, quizQuestionsCategoryName.length],
@@ -193,6 +198,7 @@ for (let i = 0; i < quizCategories.length; i++) {
   questionKeys[i] = [...Array(quizCategories[i][1]).keys()];
 }
 ```
+
 `quizCategories.length` is 9, since there are 9 categories. `quizCategories[i][1]` is the length of each category array. Using spread syntax, I create 9 subarrays with indexes ranging from 0 to n, where n is the length of each category array minus 1.
 
 Then, in the function `showQuestion()`, I use `Math.random()` to generate a random index for the `questionKeys` array:
@@ -200,7 +206,8 @@ Then, in the function `showQuestion()`, I use `Math.random()` to generate a rand
 ```
 let randomIndexQ = Math.floor(Math.random() * questionKeys[categoryIndex].length);
 ```
-The question to be shown to the player is chosen based on that index. 
+
+The question to be shown to the player is chosen based on that index.
 
 Finally, I have to make sure that the used index number is either removed from the `questionKeys` array, or that the array is reset before there are no more indexes to retrieve:
 
@@ -219,14 +226,15 @@ I use the same method to shuffle the answers on the quiz cards, thus making sure
 **Input issues**
 
 Since I allow direct user input of a string on my website, I need to make sure that the user doesn't input anything malicious or anything that could break the readability of the page text. Therefore, I implemented two types of checks for the input fields `p1` and `p2`:
- - the attribute `maxlength="10"` in the HTML of the input fields to spare the users the trouble of putting in too many characters before being notified of a limit
- - the function `validateNames()` that tests the input against the `regex` string `/^[a-zA-Z0-9._-]{1,10}$/`, allowing only latin letters, numbers and the characters `._-`
 
- The game displays the loading screen for as long as the input is invalid and only proceeds to `initializePlayers()` once it has received valid player names. The players are notified of the requirements on the loading screen.
+- the attribute `maxlength="10"` in the HTML of the input fields to spare the users the trouble of putting in too many characters before being notified of a limit
+- the function `validateNames()` that tests the input against the `regex` string `/^[a-zA-Z0-9._-]{1,10}$/`, allowing only latin letters, numbers and the characters `._-`
+
+The game displays the loading screen for as long as the input is invalid and only proceeds to `initializePlayers()` once it has received valid player names. The players are notified of the requirements on the loading screen.
 
 **Database issues**
 
-Another grave error that would make the game unplayable is a corrupted database. Whenever the script tries to access data from the database file `questions.js`, it runs through a `try ... catch` process:
+A grave error that would make the game unplayable is a corrupted database. Whenever the script tries to access data from the database file `questions.js`, it runs through a `try ... catch` process:
 
 ```
 try {
@@ -235,7 +243,9 @@ try {
   self.location = "error.html";
 }
 ```
+
 If
+
 - the script file `questions.js` is inaccessible,
 - the array `quizCategories` in that file contains incorrect values,
 - or the arrays containing questions and answers for one or more quiz category are missing or empty,
@@ -244,4 +254,78 @@ then the page `error.html` is loaded, notifying the user of the issue and sugges
 
 The following errors could arise without fully breaking the game:
 
-In case there are fewer or more answers in the answer array of the active question object or if the key `question` is missing,  
+- There could be fewer or more answers in the answer array of the active question object than 4
+- The key `answers` with the entire answers array could be missing
+- The key `question` could be missing
+- the key `correctAnswers` could be missing or not be an integer between 0 and 3
+
+While these errors make the active quiz card unsolvable, they do not completely break the game. Therefore, I decided to use the `try ... catch` block in these cases to notify the player of a corrupted question, log the detailed error message to the console, and skip the offending category card this round.
+
+Preferably, the integrity of the file `questions.js` would be tested and ascertained before deployment and after each update, so the user would never have to encounter any of those database errors.
+
+### Future features
+
+The following features could be implemented in future updates:
+
+- [ ] Add graphics for each category and on the loading and end game screens to make them look more interesting
+- [ ] Implement user authentication and let users access their personal profiles
+- [ ] Add an all-time highscore to show players with most wins
+- [ ] Add statistics to show how knowledgable a user is in what categories
+- [ ] Add an online multiplayer
+
+### Known bugs
+
+As of january 1 2024, no unsolved bugs remain in the code or have been discovered.
+
+## Technologies
+
+### Main Languages
+
+- HTML5
+- CSS3
+- JavaScript (ECMAScript 2023)
+
+### Frameworks, Libraries, Applications
+
+- [GitHub](https://github.com/): source control and project submission
+- Chrome DevTools: debugging and responsiveness checks
+- [Google Fonts](https://fonts.google.com/): all site fonts
+- [Coolors](https://coolors.co): palette
+- [WebAIM](https://webaim.org/resources/contrastchecker/): contrast check
+- [ui.dev](https://ui.dev/amiresponsive?url=https%3A%2F%2Fbytes.dev): responsiveness mock-up
+- VS Code: IDE
+- [OpenAI ChatGPT](https://openai.com/): help with creating quiz questions
+
+## Testing
+
+## Deployment
+
+The website was deployed to GitHub Pages. Deployment process:
+
+- Login to GitHub.com and create a new empty project repository
+- Create the local project in VS Code
+- Initialize the repository by opening a terminal in VS Code and entering the command  `git init --initial-branch=main`
+- Add all project files to the repository with the command `git add .`
+- Commit all added files with the command `git commit -m "Initial commit"`
+- Create new remote with the command `git remote add origin https://github.com/[UserName]/[RepoName].git`
+- Push the files to the remote repository on GitHub with the command `git push origin main` 
+- Login to GitHub.com and open project repository
+- Click on "Settings"
+- In the left panel, select "Pages"
+- Under "Build and Deployment" - "Source", select "Deploy from a branch" and select the main branch
+- Once the deployment is finished, the link to the page is shown at the top of the GitHub Pages section
+- The live link can be found [here](https://rikailjina.github.io/PortfolioProject2/)
+
+## Acknowledgments
+
+All code was written by me unless clearly stated otherwise in a comment.
+
+Beside the Code Institute learning materials and sample files, I also used the following reference materials:
+
+- [MDN web docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [W3 Schools](https://www.w3schools.com/js/default.asp)
+- [Stackoverflow](https://stackoverflow.com/)
+
+Many thanks to my mentor for constructive feedback.
+
+Many thanks to the Code Institute slack community for constant and general support.

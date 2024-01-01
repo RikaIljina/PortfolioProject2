@@ -252,7 +252,8 @@ function showQuestion(activeCard) {
   // Array with indexes for shuffling the answers
   let answerKeys = [0, 1, 2, 3];
 
-  // Error handling: make sure the variable 'activeQuestion' contains the 'answers' array,
+  // Error handling:
+  // make sure the variable 'activeQuestion' contains the 'answers' array,
   // that the answer array of the active question contains exactly 4 elements,
   // that the active question has a 'question' key,
   // and that the active question has a 'correctAnswers' key that is a number between 0 and 3. 

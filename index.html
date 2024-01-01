@@ -23,12 +23,17 @@
 </head>
 
 <body>
+  <!-- Website Header -->
   <header>
     <p>What d'you know?</p>
     <p id="subheader">A quiz for two</p>
   </header>
+
+  <!-- Main area with the game container and game elements -->
   <main>
     <div id="game-container">
+
+      <!-- Player 1 area with name, score and turn indicator -->
       <div id="player-1">
         <p><span id="p1-name">Player 1</span></p>
         <p class="active-player-note"></p>
@@ -40,6 +45,8 @@
           Rounds won: <br class="hide-on-mobile"><span id="p1-wins">0</span>
         </p>
       </div>
+
+      <!-- Card area containing 9 interactive category cards -->
       <div id="card-area">
         <div class="card" role="button" data-id="0">Tech</div>
         <div class="card" role="button" data-id="1">Nature</div>
@@ -51,6 +58,8 @@
         <div class="card" role="button" data-id="7">Food</div>
         <div class="card" role="button" data-id="8">General</div>
       </div>
+
+      <!-- Player 2 area with name, score and turn indicator -->
       <div id="player-2">
         <p><span id="p2-name">Player 2</span></p>
         <p class="active-player-note"></p>
@@ -63,7 +72,11 @@
         </p>
       </div>
     </div>
+
+    <!-- Screens and dialogs to be shown on top of the game area -->
     <div id="modal">
+
+      <!-- Loading screen with game description and name input fields -->
       <div id="loading-screen">
         <p>Welcome to "What d'you know", a quiz for two players!</p>
         <p>Take turns choosing a category and answering the question.</p>
@@ -91,6 +104,7 @@
         </form>
       </div>
 
+      <!-- Quiz card to be displayed on top of the game area whenever a player clicks on a category card -->
       <div id="quiz-card">
         <p id="question" class="qcard-text question">QUESTION</p>
         <p id="a" class="qcard-text answer" role="button">A</p>
@@ -100,6 +114,7 @@
         <button id="close-card">Continue</button>
       </div>
 
+      <!-- End game screen displayed on top of the game area at the end of one round -->
       <div id="end-game-screen">
         <!-- Paragraph containing the results at the end of each game -->
         <p id="results"></p>
@@ -116,9 +131,11 @@
     </div>
   </main>
 
+  <!-- Footer with copyright information and dev contact data -->
   <footer>
     <p>
-      © 2023 by Vasilika Schnitzer - <a href="mailto:dev@whatdyouknow.com" aria-label="Opens default mail app to send an email to the dev">Contact</a>
+      © 2023 by Vasilika Schnitzer - <a href="mailto:dev@whatdyouknow.com"
+        aria-label="Opens default mail app to send an email to the dev">Contact</a>
     </p>
   </footer>
 

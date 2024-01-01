@@ -423,8 +423,8 @@ th {
     display: none;
     width: 70%;
     min-width: 500px;
-    height: 60vh;
-    padding: 2rem;
+    height: 70vh;
+    padding: 1rem 2rem;
     font-size: 1.3rem;
   }
 
@@ -495,8 +495,8 @@ th {
   #loading-screen,
   #end-game-screen {
     width: 70%;
-    height: 65vh;
-    padding: 3rem;
+    height: 75vh;
+    padding: 1.5rem 3rem;
     font-size: 1.4rem;
   }
 
@@ -558,8 +558,8 @@ th {
     #loading-screen,
   #end-game-screen {
     width: 60%;
-    height: 65vh;
-    padding: 3rem;
+    height: 70vh;
+    padding: 1.5rem 3rem;
     font-size: 1.8rem;
   }
 
@@ -650,7 +650,7 @@ th {
   #end-game-screen {
     width: 50%;
     height: 70vh;
-    padding: 3rem;
+    padding: 2rem 3rem;
     font-size: 2rem;
   }
   

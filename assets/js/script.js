@@ -227,7 +227,6 @@ function cardClicked() {
     } catch {
       self.location = "error.html";
     }
-
     return;
   } else {
     return;

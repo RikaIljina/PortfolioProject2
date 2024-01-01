@@ -1,6 +1,6 @@
 const quizQuestionsTech = [
   {
-    question: "What is the 'cloud' in cloud computing?",
+    // question: "What is the 'cloud' in cloud computing?",
     // answers: [
     //   "A network of remote servers",
     //   "Virtual reality environment",

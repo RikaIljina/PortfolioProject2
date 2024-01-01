@@ -1,76 +1,76 @@
 const quizQuestionsTech = [
   {
     question: "What is the 'cloud' in cloud computing?",
-    answers: [
-      "A network of remote servers",
-      "Virtual reality environment",
-      "A type of computer hardware",
-      "A programming language",
-    ],
+    // answers: [
+    //   "A network of remote servers",
+    //   "Virtual reality environment",
+    //   "A type of computer hardware",
+    //   "A programming language",
+    // ],
     correctAnswer: 0,
   },
-  {
-    question: "What does HTML stand for?",
-    answers: [
-      "Hyper Text Markup Language",
-      "High Tech Modern Language",
-      "Hyperlink and Text Markup Language",
-      "Home Tool Markup Language",
-    ],
-    correctAnswer: 0,
-  },
-  {
-    question:
-      "Which programming language is commonly used for building web-based applications?",
-    answers: ["JavaScript", "Java", "Python", "C#"],
-    correctAnswer: 0,
-  },
-  {
-    question: "Which company developed the Android operating system?",
-    answers: ["Google", "Apple", "Microsoft", "Samsung"],
-    correctAnswer: 0,
-  },
-  {
-    question: "What does the acronym 'IoT' stand for?",
-    answers: [
-      "Internet of Things",
-      "Input Output Technology",
-      "Integrated Online Tools",
-      "Internet on Thursday",
-    ],
-    correctAnswer: 0,
-  },
-  {
-    question: "What is the purpose of the 'Ctrl + Z' keyboard shortcut?",
-    answers: ["Undo", "Redo", "Copy", "Paste"],
-    correctAnswer: 0,
-  },
-  {
-    question:
-      "Which technology is used to transfer data wirelessly between devices using radio waves?",
-    answers: ["Bluetooth", "Ethernet", "USB", "HDMI"],
-    correctAnswer: 0,
-  },
-  {
-    question: "Which technology is used for contactless payments?",
-    answers: [
-      "NFC (Near Field Communication)",
-      "RFID (Radio-Frequency Identification)",
-      "Bluetooth",
-      "Wi-Fi",
-    ],
-    correctAnswer: 0,
-  },
-  {
-    question: "In computer graphics, what does 'GPU' stand for?",
-    answers: [
-      "Graphics Processing Unit",
-      "General Processing Unit",
-      "Graphical Performance Unit",
-      "Grouped Processing Unit",
-    ],
-    correctAnswer: 0,
-  },
+  // {
+  //   question: "What does HTML stand for?",
+  //   answers: [
+  //     "Hyper Text Markup Language",
+  //     "High Tech Modern Language",
+  //     "Hyperlink and Text Markup Language",
+  //     "Home Tool Markup Language",
+  //   ],
+  //   correctAnswer: 0,
+  // },
+  // {
+  //   question:
+  //     "Which programming language is commonly used for building web-based applications?",
+  //   answers: ["JavaScript", "Java", "Python", "C#"],
+  //   correctAnswer: 0,
+  // },
+  // {
+  //   question: "Which company developed the Android operating system?",
+  //   answers: ["Google", "Apple", "Microsoft", "Samsung"],
+  //   correctAnswer: 0,
+  // },
+  // {
+  //   question: "What does the acronym 'IoT' stand for?",
+  //   answers: [
+  //     "Internet of Things",
+  //     "Input Output Technology",
+  //     "Integrated Online Tools",
+  //     "Internet on Thursday",
+  //   ],
+  //   correctAnswer: 0,
+  // },
+  // {
+  //   question: "What is the purpose of the 'Ctrl + Z' keyboard shortcut?",
+  //   answers: ["Undo", "Redo", "Copy", "Paste"],
+  //   correctAnswer: 0,
+  // },
+  // {
+  //   question:
+  //     "Which technology is used to transfer data wirelessly between devices using radio waves?",
+  //   answers: ["Bluetooth", "Ethernet", "USB", "HDMI"],
+  //   correctAnswer: 0,
+  // },
+  // {
+  //   question: "Which technology is used for contactless payments?",
+  //   answers: [
+  //     "NFC (Near Field Communication)",
+  //     "RFID (Radio-Frequency Identification)",
+  //     "Bluetooth",
+  //     "Wi-Fi",
+  //   ],
+  //   correctAnswer: 0,
+  // },
+  // {
+  //   question: "In computer graphics, what does 'GPU' stand for?",
+  //   answers: [
+  //     "Graphics Processing Unit",
+  //     "General Processing Unit",
+  //     "Graphical Performance Unit",
+  //     "Grouped Processing Unit",
+  //   ],
+  //   correctAnswer: 0,
+  // },
 ];
 
 const quizQuestionsNature = [

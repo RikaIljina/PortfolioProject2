@@ -150,7 +150,7 @@ Event listeners set globally only persist througout the entire game loop if they
 
 **Questions database:**
 
-The file `questions.js` contains the database from which the quiz questions and answers are retrieved. For each of the 9 categories, there is one array contianing multiple objects. The format of the array is as follows:
+The file `questions.js` contains the database from which the quiz questions and answers are retrieved. For each of the 9 categories, there is one array containing multiple objects. The format of the array is as follows:
 
 ```
 const quizQuestionsCategoryName = [
@@ -216,11 +216,15 @@ I use the same method to shuffle the answers on the quiz cards, thus making sure
 
 **Error handling:**
 
+**Input issues**
+
 Since I allow direct user input of a string on my website, I need to make sure that the user doesn't input anything malicious or anything that could break the readability of the page text. Therefore, I implemented two types of checks for the input fields `p1` and `p2`:
  - the attribute `maxlength="10"` in the HTML of the input fields to spare the users the trouble of putting in too many characters before being notified of a limit
  - the function `validateNames()` that tests the input against the `regex` string `/^[a-zA-Z0-9._-]{1,10}$/`, allowing only latin letters, numbers and the characters `._-`
 
  The game displays the loading screen for as long as the input is invalid and only proceeds to `initializePlayers()` once it has received valid player names. The players are notified of the requirements on the loading screen.
+
+**Database issues**
 
 Another grave error that would make the game unplayable is a corrupted database. Whenever the script tries to access data from the database file `questions.js`, it runs through a `try ... catch` process:
 
@@ -237,5 +241,7 @@ If
 - or the arrays containing questions and answers for one or more quiz category are missing or empty,
 
 then the page `error.html` is loaded, notifying the user of the issue and suggesting to contact the dev or to try and reload the index page.
+
+The following errors could arise without fully breaking the game:
 
 In case there are fewer or more answers in the answer array of the active question object or if the key `question` is missing,  

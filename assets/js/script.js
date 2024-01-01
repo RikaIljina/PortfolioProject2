@@ -123,7 +123,9 @@ function initializePlayers() {
 
   // Hide loading screen and modal
   document.getElementById("loading-screen").style.display = "none";
+  document.getElementById("modal").style.animation = "none";
   document.getElementById("modal").style.display = "none";
+
 
   // Declare game as started
   gameState.gameStarted = true;
@@ -139,6 +141,7 @@ function initializePlayers() {
 function continueGame() {
   // Hide end game screen
   document.getElementById("end-game-screen").style.display = "none";
+  document.getElementById("modal").style.animation = "none";
   document.getElementById("modal").style.display = "none";
 
   // Declare game as started
@@ -250,22 +253,25 @@ function showQuestion(activeCard) {
   // Array with indexes for shuffling the answers
   let answerKeys = [0, 1, 2, 3];
 
-  // Error handling: make sure the answer array of the active question contains exactly 4 elements
-  // and that the active question has a 'question' key.
-  // Log error to console.
-  if (!activeQuestion.answers) {
-    errorHandling(`The question '${activeQuestion.question}' at index '${randomIndexQ}' in category '${activeCard.textContent}' does not contain an 'answers' array.`, 'Sorry, this question seems to be broken... Details can be found in the console. Please contact the dev and report the bug.');
-    return;
-  } else if (activeQuestion.answers.length != answerKeys.length) {
-    errorHandling(`The question '${activeQuestion.question}' at index '${randomIndexQ}' in category '${activeCard.textContent}' contains more or fewer answers than 4`, 'Sorry, this question seems to be broken... Details can be found in the console. Please contact the dev and report the bug.');
-    return;
-  }
-  if (!activeQuestion.question) {
-    errorHandling(`The question at index '${randomIndexQ}' in category '${activeCard.textContent}' does not have a 'question' key`, 'Sorry, this question seems to be broken... Details can be found in the console. Please contact the dev and report the bug.');
-    return;
-  }
-  if (isNaN(activeQuestion.correctAnswer) || !(0 <= activeQuestion.correctAnswer <= 3)) {
-    errorHandling(`The question '${activeQuestion.question}' in category '${activeCard.textContent}' does not have a 'correctAnswer' key`, 'Sorry, this question seems to be broken... Details can be found in the console. Please contact the dev and report the bug.');
+  // Error handling: make sure the variable 'activeQuestion' contains the 'answers' array,
+  // that the answer array of the active question contains exactly 4 elements,
+  // that the active question has a 'question' key,
+  // and that the active question has a 'correctAnswers' key that is a number between 0 and 3. 
+  // Log error to console and notify the user.
+  try {
+    if (!activeQuestion.answers) {
+      throw [`The question '${activeQuestion.question}' at index '${randomIndexQ}' in category '${activeCard.textContent}' does not contain an 'answers' array.`, 'Sorry, this question seems to be broken... Details can be found in the console. Please contact the dev and report the bug.'];
+    } else if (activeQuestion.answers.length != answerKeys.length) {
+      throw [`The question '${activeQuestion.question}' at index '${randomIndexQ}' in category '${activeCard.textContent}' contains more or fewer answers than 4`, 'Sorry, this question seems to be broken... Details can be found in the console. Please contact the dev and report the bug.'];
+    }
+    if (!activeQuestion.question) {
+      throw [`The question at index '${randomIndexQ}' in category '${activeCard.textContent}' does not have a 'question' key`, 'Sorry, this question seems to be broken... Details can be found in the console. Please contact the dev and report the bug.'];
+    }
+    if (isNaN(activeQuestion.correctAnswer) || !(0 <= activeQuestion.correctAnswer <= 3)) {
+      throw [`The question '${activeQuestion.question}' in category '${activeCard.textContent}' does not have a 'correctAnswer' key`, 'Sorry, this question seems to be broken... Details can be found in the console. Please contact the dev and report the bug.'];
+    }
+  } catch (err) {
+    errorHandling(err);
     return;
   }
 
@@ -283,6 +289,7 @@ function showQuestion(activeCard) {
   // Display question on card
   document.getElementById("question").textContent = activeQuestion.question;
 
+  // Shuffle the answers
   for (let answer of document.getElementsByClassName("answer")) {
     // Generate random index to shuffle the display order of the answers
     let randomIndex = Math.floor(Math.random() * answerKeys.length);
@@ -308,7 +315,7 @@ function showQuestion(activeCard) {
  * deactivating the category card with the offending question and
  * moving on to the next player.
  */
-function errorHandling(consoleMsg, alertMsg) {
+function errorHandling([consoleMsg, alertMsg]) {
   console.log(consoleMsg);
   alert(alertMsg);
   gameState.usedCard.style.backgroundColor = colors.categoryCardsInactive;
@@ -384,6 +391,7 @@ function processAnswer() {
 function nextRound() {
   // Hide quiz card and deactivate its button
   document.getElementById("quiz-card").style.display = "none";
+  document.getElementById("modal").style.animation = "none";
   document.getElementById("modal").style.display = "none";
   document.getElementById("close-card").removeEventListener("click", nextRound);
   document.getElementById("close-card").style.color = "";
@@ -428,6 +436,8 @@ function endGame() {
   // Declare game as finished
   gameState.gameStarted = false;
   // Show end game screen
+  document.getElementById("end-game-screen").style.animation = "fadeIn 3s";
+  document.getElementById("modal").style.animation = "fadeIn 3s";
   document.getElementById("end-game-screen").style.display = "flex";
   document.getElementById("modal").style.display = "block";
 

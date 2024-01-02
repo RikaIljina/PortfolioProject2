@@ -9,29 +9,27 @@ The website is fully responsive across multiple devices.
 
 ## Table of Contents
 
-- [UX](#ux "UX")
-  - [Target audience](#target-audience "Target audience")
-    - [First-time visitors](#first-time-visitors "First-time visitors")
-    - [Returning visitors](#returning-visitors "Returning visitors")
-  - [Site goal](#site-goal "Site goal")
-- [Design](#design "Design")
-  - [Color scheme](#color-scheme "Color scheme")
-  - [Typography](#typography "Typography")
-  - [Images](#images "Images")
-- [Features](#features "Features")
-  - [Game loop](#game-loop "Game loop")
-  - [Codebase](#codebase "Codebase")
-    - [File structure](#file-structure "File structure")
-    - [Flowchart](#flowchart "Flowchart")
-    - [Mechanics](#mechanics "Mechanics")
-  - [Future features](#future-features "Future features")
-  - [Known bugs](#known-bugs "Known bugs")
-- [Technologies](#technologies "Technologies")
-  - [Main Languages](#main-languages "Main Languages")
-  - [Frameworks, Libraries, Applications](#frameworks-libraries-applications "Frameworks, Libraries, Applications")
-- [Testing](#testing "Testing")
-- [Deployment](#deployment "Deployment")
-- [Credits](#credits "Credits")
+- [UX](#ux)
+  - [Target audience](#target-audience)
+  - [User stories](#user-stories)
+- [Design](#design)
+  - [Color scheme](#color-scheme)
+  - [Typography](#typography)
+  - [Images](#images)
+- [Features](#features)
+  - [Game loop](#game-loop)
+  - [Codebase](#codebase)
+    - [File structure](#file-structure)
+    - [Flowchart](#flowchart)
+    - [Mechanics](#mechanics)
+  - [Future features](#future-features)
+  - [Known bugs](#known-bugs)
+- [Technologies](#technologies)
+  - [Main Languages](#main-languages)
+  - [Frameworks, Libraries, Applications](#frameworks-libraries-applications)
+- [Testing](#testing)
+- [Deployment](#deployment)
+- [Credits](#credits)
 
 ## UX
 
@@ -41,7 +39,7 @@ The target audience for the game are English-speaking teenagers and adults who e
 
 The goal is to engage two people in a fun quiz game for an unspecified amount of time and encourage them to come back for even more questions to ruminate on and more new facts to learn.
 
-#### User stories
+### User stories
 
 As a website visitor, I want to be able to 
 
@@ -55,18 +53,18 @@ When choosing a design for my game, I prioritized clearness and readability to m
 
 The header with the game title and the footer with copyright info are designed to be unobtrusive as to not draw attention away from the main game area.
 
+![Fullscreen view of the game area](assets/images/readme_design_fullscreen.png)
+
 The layout of the game area is slightly different on mobiles and on larger screens:
 
 - On mobiles, the area containing the active player name, their score and the note "It's your turn" is displayed at the top. The area of the inactive player is hidden. Below the player area is the card area with two or three columns, depending on the phone size. The dialog with the quiz question that appears after clicking on a card fills the entire phone screen.
 - On larger screens, the card area takes up most space in the middle of the screen and the two player areas are to the left and right of the card area. The dialog with the quiz question only fills a small percentage of the screen. A light, translucent modal fills the space behind it, preventing the user from interacting with the background.
 
-All game elements that are clickable (category cards, answers) have a box shadow that slightly lifts them up from the background. Once they become unclickable, the shadow disappears to convey to the players that they are no longer interactive.
+All game elements that are clickable but do not intuitively look like buttons (category cards, answers) have a box shadow that slightly lifts them up from the background. Once they become unclickable, the shadow disappears to convey to the players that they are no longer interactive.
+
+If desired by the players, the game can be played with keyboard input only by using `TAB` to cycle through elements and `ENTER` to select them.
 
 ### Color scheme
-
-Since this is a two-player game, each player has their own color that is used in that player's area. Whenever a player answers the question of a specific category card correctly, that card also receives that player's color. Cards whose answers have been answered incorrectly, receive a neutral gray color. That way, the players have an additional clue as to who is leading, beside the score in the player areas.
-
-On the quiz cards, correct answers are highlighted green and wrong answers are highlighted red, which corresponds to the conventional use of color coding for "wrong" and "right". However, since these colors might present a barrier to people with color vision deficiency, the wrong answer is also marked by a line-through.
 
 ![Game palette](assets/images/readme_palette.png)
 
@@ -78,9 +76,9 @@ I chose three main colors for the game area:
 
 Each of those colors has a much lighter equivalent that I use for the text:
 
-- Thistle - for text on Violet
-- Nyanza - for text on Dark moss green
-- French gray - for text on Delft blue
+- Magnolia - for text on Violet
+- Ivory - for text on Dark moss green
+- Ghost white - for text on Delft blue
 
 These color combinations have been checked with the [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker) to make sure the contrast ratio is sufficient.
 
@@ -90,9 +88,18 @@ The remaining colors are:
 - Dark spring green - to highlight correct answers
 - Burnt umber - to highlight wrong answers
 
+Since this is a two-player game, each player has their own color that is used in that player's area. Whenever a player answers the question of a specific category card correctly, that card also receives that player's color. Cards whose answers have been answered incorrectly, receive a neutral gray color. That way, the players have an additional clue as to who is leading, beside the score in the player areas.
+
+![Fullscreen view of the game area showing inactive cards in their respective colors](assets/images/readme_design_cardarea.png)
+
+On the quiz cards, correct answers are highlighted green and wrong answers are highlighted red, which corresponds to the conventional use of color coding for "wrong" and "right". However, since these colors might present a barrier to people with color vision deficiency, the wrong answer is also marked by a line-through.
+
+![Quiz card with the correct and the wrong answers highlighted](assets/images/readme_design_quizcard.png)
+
 ### Typography
 
 I chose to have a single font for all game elements to make it less confusing. The font used is [Acme](https://fonts.google.com/specimen/Acme), downloaded from [Google Fonts](https://fonts.google.com/).
+![Font Acme](assets/images/readme_font_acme.png)
 
 ### Images
 
@@ -276,7 +283,7 @@ The following features could be implemented in future updates:
 
 ### Known bugs
 
-As of january 1 2024, no unsolved bugs remain in the code or have been discovered.
+See [TESTING.md](TESTING.md) for testing documentation
 
 ## Technologies
 

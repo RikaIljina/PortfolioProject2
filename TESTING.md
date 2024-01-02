@@ -3,19 +3,15 @@
 ## CONTENTS
 
 - [AUTOMATED TESTING](#automated-testing)
-
   - [W3C Validator](#w3c-validator)
   - [Lighthouse](#lighthouse)
   - [WAVE](#wave)
-
 - [MANUAL TESTING](#manual-testing)
- - [Testing User Stories](#testing-user-stories)
- - [Full Testing](#full-testing)
-
+  - [Testing User Stories](#testing-user-stories)
+  - [Full Testing](#full-testing)
 - [BUGS](#bugs)
-
-  - [Known Bugs](#known-bugs)
-  - [Solved Bugs](#solved-bugs)
+  - [Known bugs](#known-bugs)
+  - [Solved bugs](#solved-bugs)
 
 ## Automated Testing
 
@@ -106,7 +102,7 @@ The following features were thoroughly tested:
 
 ## Bugs
 
-### Fixed
+### Solved bugs
 
 The following issues came up during the testing process and were fixed:
 
@@ -117,7 +113,7 @@ The following issues came up during the testing process and were fixed:
 | I realized that my game was only playable with mouse/touch input, not with keyboard, making it less accessible for certain users. |  1. In HTML, I changed all interactive elements to have the tag `button` instead of `div` or `p`. <br> 2. In the script file, I added code to enable/disable the buttons depending on the stage of the game and the visible screen to make sure hidden elements were not accessible via `TAB` key. <br> 3. In the CSS file, I adjusted styles to make sure focused elements were visible as such. |
 
 
-### Remaining
+### Known bugs
 
 | Issue | Fix attempt |
 |---|---|

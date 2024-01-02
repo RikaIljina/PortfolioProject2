@@ -60,7 +60,7 @@ The layout of the game area is slightly different on mobiles and on larger scree
 - On mobiles, the area containing the active player name, their score and the note "It's your turn" is displayed at the top. The area of the inactive player is hidden. Below the player area is the card area with two or three columns, depending on the phone size. The dialog with the quiz question that appears after clicking on a card fills the entire phone screen.
 - On larger screens, the card area takes up most space in the middle of the screen and the two player areas are to the left and right of the card area. The dialog with the quiz question only fills a small percentage of the screen. A light, translucent modal fills the space behind it, preventing the user from interacting with the background.
 
-![Game area on small mobile screens](assets/images/readme_design_mobile.png | width=100)
+<img src="assets/images/readme_design_mobile.png" width="300" alt="Game area on small mobile screens">
 
 All game elements that are clickable but do not intuitively look like buttons (category cards, answers) have a box shadow that slightly lifts them up from the background. Once they become unclickable, the shadow disappears to convey to the players that they are no longer interactive.
 
@@ -96,12 +96,13 @@ Since this is a two-player game, each player has their own color that is used in
 
 On the quiz cards, correct answers are highlighted green and wrong answers are highlighted red, which corresponds to the conventional use of color coding for "wrong" and "right". However, since these colors might present a barrier to people with color vision deficiency, the wrong answer is also marked by a line-through.
 
-![Quiz card with the correct and the wrong answers highlighted](assets/images/readme_design_quizcard.png)
+<img src="assets/images/readme_design_quizcard.png" width="300" alt="Quiz card with the correct and the wrong answers highlighted">
 
 ### Typography
 
 I chose to have a single font for all game elements to make it less confusing. The font used is [Acme](https://fonts.google.com/specimen/Acme), downloaded from [Google Fonts](https://fonts.google.com/).
-![Font Acme](assets/images/readme_font_acme.png)
+
+<img src="assets/images/readme_font_acme.png" width="500" alt="Font Acme">
 
 ### Images
 

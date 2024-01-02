@@ -81,7 +81,7 @@ main {
 
 #p1-name,
 #p2-name {
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 /* This text marks the currently active player */
@@ -513,7 +513,7 @@ th {
 @media screen and (min-width: 862px) {
   #p1-name,
   #p2-name {
-    font-size: 2.5rem;
+    font-size: 2.4rem;
   }
 
   #loading-screen,

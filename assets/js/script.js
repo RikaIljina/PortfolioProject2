@@ -90,10 +90,10 @@ function validateNames(event) {
   let enteredName1 = playerData.elements["p1"].value;
   let enteredName2 = playerData.elements["p2"].value;
   // Validate player input (https://stackoverflow.com/questions/44256226/pattern-validation-with-javascript)
-  let re = /^[a-zA-Z0-9._-]{1,10}$/;
+  let re = /^[a-zA-Z0-9._-]{1,8}$/;
   if (!re.test(enteredName1) || !re.test(enteredName2)) {
     document.getElementById("input-error").textContent =
-      "Please only use latin letters, numbers, and the symbols . (dot), - (hyphen), _ (underscore) in your names. Name length must be between 1 and 10 characters.";
+      "Please only use latin letters, numbers, and the symbols . (dot), - (hyphen), _ (underscore) in your names. Name length must be between 1 and 8 characters.";
   } else {
     initializePlayers();
   }

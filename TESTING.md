@@ -115,6 +115,6 @@ The following issues came up during the testing process and were fixed:
 
 ### Known bugs
 
-| Issue | Fix attempt |
-|---|---|
-| I allow users to enter max 10 characters as player names. On some devices (tablets and smaller latops), if players choose long names, especially with braod characters such as "M" or "W", this leads to the player areas taking up too much space in the game area since they display the entire player name. | I haven't settled on a fix yet. In the future, I might limit the player name length even more or choose a narrow font. |
+| Issue | Fix attempt | Screenshot|
+|---|---|---|
+| I allow users to enter max 8 characters as player names. On some devices (tablets and smaller latops), if players choose long names, especially with broad characters such as "M" or "W", this leads to the player areas taking up too much space in the game area since they display the entire player name. | I haven't settled on a fix yet. In the future, I might limit the player name length even more or choose a narrow font. | <img src="assets/images/readme_design_bug1.png" alt="Screen where player names are too long" width="300"> |

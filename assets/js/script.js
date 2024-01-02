@@ -5,7 +5,7 @@ const player1 = {
   wins: 0,
   id: "p1-name",
   color: "#3B5124",
-  colorText: "#ECFFD8",
+  colorText: "#FAFFF5",
 };
 const player2 = {
   name: "",
@@ -13,7 +13,7 @@ const player2 = {
   wins: 0,
   id: "p2-name",
   color: "#26334B",
-  colorText: "#c5cddb",
+  colorText: "#F6F9FF",
 };
 
 // Object with data about the current state of the game
@@ -117,6 +117,8 @@ function initializePlayers() {
 
   document.getElementById("player-1").style.backgroundColor = player1.color;
   document.getElementById("player-2").style.backgroundColor = player2.color;
+  document.getElementById("player-1").style.color = player1.colorText;
+  document.getElementById("player-2").style.color = player2.colorText;
 
   // Highlight active player
   updatePlayerArea();

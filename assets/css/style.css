@@ -15,7 +15,7 @@ body {
 
 header {
   background-color: #47224a;
-  color: #dcc5de;
+  color: #f2ebf2;
   width: 100%;
   padding-top: 1rem;
   text-align: center;
@@ -84,14 +84,6 @@ main {
   font-size: 2rem;
 }
 
-#player-1 {
-  color: #e0ebd1;
-}
-
-#player-2 {
-  color: #c5cddb;
-}
-
 /* This text marks the currently active player */
 .active-player-note {
   font-size: 1.8rem;
@@ -130,7 +122,7 @@ main {
   margin: 10px 0;
   border-radius: 15px;
   background-color: #47224a;
-  color: #dcc5de;
+  color: #f2ebf2;
   box-shadow: 0px 15px 15px rgba(71, 34, 74, 0.6),
     0px 5px 5px rgba(71, 34, 74, 0.6);
   line-height: 6rem;
@@ -149,7 +141,7 @@ main {
 footer {
   width: 100%;
   background-color: #47224a;
-  color: #dcc5de;
+  color: #f2ebf2;
   text-align: center;
   line-height: 2rem;
   font-size: 1.3rem;
@@ -157,7 +149,7 @@ footer {
 }
 
 footer a {
-  color: #dcc5de;
+  color: #f2ebf2;
 }
 
 /* Overlays the whole viewport */
@@ -189,7 +181,7 @@ footer a {
   border: 3px solid #3c173f;
   box-shadow: inset 0 0 5px 5px black;
   background-color: #47224a;
-  color: #dcc5de;
+  color: #f2ebf2;
   padding: 1rem;
   text-align: center;
   font-family: "Acme", sans-serif;
@@ -316,7 +308,7 @@ footer a {
   text-align: center;
   border-radius: 10px;
   background-color: #47224a;
-  color: #dcc5de;
+  color: #f2ebf2;
   margin: 0 7px 3px 7px;
   padding: 1rem 0.5rem 1rem 0.5rem;
   font-family: "Acme", sans-serif;

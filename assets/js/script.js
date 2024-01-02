@@ -128,7 +128,6 @@ function initializePlayers() {
   document.getElementById("modal").style.animation = "none";
   document.getElementById("modal").style.display = "none";
 
-
   // Declare game as started
   gameState.gameStarted = true;
 

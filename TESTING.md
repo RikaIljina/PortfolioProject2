@@ -9,6 +9,8 @@
   - [WAVE](#wave)
 
 - [MANUAL TESTING](#manual-testing)
+ - [Testing User Stories](#testing-user-stories)
+ - [Full Testing](#full-testing)
 
 - [BUGS](#bugs)
 
@@ -36,8 +38,11 @@ Testing the JavaScript code with [JSHint](https://jshint.com/):
 | script.js | No errors |
 | questions.js | No errors |
 
-
 ### Lighthouse
+
+Mobile:
+
+
 
 ### Wave
 
@@ -45,5 +50,9 @@ Testing the JavaScript code with [JSHint](https://jshint.com/):
 
 ## Bugs
 
-forgot header elements
-contrast?
+The following issues came up during the testing process and were fixed:
+
+| Issue | Fix |
+|---|---|
+| The [WAVE report](https://wave.webaim.org/) showed that I had no headings in my HTML | Added appropriate headings for a clearer HTML structure |
+| The [WAVE report](https://wave.webaim.org/) showed contrast errors | Changed the text colors for better contrast |

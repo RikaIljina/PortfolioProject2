@@ -170,7 +170,7 @@ footer a {
 
 #loading-screen,
 #end-game-screen {
-  position: fixed;
+  position: absolute;
   display: none;
   flex-direction: column;
   overflow-y: auto;
@@ -196,6 +196,47 @@ footer a {
 
 #loading-screen {
   display: flex;
+}
+
+#loading-screen h3 {
+  margin-bottom: 0.5rem;
+}
+
+/* Name of the winner on the end game screen */
+#winner {
+  font-size: 1.7rem;
+}
+
+#end-game-screen img {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 20%;
+  max-width: 120px;
+}
+
+#end-game-screen table,
+td,
+th {
+  padding: 0.5rem;
+  border-collapse: collapse;
+  border: none;
+  font-size: 1.3rem;
+}
+
+#end-game-screen th {
+  font-size: 1.5rem;
+}
+
+#end-game-screen table {
+  width: 60%;
+  min-width: fit-content;
+  margin: auto;
+}
+
+/* Space needed to push the table to the left, so that the player names are centered on the end game screen */
+#cellspace {
+  width: 4.2rem;
 }
 
 @keyframes fadeIn {
@@ -372,26 +413,7 @@ footer a {
 }
 
 #close-card:focus {
-  outline: 2px solid rgba(220, 197, 222, 0.5);;
-}
-
-
-/* Name of the winner on the end game screen */
-#winner {
-  font-size: 1.7rem;
-}
-
-#end-game-screen table,
-td,
-th {
-  border-collapse: collapse;
-  border: 1px solid white;
-}
-
-#end-game-screen table {
-  width: 80%;
-  margin: auto;
-  margin-bottom: 2rem;
+  outline: 2px solid rgba(220, 197, 222, 0.5);
 }
 
 /* Styles for the error page error.html */
@@ -501,6 +523,20 @@ th {
 
   #winner {
     font-size: 2.5rem;
+  }
+
+  #end-game-screen table,
+  td,
+  th {
+    font-size: 1.5rem;
+  }
+
+  #end-game-screen th {
+    font-size: 1.8rem;
+  }
+
+  #end-game-screen table {
+    width: 50%;
   }
 
   .restart-btn {
@@ -687,8 +723,14 @@ th {
     height: 75vh;
   }
 
-  #input-error {
-    font-size: 1.4rem;
+  #end-game-screen table,
+  td,
+  th {
+    font-size: 1.8rem;
+  }
+
+  #end-game-screen th {
+    font-size: 2.2rem;
   }
 
   #player-name-inputs > p > input {

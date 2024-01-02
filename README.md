@@ -5,7 +5,7 @@
 This project is a website with one page that allows the users to play a trivia quiz game in local multiplayer on one device, thereby testing their general knowledge and learning new facts about the world.
 
 The website is fully responsive across multiple devices.
-![Website view on different devices](assets/images/readme_mockup_responsive.png)
+![Website view on different devices](assets/readme_files/readme_mockup_responsive.png)
 
 ## Table of Contents
 
@@ -53,14 +53,14 @@ When choosing a design for my game, I prioritized clearness and readability to m
 
 The header with the game title and the footer with copyright info are designed to be unobtrusive as to not draw attention away from the main game area.
 
-![Fullscreen view of the game area](assets/images/readme_design_fullscreen.png)
+![Fullscreen view of the game area](assets/readme_files/readme_design_fullscreen.png)
 
 The layout of the game area is slightly different on mobiles and on larger screens:
 
 - On mobiles, the area containing the active player name, their score and the note "It's your turn" is displayed at the top. The area of the inactive player is hidden. Below the player area is the card area with two or three columns, depending on the phone size. The dialog with the quiz question that appears after clicking on a card fills the entire phone screen.
 - On larger screens, the card area takes up most space in the middle of the screen and the two player areas are to the left and right of the card area. The dialog with the quiz question only fills a small percentage of the screen. A light, translucent modal fills the space behind it, preventing the user from interacting with the background.
 
-<img src="assets/images/readme_design_mobile.png" width="300" alt="Game area on small mobile screens">
+<img src="assets/readme_files/readme_design_mobile.png" width="300" alt="Game area on small mobile screens">
 
 All game elements that are clickable but do not intuitively look like buttons (category cards, answers) have a box shadow that slightly lifts them up from the background. Once they become unclickable, the shadow disappears to convey to the players that they are no longer interactive.
 
@@ -68,7 +68,7 @@ If desired by the players, the game can be played with keyboard input only by us
 
 ### Color scheme
 
-![Game palette](assets/images/readme_palette.png)
+![Game palette](assets/readme_files/readme_palette.png)
 
 I chose three main colors for the game area:
 
@@ -92,21 +92,23 @@ The remaining colors are:
 
 Since this is a two-player game, each player has their own color that is used in that player's area. Whenever a player answers the question of a specific category card correctly, that card also receives that player's color. Cards whose answers have been answered incorrectly, receive a neutral gray color. That way, the players have an additional clue as to who is leading, beside the score in the player areas.
 
-![Fullscreen view of the game area showing inactive cards in their respective colors](assets/images/readme_design_cardarea.png)
+![Fullscreen view of the game area showing inactive cards in their respective colors](assets/readme_files/readme_design_cardarea.png)
 
 On the quiz cards, correct answers are highlighted green and wrong answers are highlighted red, which corresponds to the conventional use of color coding for "wrong" and "right". However, since these colors might present a barrier to people with color vision deficiency, the wrong answer is also marked by a line-through.
 
-<img src="assets/images/readme_design_quizcard.png" width="300" alt="Quiz card with the correct and the wrong answers highlighted">
+<img src="assets/readme_files/readme_design_quizcard.png" width="300" alt="Quiz card with the correct and the wrong answers highlighted">
 
 ### Typography
 
 I chose to have a single font for all game elements to make it less confusing. The font used is [Acme](https://fonts.google.com/specimen/Acme), downloaded from [Google Fonts](https://fonts.google.com/).
 
-<img src="assets/images/readme_font_acme.png" width="500" alt="Font Acme">
+<img src="assets/readme_files/readme_font_acme.png" width="500" alt="Font Acme">
 
 ### Images
 
-I did not use any images in the game due to time restrictions, though I do believe that a few well-placed graphics would improve the overall look-and-feel of the game. This is a consideration for a future update.
+A trophy cup is displayed on the end game screen next to the winning player.
+
+I did not use many images in the game due to time restrictions, though I do believe that a few well-placed graphics would improve the overall look-and-feel of the game. This is a consideration for a future update.
 
 ## Features
 
@@ -136,7 +138,8 @@ After the webpage has loaded, the user is presented with a loading screen provid
 - `error.html` - an error page to be shown in case there is an issue with the database and questions cannot be retrieved
 - `assets/css/style.css` - styles for the entire site
 - `assets/favicons` - folder containing the site icons
-- `assets/images` - folder containing the image files (for now only readme images)
+- `assets/images` - folder containing the image files
+- `assets/readme_files` - folder containing the readme screenshots
 - `assets/js/questions.js` - database file containing nine arrays with question objects for the nine categories as well as an array containing the quiz category names and their respective array lengths
 - `assets/js/script.js` - script file containing the game code
 
@@ -145,7 +148,7 @@ After the webpage has loaded, the user is presented with a loading screen provid
 <details>
 <summary>Flowchart depicting the progression of actions and processes</summary>
 
-![Flowchart depicting the progression of actions and processes](assets/images/readme_flowchart.png)
+![Flowchart depicting the progression of actions and processes](assets/readme_files/readme_flowchart.png)
 
 </details>
 
@@ -377,7 +380,7 @@ Most of the quiz questions have been generated by [OpenAI ChatGPT](https://opena
 
 ### Media
 
-No images have been used in this project.
+ - [Flaticon](https://www.flaticon.com/free-icons/sports-and-competition)
 
 ### Acknowledgments
 

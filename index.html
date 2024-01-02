@@ -8,7 +8,8 @@
   <meta property="og:url" content="https://rikailjina.github.io/PortfolioProject2/">
   <meta property="og:title" content="What d'you know, a quiz for two">
   <meta property="og:description" content="Test your knowledge in this fun trivia quiz for two players!">
-  <meta property="og:image" content="https://github.com/RikaIljina/PortfolioProject2/blob/main/assets/images/social_main.png">
+  <meta property="og:image"
+    content="https://github.com/RikaIljina/PortfolioProject2/blob/main/assets/images/social_main.png">
   <!-- Info for search engines -->
   <meta name="description" content="Test your knowledge in this fun trivia quiz for two players!">
   <meta name="keywords" content="quiz, trivia, game, multiplayer, knowledge, fun facts">
@@ -47,7 +48,7 @@
         </p>
       </div>
 
-      <!-- Card area containing 9 interactive category cards -->
+      <!-- Card area containing 9 interactive category cards; starting with attribute "disabled" to make sure the buttons can't be selected via keyboard before the game starts -->
       <div id="card-area">
         <button class="card" data-id="0" disabled>Tech</button>
         <button class="card" data-id="1" disabled>Nature</button>
@@ -118,8 +119,9 @@
       <!-- End game screen displayed on top of the game area at the end of one round -->
       <div id="end-game-screen">
         <!-- Paragraph containing the results at the end of each game -->
-        <p id="results"></p>
-        <p>Continue?</p>
+        <img src="assets/images/trophy.png">
+        <div id="results"></div>
+        <table id="results-table"></table>
         <div id="restart-btn-div">
           <button name="restart-same" class="restart-btn" id="restart-same">
             Next round

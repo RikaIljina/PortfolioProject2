@@ -44,7 +44,6 @@ const colors = {
 // corresponding question array minus one. 
 // My reference for the usage of spread syntax:
 // https://stackoverflow.com/questions/3895478/does-javascript-have-a-method-like-range-to-generate-a-range-within-the-supp
-
 const questionKeys = {};
 try {
   for (let i = 0; i < quizCategories.length; i++) {
@@ -119,7 +118,6 @@ function initializePlayers() {
   // Initial update of the player areas to show player names and colors
   document.getElementById("p1-name").textContent = player1.name;
   document.getElementById("p2-name").textContent = player2.name;
-
   document.getElementById("player-1").style.backgroundColor = player1.color;
   document.getElementById("player-2").style.backgroundColor = player2.color;
   document.getElementById("player-1").style.color = player1.colorText;
@@ -484,25 +482,25 @@ function endGame() {
     document.getElementById("winner").style.color = winner.colorText;
   }
 
-  document.getElementById("results").innerHTML += `
-  <br><br>Stats:<br><br>
-  <table>
+  document.getElementById("results-table").innerHTML = `
   <tr>
-    <th>Player</th>
-    <th>This round's score</th>
-    <th>Total wins</th>
+    <th></th>
+    <th>${player1.name}</th>
+    <th>${player2.name}</th>
+    <th id="cellspace"></th>
   </tr>
   <tr>
-    <td>${player1.name}</td>
+    <td>Score</td>
     <td>${player1.score}</td>
-    <td>${player1.wins}</td>
+    <td>${player2.score}</td>
+    <td></td>
   </tr>
   <tr>
-    <td>${player2.name}</td>
-    <td>${player2.score}</td>
+    <td>Wins</td>
+    <td>${player1.wins}</td>
     <td>${player2.wins}</td>
+    <td></td>
   </tr>
-</table>
 `;
 
   // Listen for players clicking on Continue or Restart
@@ -513,3 +511,26 @@ function endGame() {
     location.reload();
   });
 }
+
+
+
+// document.getElementById("results").innerHTML += `
+// <br><br>Stats:<br><br>
+// <table>
+// <tr>
+//   <th>Player</th>
+//   <th>This round's score</th>
+//   <th>Total wins</th>
+// </tr>
+// <tr>
+//   <td>${player1.name}</td>
+//   <td>${player1.score}</td>
+//   <td>${player1.wins}</td>
+// </tr>
+// <tr>
+//   <td>${player2.name}</td>
+//   <td>${player2.score}</td>
+//   <td>${player2.wins}</td>
+// </tr>
+// </table>
+// `;

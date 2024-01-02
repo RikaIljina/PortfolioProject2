@@ -73,7 +73,7 @@ window.addEventListener(
     adjustForWindowSize(
       document.getElementById(gameState.activePlayer.id),
       document.getElementById(gameState.inactivePlayer.id)
-    )
+    );
   }
 );
 

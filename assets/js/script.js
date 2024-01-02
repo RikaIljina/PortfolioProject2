@@ -358,12 +358,6 @@ function processAnswer() {
     // Highlight the chosen answer green
     this.style.backgroundColor = colors.questionCardAnswersCorrect;
     this.style.color = colors.questionCardAnswersText;
-    // Show and enable continue button
-    document.getElementById("close-card").style.color =
-      colors.questionCardContinue;
-    document.getElementById("close-card").disabled = false;
-    document.getElementById("close-card").style.pointerEvents = "auto";
-    document.getElementById("close-card").style.cursor = "pointer";
     // Display the category card in the player's colors
     gameState.usedCard.style.backgroundColor = gameState.activePlayer.color;
     gameState.usedCard.style.color = gameState.activePlayer.colorText;
@@ -380,12 +374,6 @@ function processAnswer() {
       colors.questionCardAnswersCorrect;
     document.getElementById(gameState.correctAnswer).style.color =
       colors.questionCardAnswersText;
-    // Show and enable continue button
-    document.getElementById("close-card").style.color =
-      colors.questionCardContinue;
-    document.getElementById("close-card").disabled = false;
-    document.getElementById("close-card").style.pointerEvents = "auto";
-    document.getElementById("close-card").style.cursor = "pointer";
     // Display the category card in grey
     gameState.usedCard.style.backgroundColor = colors.categoryCardsInactive;
     gameState.usedCard.style.color = colors.categoryCardsTextInactive;
@@ -400,9 +388,15 @@ function processAnswer() {
     answer.style.boxShadow = "none";
   }
 
+  let continueBtn = document.getElementById("close-card");
+  // Show and enable Continue button
+  continueBtn.style.color =
+    colors.questionCardContinue;
+  continueBtn.disabled = false;
+  continueBtn.style.pointerEvents = "auto";
+  continueBtn.style.cursor = "pointer";
   // Listen for player clicking on Continue before starting next round
-  document.getElementById("close-card").focus();
-  document.getElementById("close-card").addEventListener("click", nextRound);
+  continueBtn.addEventListener("click", nextRound);
 
   return;
 }

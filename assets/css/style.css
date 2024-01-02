@@ -121,6 +121,7 @@ main {
   min-width: 7rem;
   margin: 10px 0;
   border-radius: 15px;
+  border-style: none;
   background-color: #47224a;
   color: #f2ebf2;
   box-shadow: 0px 15px 15px rgba(71, 34, 74, 0.6),
@@ -131,11 +132,16 @@ main {
   transition: all 0.3s;
 }
 
-.card:hover {
+.card:hover,
+.card:focus {
   background-color: #783c7e;
   cursor: pointer;
   font-size: 2.2rem;
   transition: all 0.3s;
+}
+
+.card:focus {
+  outline: 4px solid rgba(220, 197, 222, 0.5);
 }
 
 footer {
@@ -255,19 +261,22 @@ footer a {
 }
 
 #start-btn:hover,
-.restart-btn:hover {
+.restart-btn:hover,
+#start-btn:focus,
+.restart-btn:focus {
   background-color: rgb(247, 235, 247);
   font-size: 1.4rem;
   transition: all 0.3s;
 }
 
-#start-btn:hover {
+#start-btn:hover,
+#start-btn:focus {
   font-size: 1.7rem;
 }
 
 #start-btn:focus,
 .restart-btn:focus {
-  outline: 2px solid rgba(220, 197, 222, 0.5);
+  outline: 4px solid rgba(220, 197, 222, 0.5);
 }
 
 #start-btn:active,
@@ -307,6 +316,7 @@ footer a {
   align-items: center;
   text-align: center;
   border-radius: 10px;
+  border-style: none;
   background-color: #47224a;
   color: #f2ebf2;
   margin: 0 7px 3px 7px;
@@ -328,16 +338,21 @@ footer a {
   transition: all 0.3s;
 }
 
-.answer:hover {
+.answer:hover,
+.answer:focus {
   background-color: #783c7e;
   color: #f2ebf2;
   cursor: pointer;
 }
 
+.answer:focus {
+  outline: 2px solid rgba(220, 197, 222, 0.5);
+}
+
 #close-card {
   flex: 1;
   padding: 0.5rem 0 0.5rem 0;
-  margin: 0 7px 0 7px;
+  margin: 0 7px 5px 7px;
   border-radius: 10px;
   border: none;
   background-color: #271328;
@@ -349,11 +364,17 @@ footer a {
   pointer-events: none;
 }
 
-#close-card:hover {
+#close-card:hover,
+#close-card:focus {
   background-color: #783c7e;
   font-size: 1.7rem;
   transition: all 0.3s;
 }
+
+#close-card:focus {
+  outline: 2px solid rgba(220, 197, 222, 0.5);;
+}
+
 
 /* Name of the winner on the end game screen */
 #winner {
@@ -450,7 +471,9 @@ th {
   }
 
   #start-btn:hover,
-  .restart-btn:hover {
+  #start-btn:focus,
+  .restart-btn:hover,
+  .restart-btn:focus {
     font-size: 1.7rem;
   }
 
@@ -471,7 +494,8 @@ th {
     font-size: 1.6rem;
   }
 
-  #close-card:hover {
+  #close-card:hover,
+  #close-card:focus {
     font-size: 1.7rem;
   }
 
@@ -529,7 +553,8 @@ th {
     font-size: 3rem;
   }
 
-  .card:hover {
+  .card:hover,
+  .card:focus {
     font-size: 3.2rem;
   }
 
@@ -550,7 +575,8 @@ th {
     font-size: 2rem;
   }
 
-  #close-card:hover {
+  #close-card:hover,
+  #close-card:focus {
     font-size: 2.2rem;
   }
 
@@ -577,7 +603,8 @@ th {
     font-size: 2.2rem;
   }
 
-  #start-btn:hover {
+  #start-btn:hover,
+  #start-btn:focus {
     font-size: 2.5rem;
   }
 
@@ -586,7 +613,8 @@ th {
     font-size: 2rem;
   }
 
-  .restart-btn:hover {
+  .restart-btn:hover,
+  .restart-btn:focus {
     font-size: 2.2rem;
   }
 }
@@ -620,7 +648,8 @@ th {
     font-size: 3.5rem;
   }
 
-  .card:hover {
+  .card:hover,
+  .card:focus {
     font-size: 3.7rem;
   }
 
@@ -641,7 +670,8 @@ th {
     font-size: 2.5rem;
   }
 
-  #close-card:hover {
+  #close-card:hover,
+  #close-card:focus {
     font-size: 2.7rem;
   }
 
@@ -678,7 +708,8 @@ th {
     font-size: 3rem;
   }
 
-  #start-btn:hover {
+  #start-btn:hover,
+  #start-btn:focus {
     font-size: 3.3rem;
   }
 

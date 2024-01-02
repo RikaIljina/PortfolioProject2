@@ -61,8 +61,8 @@ const cards = document.getElementById("card-area");
 
 // Global event listeners for player name submission and quiz category selection
 playerData.elements["submit"].addEventListener("click", validateNames);
-for (let child of cards.children) {
-  child.addEventListener("click", cardClicked);
+for (let card of cards.children) {
+  card.addEventListener("click", cardClicked);
 }
 
 // Global event listener that makes sure the player area is always correctly displayed/hidden
@@ -128,6 +128,10 @@ function initializePlayers() {
   document.getElementById("modal").style.animation = "none";
   document.getElementById("modal").style.display = "none";
 
+  // Make sure all category cards are clickable and selectable via keyboard
+  for (let card of cards.children) {
+    card.disabled = false;
+  }
   // Declare game as started
   gameState.gameStarted = true;
 
@@ -156,12 +160,14 @@ function continueGame() {
   // Highlight active player
   updatePlayerArea();
 
-  // Reset category card styles
+  // Reset category card styles and make all cards clickable and selectable by keyboard input
   for (let card of cards.children) {
     card.style.pointerEvents = "auto";
     card.style.backgroundColor = "";
     card.style.color = "";
     card.style.boxShadow = "";
+    card.disabled = false;
+    card.removeAttribute("used");
   }
 }
 
@@ -209,19 +215,23 @@ function cardClicked() {
     // Show the card that will be filled with the question and answers
     document.getElementById("modal").style.display = "block";
     document.getElementById("quiz-card").style.display = "flex";
+    document.getElementById("send-mail").setAttribute("tabindex", "-1");
 
-    // Make sure the answers are clickable
-    for (let answer of document.getElementsByClassName("answer")) {
-      answer.style.pointerEvents = "auto";
+    // Make sure category cards cannot be selected by keyboard input while the quiz card is shown
+    for (let card of cards.children) {
+      card.disabled = true;
     }
-
-    // Make this category card unclickable
+    // Make this category card non-interactive
     this.style.pointerEvents = "none";
-
+    // Remember that this card has been clicked on;
+    // this attribute will be used to check whether the card should be permanently disabled for keyboard navigation  
+    this.setAttribute("used", "true");
     // Save this category card in a global variable for later use in processAnswer()
     gameState.usedCard = this;
 
-    // Error handling: if the question cannot be loaded due to issues with the questions database,
+    // Error handling: 
+    // Try to show the quiz card with a question and four answers by calling showQuestion().
+    // If the question cannot be loaded due to issues with the questions database,
     // redirect user to an error page
     try {
       showQuestion(this);
@@ -269,7 +279,7 @@ function showQuestion(activeCard) {
       throw [`The question at index '${randomIndexQ}' in category '${activeCard.textContent}' does not have a 'question' key`, 'Sorry, this question seems to be broken... Details can be found in the console. Please contact the dev and report the bug.'];
     }
     if (isNaN(activeQuestion.correctAnswer) || !(0 <= activeQuestion.correctAnswer <= 3)) {
-      throw [`The question '${activeQuestion.question}' in category '${activeCard.textContent}' does not have a 'correctAnswer' key`, 'Sorry, this question seems to be broken... Details can be found in the console. Please contact the dev and report the bug.'];
+      throw [`The question '${activeQuestion.question}' in category '${activeCard.textContent}' does not have a 'correctAnswer' key or it is invalid`, 'Sorry, this question seems to be broken... Details can be found in the console. Please contact the dev and report the bug.'];
     }
   } catch (err) {
     errorHandling(err);
@@ -304,9 +314,16 @@ function showQuestion(activeCard) {
     // Remove the generated index from the list to make sure no answers are being selected multiple times
     answerKeys.splice(randomIndex, 1);
 
+    // Make sure the answer is clickable and selectable by keyboard input
+    answer.disabled = false;
+    answer.style.pointerEvents = "auto";
+
     // Listen for player clicking on an answer
     answer.addEventListener("click", processAnswer);
   }
+
+  // Deactivate invisible "Continue" button to make sure it can't be selected by keyboard
+  document.getElementById("close-card").disabled = true;
 
   return;
 }
@@ -340,9 +357,10 @@ function processAnswer() {
     // Highlight the chosen answer green
     this.style.backgroundColor = colors.questionCardAnswersCorrect;
     this.style.color = colors.questionCardAnswersText;
-    // Show continue button
+    // Show and enable continue button
     document.getElementById("close-card").style.color =
       colors.questionCardContinue;
+    document.getElementById("close-card").disabled = false;
     document.getElementById("close-card").style.pointerEvents = "auto";
     document.getElementById("close-card").style.cursor = "pointer";
     // Display the category card in the player's colors
@@ -361,9 +379,10 @@ function processAnswer() {
       colors.questionCardAnswersCorrect;
     document.getElementById(gameState.correctAnswer).style.color =
       colors.questionCardAnswersText;
-    // Show continue button
+    // Show and enable continue button
     document.getElementById("close-card").style.color =
       colors.questionCardContinue;
+    document.getElementById("close-card").disabled = false;
     document.getElementById("close-card").style.pointerEvents = "auto";
     document.getElementById("close-card").style.cursor = "pointer";
     // Display the category card in grey
@@ -374,12 +393,14 @@ function processAnswer() {
 
   // Make sure players can't click on other answers once an answer has been selected
   for (let answer of document.getElementsByClassName("answer")) {
+    answer.disabled = true;
     answer.style.pointerEvents = "none";
     answer.removeEventListener("click", processAnswer);
     answer.style.boxShadow = "none";
   }
 
   // Listen for player clicking on Continue before starting next round
+  document.getElementById("close-card").focus();
   document.getElementById("close-card").addEventListener("click", nextRound);
 
   return;
@@ -397,7 +418,9 @@ function nextRound() {
   document.getElementById("close-card").removeEventListener("click", nextRound);
   document.getElementById("close-card").style.color = "";
   document.getElementById("close-card").style.cursor = "";
+  document.getElementById("close-card").disabled = true;
   document.getElementById("close-card").style.pointerEvents = "none";
+  document.getElementById("send-mail").setAttribute("tabindex", "0");
 
   // Reset the styles of answers on the quiz card
   for (let answer of document.getElementsByClassName("answer")) {
@@ -406,6 +429,13 @@ function nextRound() {
     answer.style.boxShadow = "";
     answer.style.transition = "all 0.3s";
     answer.style.textDecoration = "none";
+  }
+
+  // Reset interactivity for mouse/touch/keyboard input for all cards except for used ones
+  for (let card of cards.children) {
+    if (!card.getAttribute("used")) {
+      card.disabled = false;
+    }
   }
 
   // Switch players

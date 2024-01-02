@@ -48,15 +48,15 @@
 
       <!-- Card area containing 9 interactive category cards -->
       <div id="card-area">
-        <div class="card" role="button" data-id="0">Tech</div>
-        <div class="card" role="button" data-id="1">Nature</div>
-        <div class="card" role="button" data-id="2">Sports</div>
-        <div class="card" role="button" data-id="3">History</div>
-        <div class="card" role="button" data-id="4">Geo</div>
-        <div class="card" role="button" data-id="5">Books</div>
-        <div class="card" role="button" data-id="6">Music</div>
-        <div class="card" role="button" data-id="7">Food</div>
-        <div class="card" role="button" data-id="8">General</div>
+        <button class="card" data-id="0" disabled>Tech</button>
+        <button class="card" data-id="1" disabled>Nature</button>
+        <button class="card" data-id="2" disabled>Sports</button>
+        <button class="card" data-id="3" disabled>History</button>
+        <button class="card" data-id="4" disabled>Geo</button>
+        <button class="card" data-id="5" disabled>Books</button>
+        <button class="card" data-id="6" disabled>Music</button>
+        <button class="card" data-id="7" disabled>Food</button>
+        <button class="card" data-id="8" disabled>General</button>
       </div>
 
       <!-- Player 2 area with name, score and turn indicator -->
@@ -107,10 +107,10 @@
       <!-- Quiz card to be displayed on top of the game area whenever a player clicks on a category card -->
       <div id="quiz-card">
         <p id="question" class="qcard-text question">QUESTION</p>
-        <p id="a" class="qcard-text answer" role="button">A</p>
-        <p id="b" class="qcard-text answer" role="button">B</p>
-        <p id="c" class="qcard-text answer" role="button">C</p>
-        <p id="d" class="qcard-text answer" role="button">D</p>
+        <button id="a" class="qcard-text answer">A</button>
+        <button id="b" class="qcard-text answer">B</button>
+        <button id="c" class="qcard-text answer">C</button>
+        <button id="d" class="qcard-text answer">D</button>
         <button id="close-card">Continue</button>
       </div>
 
@@ -134,7 +134,7 @@
   <!-- Footer with copyright information and dev contact data -->
   <footer>
     <p>
-      © 2023 by Vasilika Schnitzer - <a href="mailto:dev@whatdyouknow.com"
+      © 2023 by Vasilika Schnitzer - <a href="mailto:dev@whatdyouknow.com" id="send-mail"
         aria-label="Opens default mail app to send an email with feedback to the dev">Feedback</a>
     </p>
   </footer>

@@ -170,7 +170,7 @@ footer a {
 
 #loading-screen,
 #end-game-screen {
-  position: absolute;
+  position: relative;
   display: none;
   flex-direction: column;
   overflow-y: auto;

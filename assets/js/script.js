@@ -470,12 +470,17 @@ function endGame() {
 
   // Compare the player scores and update the end game screen accordingly
   if (player1.score === player2.score) {
+    document.getElementById("trophy").setAttribute("src", "assets/images/draw.png")
+    document.getElementById("trophy").setAttribute("alt", "Graphic of balanced scales");
     document.getElementById(
       "results"
     ).innerHTML = `It's a draw! Play again to see who's better!`;
   } else {
     let winner = player1.score > player2.score ? player1 : player2;
     winner.wins += 1;
+
+    document.getElementById("trophy").setAttribute("src", "assets/images/trophy.png");
+    document.getElementById("trophy").setAttribute("alt", "Graphic of a golden trophy cup");
     document.getElementById(
       "results"
     ).innerHTML = `Congrats to <br class="show-on-mobile" /><span id="winner">${winner.name}</span><br>You won this round!`;

@@ -39,17 +39,15 @@ The website is fully responsive across multiple devices.
 
 The target audience for the game are English-speaking teenagers and adults who enjoy trivia games and want to play against a local human opponent.
 
-#### First-time visitors
+The goal is to engage two people in a fun quiz game for an unspecified amount of time and encourage them to come back for even more questions to ruminate on and more new facts to learn.
 
-First-time visitors are greeted by a welcome screen which contains a short game description - a "How-to-play" - as well as two clearly marked input fields for the player names.
+#### User stories
 
-#### Returning visitors
+As a website visitor, I want to be able to 
 
-Returning visitors can immediately enter their names on page load without having to re-read the game description.
-
-### Site goal
-
-The site goal is to engage two people in a fun quiz game for an unspecified amount of time and encourage them to come back for even more questions to ruminate on and more new facts to learn.
+- quickly understand what the website is about
+- understand how to start the game
+- easily understand the game loop 
 
 ## Design
 
@@ -270,6 +268,7 @@ Preferably, the integrity of the file `questions.js` would be tested and ascerta
 The following features could be implemented in future updates:
 
 - [ ] Add graphics for each category and on the loading and end game screens to make them look more interesting
+- [ ] Add a timer on quiz cards to limit the time players can think about a question 
 - [ ] Implement user authentication and let users access their personal profiles
 - [ ] Add an all-time highscore to show players with most wins
 - [ ] Add statistics to show how knowledgable a user is in what categories

@@ -207,13 +207,17 @@ footer a {
   font-size: 1.7rem;
 }
 
-#end-game-screen img {
+#end-game-screen #trophy {
   position: absolute;
   top: 20px;
   right: 20px;
   width: 20%;
   max-width: 120px;
 }
+
+#end-game-screen .draw {
+visibility: hidden;
+} 
 
 #end-game-screen table,
 td,
@@ -427,6 +431,12 @@ th {
 #error-page-div ul {
   padding: 1rem;
   font-size: 1.5rem;
+}
+
+@media screen and (min-width: 497px) {
+  #end-game-screen .draw {
+    visibility: visible;
+    } 
 }
 
 /* Media query for view on rotated phones and small tablets */

@@ -19,8 +19,11 @@ header {
   width: 100%;
   padding-top: 1rem;
   text-align: center;
-  font-size: 2rem;
   font-family: "Acme", sans-serif;
+}
+
+header h1 {
+  font-size: 2rem;
 }
 
 #subheader {
@@ -508,7 +511,7 @@ th {
 
 /* Media query for view on laptops and screens > 1440px */
 @media screen and (min-width: 1440px) {
-  header {
+  header h1 {
     font-size: 3rem;
   }
 
@@ -598,7 +601,7 @@ th {
 
 /* Media query for view on larger screens > 2559px */
 @media screen and (min-width: 2559px) {
-  header {
+  header h1 {
     font-size: 3rem;
   }
 

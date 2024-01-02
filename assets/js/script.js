@@ -57,11 +57,15 @@ try {
 // Global variables giving access to the player data entry form on the loading screen
 // and the area with category cards
 const playerData = document.getElementById("player-data-form");
-const cards = document.getElementById("card-area");
+const cards = document.getElementById("card-area").children;
+const continueBtn = document.getElementById("close-card");
+const modal = document.getElementById("modal");
+const quizCard = document.getElementById("quiz-card");
+const endGameScreen = document.getElementById("end-game-screen");
 
 // Global event listeners for player name submission and quiz category selection
-playerData.elements["submit"].addEventListener("click", validateNames);
-for (let card of cards.children) {
+playerData.elements.submit.addEventListener("click", validateNames);
+for (let card of cards) {
   card.addEventListener("click", cardClicked);
 }
 
@@ -78,7 +82,7 @@ window.addEventListener(
 );
 
 // Set keyboard focus on input field for player 1 name
-playerData.elements["p1"].focus();
+playerData.elements.p1.focus();
 
 /**
  * Checks whether the entered player names contain invalid characters:
@@ -87,8 +91,8 @@ playerData.elements["p1"].focus();
  */
 function validateNames(event) {
   event.preventDefault();
-  let enteredName1 = playerData.elements["p1"].value;
-  let enteredName2 = playerData.elements["p2"].value;
+  let enteredName1 = playerData.elements.p1.value;
+  let enteredName2 = playerData.elements.p2.value;
   // Validate player input (https://stackoverflow.com/questions/44256226/pattern-validation-with-javascript)
   let re = /^[a-zA-Z0-9._-]{1,8}$/;
   if (!re.test(enteredName1) || !re.test(enteredName2)) {
@@ -106,11 +110,11 @@ function validateNames(event) {
  * Calls updatePlayerArea()
  */
 function initializePlayers() {
-  playerData.elements["submit"].removeEventListener("click", validateNames);
+  playerData.elements.submit.removeEventListener("click", validateNames);
 
   // Initialize player objects with names
-  player1.name = playerData.elements["p1"].value;
-  player2.name = playerData.elements["p2"].value;
+  player1.name = playerData.elements.p1.value;
+  player2.name = playerData.elements.p2.value;
 
   // Initial update of the player areas to show player names and colors
   document.getElementById("p1-name").textContent = player1.name;
@@ -126,11 +130,11 @@ function initializePlayers() {
 
   // Hide loading screen and modal
   document.getElementById("loading-screen").style.display = "none";
-  document.getElementById("modal").style.animation = "none";
-  document.getElementById("modal").style.display = "none";
+  modal.style.animation = "none";
+  modal.style.display = "none";
 
   // Make sure all category cards are clickable and selectable via keyboard
-  for (let card of cards.children) {
+  for (let card of cards) {
     card.disabled = false;
   }
   // Declare game as started
@@ -147,8 +151,8 @@ function initializePlayers() {
 function continueGame() {
   // Hide end game screen
   document.getElementById("end-game-screen").style.display = "none";
-  document.getElementById("modal").style.animation = "none";
-  document.getElementById("modal").style.display = "none";
+  modal.style.animation = "none";
+  modal.style.display = "none";
 
   // Declare game as started
   gameState.gameStarted = true;
@@ -162,7 +166,7 @@ function continueGame() {
   updatePlayerArea();
 
   // Reset category card styles and make all cards clickable and selectable by keyboard input
-  for (let card of cards.children) {
+  for (let card of cards) {
     card.style.pointerEvents = "auto";
     card.style.backgroundColor = "";
     card.style.color = "";
@@ -214,12 +218,12 @@ function cardClicked() {
   // Make sure the game has started to prevent players from accidentally clicking on cards
   if (gameState.gameStarted) {
     // Show the card that will be filled with the question and answers
-    document.getElementById("modal").style.display = "block";
-    document.getElementById("quiz-card").style.display = "flex";
+    modal.style.display = "block";
+    quizCard.style.display = "flex";
     document.getElementById("send-mail").setAttribute("tabindex", "-1");
 
     // Make sure category cards cannot be selected by keyboard input while the quiz card is shown
-    for (let card of cards.children) {
+    for (let card of cards) {
       card.disabled = true;
     }
     // Make this category card non-interactive
@@ -324,7 +328,7 @@ function showQuestion(activeCard) {
   }
 
   // Deactivate invisible "Continue" button to make sure it can't be selected by keyboard
-  document.getElementById("close-card").disabled = true;
+  continueBtn.disabled = true;
 
   return;
 }
@@ -388,7 +392,6 @@ function processAnswer() {
     answer.style.boxShadow = "none";
   }
 
-  let continueBtn = document.getElementById("close-card");
   // Show and enable Continue button
   continueBtn.style.color =
     colors.questionCardContinue;
@@ -407,14 +410,14 @@ function processAnswer() {
  */
 function nextRound() {
   // Hide quiz card and deactivate its button
-  document.getElementById("quiz-card").style.display = "none";
-  document.getElementById("modal").style.animation = "none";
-  document.getElementById("modal").style.display = "none";
-  document.getElementById("close-card").removeEventListener("click", nextRound);
-  document.getElementById("close-card").style.color = "";
-  document.getElementById("close-card").style.cursor = "";
-  document.getElementById("close-card").disabled = true;
-  document.getElementById("close-card").style.pointerEvents = "none";
+  quizCard.style.display = "none";
+  modal.style.animation = "none";
+  modal.style.display = "none";
+  continueBtn.removeEventListener("click", nextRound);
+  continueBtn.style.color = "";
+  continueBtn.style.cursor = "";
+  continueBtn.disabled = true;
+  continueBtn.style.pointerEvents = "none";
   document.getElementById("send-mail").setAttribute("tabindex", "0");
 
   // Reset the styles of answers on the quiz card
@@ -427,7 +430,7 @@ function nextRound() {
   }
 
   // Reset interactivity for mouse/touch/keyboard input for all cards except for used ones
-  for (let card of cards.children) {
+  for (let card of cards) {
     if (!card.getAttribute("used")) {
       card.disabled = false;
     }
@@ -462,10 +465,10 @@ function endGame() {
   // Declare game as finished
   gameState.gameStarted = false;
   // Show end game screen
-  document.getElementById("end-game-screen").style.animation = "fadeIn 3s";
-  document.getElementById("modal").style.animation = "fadeIn 3s";
-  document.getElementById("end-game-screen").style.display = "flex";
-  document.getElementById("modal").style.display = "block";
+  endGameScreen.style.animation = "fadeIn 3s";
+  modal.style.animation = "fadeIn 3s";
+  endGameScreen.style.display = "flex";
+  modal.style.display = "block";
 
   // Compare the player scores and update the end game screen accordingly
   if (player1.score === player2.score) {

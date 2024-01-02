@@ -60,6 +60,8 @@ The layout of the game area is slightly different on mobiles and on larger scree
 - On mobiles, the area containing the active player name, their score and the note "It's your turn" is displayed at the top. The area of the inactive player is hidden. Below the player area is the card area with two or three columns, depending on the phone size. The dialog with the quiz question that appears after clicking on a card fills the entire phone screen.
 - On larger screens, the card area takes up most space in the middle of the screen and the two player areas are to the left and right of the card area. The dialog with the quiz question only fills a small percentage of the screen. A light, translucent modal fills the space behind it, preventing the user from interacting with the background.
 
+![Game area on small mobile screens](assets/images/readme_design_mobile.png)
+
 All game elements that are clickable but do not intuitively look like buttons (category cards, answers) have a box shadow that slightly lifts them up from the background. Once they become unclickable, the shadow disappears to convey to the players that they are no longer interactive.
 
 If desired by the players, the game can be played with keyboard input only by using `TAB` to cycle through elements and `ENTER` to select them.

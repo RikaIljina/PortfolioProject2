@@ -312,13 +312,13 @@ function showQuestion(activeCard) {
     if (answerKeys[randomIndex] === activeQuestion.correctAnswer) {
       gameState.correctAnswer = answer.getAttribute("id");
     }
+
     // Remove the generated index from the list to make sure no answers are being selected multiple times
     answerKeys.splice(randomIndex, 1);
 
     // Make sure the answer is clickable and selectable by keyboard input
     answer.disabled = false;
     answer.style.pointerEvents = "auto";
-
     // Listen for player clicking on an answer
     answer.addEventListener("click", processAnswer);
   }

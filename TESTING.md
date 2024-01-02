@@ -38,10 +38,17 @@ Testing the JavaScript code with [JSHint](https://jshint.com/):
 
 Mobile:
 
+![Lighthouse report on mobile devices showing values over 97](assets/images/readme_lighthouse_mobile.png)
+
 Desktop:
 
+![Lighthouse report on mobile devices showing values over 99](assets/images/readme_lighthouse_desktop.png)
 
 ### Wave
+
+The website passed the [WAVE report](https://wave.webaim.org/):
+
+<img src="assets/images/readme_wave_test.png" alt="Wave accessibility test results showing no errors" width="300">
 
 ## Manual Testing
 
@@ -118,3 +125,4 @@ The following issues came up during the testing process and were fixed:
 | Issue | Fix attempt | Screenshot|
 |---|---|---|
 | I allow users to enter max 8 characters as player names. On some devices (tablets and smaller latops), if players choose long names, especially with broad characters such as "M" or "W", this leads to the player areas taking up too much space in the game area since they display the entire player name. | I haven't settled on a fix yet. In the future, I might limit the player name length even more or choose a narrow font. | <img src="assets/images/readme_design_bug1.png" alt="Screen where player names are too long" width="300"> |
+| The OpenGraph tags don't seem to work properly; when trying to embed the website in a Facebook post, neither the description nor the image are being shown. | I was yet unable to find a reason for this bug and fix it. | |

@@ -216,8 +216,8 @@ footer a {
 }
 
 #end-game-screen .draw {
-visibility: hidden;
-} 
+  visibility: hidden;
+}
 
 #end-game-screen table,
 td,
@@ -436,7 +436,7 @@ th {
 @media screen and (min-width: 497px) {
   #end-game-screen .draw {
     visibility: visible;
-    } 
+  }
 }
 
 /* Media query for view on rotated phones and small tablets */

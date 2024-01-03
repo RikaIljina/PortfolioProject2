@@ -197,7 +197,7 @@ const quizCategories = [
 ]
 ```
 
-The array contains exactly 9 subarrays and their indexes must correspond to the values of the attribute `data-id` of the `div` elements inside the div container `card-area` in `index.html`. For example, since the `div` of the category card "Tech" has the attribute `data-id="0"`, the array `[quizQuestionsTech, quizQuestionsTech.length]` must be found at index 0 of the array `quizCategories` to ensure correct data retrieval.
+The array contains exactly 9 subarrays and their indexes must correspond to the values of the attribute `data-id` of the `button` elements inside the div container `card-area` in `index.html`. For example, since the `button` element for the category card "Tech" has the attribute `data-id="0"`, the array `[quizQuestionsTech, quizQuestionsTech.length]` must be found at index 0 of the array `quizCategories` to ensure correct data retrieval.
 
 **Non-repetitive randomness:**
 

@@ -20,7 +20,7 @@
 Testing the HTML code with [W3C Markup Validation Service](https://validator.w3.org/):
 | File | Result |
 |------|--------|
-| index.hmtl | Pass |
+| index.html | Pass |
 | error.html | Pass |
 
 Testing the CSS code with [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator):

@@ -53,8 +53,8 @@ try {
   self.location = "error.html";
 }
 
-// Global variables giving access to the player data entry form on the loading screen
-// and the area with category cards
+// Global variables giving access to the player data entry form on the loading screen,
+// the area with category cards and other elements accessed multiple times by the game
 const playerData = document.getElementById("player-data-form");
 const cards = document.getElementById("card-area").children;
 const continueBtn = document.getElementById("close-card");
@@ -470,7 +470,7 @@ function endGame() {
 
   // Compare the player scores and update the end game screen accordingly
   if (player1.score === player2.score) {
-    document.getElementById("trophy").setAttribute("src", "assets/images/draw.png")
+    document.getElementById("trophy").setAttribute("src", "assets/images/draw.png");
     document.getElementById("trophy").setAttribute("alt", "Graphic of balanced scales");
     document.getElementById("trophy").setAttribute("class", "draw");
     document.getElementById(

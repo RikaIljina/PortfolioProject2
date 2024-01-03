@@ -59,7 +59,7 @@ The website passed the [WAVE report](https://wave.webaim.org/):
 | quickly understand what the website is about | Visitors are greeted by a Welcome screen which contains a short game description - a "How-to-play". |
 | understand how to start the game | The Welcome screen contains two clearly marked input fields for the player names and a Start button. |
 | easily understand the game loop  | A "It's your turn" string clearly marks the player whose turn it is. Only game-relevant elements can be interacted with and the game design with selectable categories and a quiz card with a question and four clickable answers is intuitive and self-explanatory. |
-| **Possible user behaviour**| **Feedback from the game** |
+| **Possible user behavior**| **Feedback from the game** |
 | User enters names with invalid characters or no characters at all | Below the player name input fields, a note is shown to the player explaining the limitations for player name input. |
 | User selects a category card | A quiz card is shown, containing a question and four answers. |
 | User selects an answer | The answer is checked and feedback is given in form of colors and a strike-through for wrong answers. A "Continue" button is shown to the user. |
@@ -98,8 +98,9 @@ The following features were thoroughly tested:
 | Feature | Result |
 |---|---|
 | The entire game is playable with keyboard only, without mouse or touch | Pass |
+| There are no spelling errors in the game | Pass |
 | Player name input fields accept only the allowed character set | Pass |
-| Currently non-interactive elements do not accidentally react to user input, do not exhibit click/hover/focus/pointer behaviour, and are clearly marked as non-interactive | Pass |
+| Currently non-interactive elements do not accidentally react to user input, do not exhibit click/hover/focus/pointer behavior, and are clearly marked as non-interactive | Pass |
 | When clicked on, each category card exclusively shows questions from the relevant category | Pass |
 | The answer highlighted "green" is always the correct answer | Pass |
 | Questions do not repeat throughout one game, provided there are more questions than the players play rounds | Pass |
@@ -124,5 +125,5 @@ The following issues came up during the testing process and were fixed:
 
 | Issue | Fix attempt | Screenshot|
 |---|---|---|
-| I allow users to enter max 8 characters as player names. On some devices (tablets and smaller latops), if players choose long names, especially with broad characters such as "M" or "W", this leads to the player areas taking up too much space in the game area since they display the entire player name. | I haven't settled on a fix yet. In the future, I might limit the player name length even more or choose a narrow font. | <img src="assets/readme_files/readme_design_bug1.png" alt="Screen where player names are too long" width="300"> |
+| I allow users to enter max 8 characters as player names. On some devices (tablets and smaller laptops), if players choose long names, especially with broad characters such as "M" or "W", this leads to the player areas taking up too much space in the game area since they display the entire player name. | I haven't settled on a fix yet. In the future, I might limit the player name length even more or choose a narrow font. | <img src="assets/readme_files/readme_design_bug1.png" alt="Screen where player names are too long" width="300"> |
 | The OpenGraph tags don't seem to work properly; when trying to embed the website in a Facebook post, neither the description nor the image are being shown. | I was yet unable to find a reason for this bug and fix it. | |

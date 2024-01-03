@@ -258,7 +258,7 @@ function showQuestion(activeCard) {
   // See 'questions.js' for info on the format of 'quizCategories'
   let categoryIndex = activeCard.getAttribute("data-id");
   let category = quizCategories[categoryIndex][0];
-  // Generate random index based on the amount of questions in the corrseponding category 
+  // Generate random index based on the amount of questions in the corresponding category 
   let randomIndexQ = Math.floor(Math.random() * questionKeys[categoryIndex].length);
   // Select the question with the generated index
   let activeQuestion = category[questionKeys[categoryIndex][randomIndexQ]];

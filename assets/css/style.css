@@ -38,7 +38,7 @@ main {
   flex: 1;
 }
 
-/* Contains the player areas and the card area; has flex properties to be able to switch between row and column direction dependnig on the device */
+/* Contains the player areas and the card area; has flex properties to be able to switch between row and column direction depending on the device */
 #game-container {
   display: flex;
   flex-direction: column;

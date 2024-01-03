@@ -703,7 +703,7 @@ const quizQuestionsGeneral = [
 
 // The array 'quizCategories' consists of 9 subarrays.
 // Each of those subarrays contains the following values at its indexes:
-// Index 0: name of the array with the actual question objects for the corersponding category
+// Index 0: name of the array with the actual question objects for the corresponding category
 // Index 1: integer denoting the length of the corresponding question array
 const quizCategories = [
   [quizQuestionsTech, quizQuestionsTech.length],

@@ -53,7 +53,7 @@ When choosing a design for my game, I prioritized clearness and readability to m
 
 The header with the game title and the footer with copyright info are designed to be unobtrusive as to not draw attention away from the main game area.
 
-![Fullscreen view of the game area](assets/readme_files/readme_design_fullscreen.png)
+![Full screen view of the game area](assets/readme_files/readme_design_fullscreen.png)
 
 The layout of the game area is slightly different on mobiles and on larger screens:
 
@@ -92,7 +92,7 @@ The remaining colors are:
 
 Since this is a two-player game, each player has their own color that is used in that player's area. Whenever a player answers the question of a specific category card correctly, that card also receives that player's color. Cards whose answers have been answered incorrectly, receive a neutral gray color. That way, the players have an additional clue as to who is leading, beside the score in the player areas.
 
-![Fullscreen view of the game area showing inactive cards in their respective colors](assets/readme_files/readme_design_cardarea.png)
+![Full screen view of the game area showing inactive cards in their respective colors](assets/readme_files/readme_design_cardarea.png)
 
 On the quiz cards, correct answers are highlighted green and wrong answers are highlighted red, which corresponds to the conventional use of color coding for "wrong" and "right". However, since these colors might present a barrier to people with color vision deficiency, the wrong answer is also marked by a line-through.
 
@@ -164,7 +164,7 @@ I use the `let` keyword for all variables within functions to keep them in their
 
 **Event handling:**
 
-Event listeners set globally only persist througout the entire game loop if they are constantly needed, as is the case for the event listeners on the 9 category cards. Other event listeners that are required only once or are confined to certain functions are removed as soon as they are no longer needed to prevent unexpected behavior in the game.
+Event listeners set globally only persist throughout the entire game loop if they are constantly needed, as is the case for the event listeners on the 9 category cards. Other event listeners that are required only once or are confined to certain functions are removed as soon as they are no longer needed to prevent unexpected behavior in the game.
 
 **Questions database:**
 
@@ -188,7 +188,7 @@ const quizQuestionsCategoryName = [
 
 Additional quiz questions must be added in the exact same format.
 
-The file also contains the array `quizCategories` which is needed to access the correct category array whenever the player clicks on a category card. The format of this array is as folows:
+The file also contains the array `quizCategories` which is needed to access the correct category array whenever the player clicks on a category card. The format of this array is as follows:
 
 ```
 const quizCategories = [
@@ -286,7 +286,7 @@ The following features could be implemented in future updates:
 - [ ] Add a timer on quiz cards to limit the time players can think about a question 
 - [ ] Implement user authentication and let users access their personal profiles
 - [ ] Add an all-time highscore to show players with most wins
-- [ ] Add statistics to show how knowledgable a user is in what categories
+- [ ] Add statistics to show how knowledgeable a user is in what categories
 - [ ] Add an online multiplayer
 
 ### Known bugs
@@ -313,6 +313,7 @@ See the ["Bugs" section of TESTING.md](TESTING.md#known-bugs) for bug descriptio
 - [amiresponsive](https://ui.dev/amiresponsive): responsiveness mock-up
 - VS Code: IDE
 - [OpenAI ChatGPT](https://openai.com/): help with creating quiz questions
+- [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker): spell check extension for VS Code
 
 ## Testing
 

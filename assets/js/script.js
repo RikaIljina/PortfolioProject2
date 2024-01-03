@@ -128,7 +128,6 @@ function initializePlayers() {
 
   // Hide loading screen and modal
   document.getElementById("loading-screen").style.display = "none";
-  modal.style.animation = "none";
   modal.style.display = "none";
 
   // Make sure all category cards are clickable and selectable via keyboard
@@ -149,7 +148,6 @@ function initializePlayers() {
 function continueGame() {
   // Hide end game screen
   document.getElementById("end-game-screen").style.display = "none";
-  modal.style.animation = "none";
   modal.style.display = "none";
 
   // Declare game as started and reset relevant values
@@ -409,7 +407,6 @@ function processAnswer() {
 function nextRound() {
   // Hide quiz card and deactivate its button
   quizCard.style.display = "none";
-  modal.style.animation = "none";
   modal.style.display = "none";
   continueBtn.removeEventListener("click", nextRound);
   continueBtn.style.color = "";
@@ -463,8 +460,6 @@ function endGame() {
   // Declare game as finished
   gameState.gameStarted = false;
   // Show end game screen
-  endGameScreen.style.animation = "fadeIn 3s";
-  modal.style.animation = "fadeIn 3s";
   endGameScreen.style.display = "flex";
   modal.style.display = "block";
 

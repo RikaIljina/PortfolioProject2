@@ -243,16 +243,6 @@ th {
   width: 4.2rem;
 }
 
-/* Animation for fading in the end game screen */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 /* Element below the player name input fields that is only shown on input error */
 #input-error {
   height: 3rem;

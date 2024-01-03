@@ -114,11 +114,12 @@ The following features were thoroughly tested:
 
 The following issues came up during the testing process and were fixed:
 
-| Issue | Fix |
-|---|---|
-| The [WAVE report](https://wave.webaim.org/) showed that I had no headings in my HTML | Added appropriate headings for a clearer HTML structure |
+| Issue | Fix | Screenshot |
+|---|---|---|
+| The [WAVE report](https://wave.webaim.org/) showed that I had no headings in my HTML | Added appropriate headings for a clearer HTML structure ||
 | The [WAVE report](https://wave.webaim.org/) showed contrast errors | Changed the text colors for better contrast |
-| I realized that my game was only playable with mouse/touch input, not with keyboard, making it less accessible for certain users. |  1. In HTML, I changed all interactive elements to have the tag `button` instead of `div` or `p`. <br> 2. In the script file, I added code to enable/disable the buttons depending on the stage of the game and the visible screen to make sure hidden elements were not accessible via `TAB` key. <br> 3. In the CSS file, I adjusted styles to make sure focused elements were visible as such. |
+| I realized that my game was only playable with mouse/touch input, not with keyboard, making it less accessible for certain users. |  1. In HTML, I changed all interactive elements to have the tag `button` instead of `div` or `p`. <br> 2. In the script file, I added code to enable/disable the buttons depending on the stage of the game and the visible screen to make sure hidden elements were not accessible via `TAB` key. <br> 3. In the CSS file, I adjusted styles to make sure focused elements were visible as such. ||
+| The OpenGraph tags didn't seem to work properly; when trying to embed the website in a Facebook post, the image wasn't being shown. | I finally figured out the correct link to the image file in my GitHub repo. | ![OpenGraph social media card of the website in a Facebook post](assets/readme_files/readme_og_card.png) |
 
 
 ### Known bugs
@@ -126,4 +127,3 @@ The following issues came up during the testing process and were fixed:
 | Issue | Fix attempt | Screenshot|
 |---|---|---|
 | I allow users to enter max 8 characters as player names. On some devices (tablets and smaller laptops), if players choose long names, especially with broad characters such as "M" or "W", this leads to the player areas taking up too much space in the game area since they display the entire player name. | I haven't settled on a fix yet. In the future, I might limit the player name length even more or choose a narrow font. | <img src="assets/readme_files/readme_design_bug1.png" alt="Screen where player names are too long" width="300"> |
-| The OpenGraph tags don't seem to work properly; when trying to embed the website in a Facebook post, neither the description nor the image are being shown. | I was yet unable to find a reason for this bug and fix it. | |

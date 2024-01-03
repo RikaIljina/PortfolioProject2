@@ -348,7 +348,7 @@ The website was deployed to GitHub Pages. Deployment process:
 By forking the GitHub Repository, you can make a copy of the original repository in your GitHub account. There, you can view and/or make changes to the repo without affecting the original.
 
 1. Log in to GitHub and locate the GitHub Repository.
-2. At the top of the Repository (not top of page) just above the "Settings" Button on the menu, locate the "Fork" Button.
+2. At the top of the Repository (not top of page), to the right of the repository name, locate the "Fork" button.
 3. You should now have a copy of the original repository in your GitHub account.
 
 ### Making a Local Clone

@@ -243,6 +243,7 @@ th {
   width: 4.2rem;
 }
 
+/* Animation for fading in the end game screen */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -420,7 +421,7 @@ th {
   outline: 2px solid rgba(220, 197, 222, 0.5);
 }
 
-/* Styles for the error page error.html */
+/* Styles for the error pages error.html and 404.html, centers the content on the viewport */
 #error-page-div {
   font-size: 2rem;
   display: block;
@@ -433,6 +434,7 @@ th {
   font-size: 1.5rem;
 }
 
+/* Media query for small screens, making sure certain graphics are not visible unless there is sufficient space for them */
 @media screen and (min-width: 497px) {
   #end-game-screen .draw {
     visibility: visible;
@@ -458,6 +460,7 @@ th {
     min-height: 60vh;
     line-height: 3.5rem;
     font-size: 2rem;
+    order: initial;
   }
 
   #p1-name,
@@ -465,8 +468,6 @@ th {
     font-size: 2rem;
   }
 
-  #player-1,
-  #player-2,
   #card-area {
     order: initial;
   }
@@ -583,7 +584,7 @@ th {
 
   #player-1,
   #player-2 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     line-height: 4rem;
   }
   #p1-name,
@@ -677,7 +678,7 @@ th {
 
   #player-1,
   #player-2 {
-    font-size: 4rem;
+    font-size: 3.5rem;
     line-height: 5rem;
   }
 

@@ -152,7 +152,7 @@ function continueGame() {
   modal.style.animation = "none";
   modal.style.display = "none";
 
-  // Declare game as started
+  // Declare game as started and reset relevant values
   gameState.gameStarted = true;
   gameState.currentRound = 1;
   player1.score = 0;
@@ -470,8 +470,9 @@ function endGame() {
 
   // Compare the player scores and update the end game screen accordingly
   if (player1.score === player2.score) {
+    // Show graphic symbolizing a draw
     document.getElementById("trophy").setAttribute("src", "assets/images/draw.png");
-    document.getElementById("trophy").setAttribute("alt", "Graphic of balanced scales");
+    document.getElementById("trophy").setAttribute("alt", "Stylized balanced scales");
     document.getElementById("trophy").setAttribute("class", "draw");
     document.getElementById(
       "results"
@@ -479,9 +480,9 @@ function endGame() {
   } else {
     let winner = player1.score > player2.score ? player1 : player2;
     winner.wins += 1;
-
+    // Show graphic symbolizing a win
     document.getElementById("trophy").setAttribute("src", "assets/images/trophy.png");
-    document.getElementById("trophy").setAttribute("alt", "Graphic of a golden trophy cup");
+    document.getElementById("trophy").setAttribute("alt", "A stylized golden trophy cup");
     document.getElementById("trophy").removeAttribute("class");
     document.getElementById(
       "results"
@@ -518,26 +519,3 @@ function endGame() {
     location.reload();
   });
 }
-
-
-
-// document.getElementById("results").innerHTML += `
-// <br><br>Stats:<br><br>
-// <table>
-// <tr>
-//   <th>Player</th>
-//   <th>This round's score</th>
-//   <th>Total wins</th>
-// </tr>
-// <tr>
-//   <td>${player1.name}</td>
-//   <td>${player1.score}</td>
-//   <td>${player1.wins}</td>
-// </tr>
-// <tr>
-//   <td>${player2.name}</td>
-//   <td>${player2.score}</td>
-//   <td>${player2.wins}</td>
-// </tr>
-// </table>
-// `;

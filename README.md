@@ -138,6 +138,7 @@ After the webpage has loaded, the user is presented with a loading screen provid
 
 - `index.html` - main HTML file with the game elements
 - `error.html` - an error page to be shown in case there is an issue with the database and questions cannot be retrieved
+- `404.html` - an error page to be shown if the user tries to access a non-existent page
 - `assets/css/style.css` - styles for the entire site
 - `assets/favicons` - folder containing the site icons
 - `assets/images` - folder containing the image files
